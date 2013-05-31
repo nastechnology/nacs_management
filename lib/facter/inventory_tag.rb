@@ -8,7 +8,7 @@ Facter.add("inventory_tag") do
         when "Darwin"
                  result = Facter::Util::Resolution.exec("/usr/bin/grep 'tag = ' /opt/fusioninventory$
                  thestring = result[6..result.length]
-        when "Windows"
+        when "windows"
                require 'win32/registry'
                Win32::Registry::HKEY_LOCAL_MACHINE.open('SOFTWARE\FusionInventory-Agent') do |reg|
                     thestring = reg['tag']
