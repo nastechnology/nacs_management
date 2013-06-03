@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe 'nacs_management::checkin'  do 
-    let(:facts) { :operatingsystem => 'Darwin' }
-
+    let(:facts) { {:operatingsystem => 'Darwin'} }
+   
     it do 
 	should contain_file('/opt/NACSManage/checkin.sh').with({
 	    'ensure' => 'file',
