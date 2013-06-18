@@ -1,3 +1,20 @@
+# == Class: nacs_management::checkin
+#
+# Uses the districts checkin API to checkin with the server 
+# and is scheduled to run with every puppet run
+#
+# === Examples
+#
+# include nacs_management::checkin
+#
+# === Authors
+#
+# Mark Myers <mark.myers@napoleonareaschools.org>
+#
+# === Copyright
+#
+# Copyright 2013 Mark Myers, unless otherwise noted.
+#
 class nacs_management::checkin {
 
     case $operatingsystem {
