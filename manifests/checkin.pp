@@ -40,7 +40,7 @@ class nacs_management::checkin {
        	owner   => $owner,
        	group   => $group,
        	mode    => 0755,
-       	content => template("nacs_management/nonwindows_checkin.erb"),
+       	content => template("nacs_management/$template"),
     }
 
     exec { "Checkin":

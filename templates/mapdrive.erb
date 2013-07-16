@@ -1,0 +1,6 @@
+# Drive Letter: <%= @drive %>
+# Map drive on fileserver
+# 
+tell application "Finder"
+	open location "smb://<%= @server %>/<%= @folder %>"
+end tell

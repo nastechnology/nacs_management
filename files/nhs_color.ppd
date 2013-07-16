@@ -1,0 +1,3427 @@
+*PPD-Adobe: "4.3"
+*%=============================================================================
+*%
+*%  PPD file for Kyocera FS-C5300DN (European English)
+*%  Macintosh Version
+*%
+*%  Copyright (C) 1993-2011 Kyocera Technology Development Inc.
+*%  All Rights Reserved
+*%
+*%  Permission is granted for redistribution of this file as long as this
+*%  copyright notice is intact and the contents of the file are not altered
+*%  in any way from their original form.
+*%
+*%  Contents of this file are automatically generated with the PPDGEN utility 
+*%
+*%
+*%=============================================================================
+
+*FileVersion: "8.4"
+*FormatVersion: "4.3"
+*LanguageEncoding: ISOLatin1
+*LanguageVersion: English
+*Product: "(FS-C5300DN)"
+*PSVersion: "(3011.103) 1"
+*Manufacturer: "Kyocera"
+*ModelName: "Kyocera FS-C5300DN KPDL"
+*ShortNickName: "Kyocera FS-C5300DN (KPDL)"
+*NickName: "Kyocera FS-C5300DN (KPDL)"
+*PCFileName: "KC5300EE.PPD"
+
+*1284DeviceID: "MDL:FS-C5300DN;MFG:Kyocera"
+
+*cupsPreFilter: "application/pdf 0 kyoprefilter_A"
+
+*cupsFilter: "application/vnd.cups-postscript 0 kyofilter_A"
+
+*APDialogExtension: "/Library/Printers/Kyocera/PDEs/KyoceraJobSettings_A.plugin"
+*APDialogExtension: "/Library/Printers/Kyocera/PDEs/KMWatermark_A.plugin"
+*APDialogExtension: "/Library/Printers/Kyocera/PDEs/KMPublishing_A.plugin"
+*APDialogExtension: "/Library/Printers/Kyocera/PDEs/KMAccountID_A.plugin"
+
+*% Basic Device Capabilities
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*ContoneOnly: False
+*AccurateScreensSupport: True
+*TTRasterizer: Type42
+*?TTRasterizer: "
+  save
+  42 /FontType resourcestatus
+  { pop pop (Type42) }{ (None) } ifelse
+  = flush restore"
+*End
+
+*Throughput: "26"
+
+*% Extensions
+*FileSystem: True
+*?FileSystem: "
+  save
+  false
+  (%disk?%)
+  {currentdevparams dup /Writeable known
+    {/Writeable get {pop true} if}{pop} ifelse
+  } 100 string /IODevice resourceforall
+  {(True)}{(False)} ifelse
+  = flush restore "
+*End
+
+*% System Management
+*SuggestedJobTimeout: "0"
+*SuggestedManualFeedTimeout: "0"
+*SuggestedWaitTimeout: "120"
+*PrintPSErrors: True
+
+*Password: "0"
+
+*ExitServer: "
+  count 0 eq {true}
+  {dup statusdict /checkpassword get exec not} ifelse
+  {(WARNING : Cannot perform the exitserver command.) =
+    (Password supplied is not valid.) =
+    (Please contact the author of this software.) = flush quit} if
+  serverdict /exitserver get exec"
+*End
+
+*Reset: "
+  count 0 eq { true }
+  {dup statusdict /checkpassword get exec not} ifelse
+  {(WARNING : Cannot perform the exitserver command.) =
+    (Password supplied is not valid.) =
+    (Please contact the author of this software.) = flush quit} if
+  serverdict /exitserver get exec
+  systemdict /quit get exec
+  (WARNING : Printer Reset Failed.) = flush"
+*End
+
+*% Protocols
+*Protocols: PJL TBCP
+
+*1284Modes Parallel: Compat Nibble ECP
+*1284DeviceID: "MFG:Kyocera;MODEL:Kyocera FS-C5300DN;COMMAND SET: POSTSCRIPT,PJL,PCL"
+
+*% JCL Information 
+*JCLBegin: "<1B>%-12345X@PJL JOB<0A>"
+*JCLToPSInterpreter: "@PJL ENTER LANGUAGE=POSTSCRIPT<0A>"
+*JCLEnd: "<1B>%-12345X@PJL EOJ<0A><1B>%-12345X"
+
+*JCLOpenUI *JCLTrapping/Trapping: PickOne
+*DefaultJCLTrapping: Medium
+*OrderDependency: 6 JCLSetup *JCLTrapping
+*JCLTrapping Off/Off: "@PJL SET KTRAPPING=0<0A>"
+*JCLTrapping Light/Light: "@PJL SET KTRAPPING=1<0A>"
+*JCLTrapping Medium/Medium: "@PJL SET KTRAPPING=2<0A>"
+*JCLTrapping Heavy/Heavy: "@PJL SET KTRAPPING=3<0A>"
+*JCLTrapping VeryHeavy/Very heavy: "@PJL SET KTRAPPING=4<0A>"
+*JCLCloseUI: *JCLTrapping
+
+*% Installable Options
+*OpenGroup: InstallableOptions/Installed Options
+
+*% Paper Feeders
+*OpenUI *Option20/Paper Feeders: PickOne
+*DefaultOption20: One
+*Option20 None/Not Installed: ""
+*Option20 One/One: ""
+*Option20 Two/Two: ""
+*Option20 Three/Three: ""
+*?Option20: "
+  save
+  (None) currentpagedevice dup /InputAttributes known {
+    /InputAttributes get
+    dup 1 known {dup 1 get null ne {exch pop (One) exch} if} if
+    dup 4 known {dup 4 get null ne {exch pop (Two) exch} if} if
+    dup 5 known {dup 5 get null ne {exch pop (Three) exch} if} if
+  } if pop
+  = flush restore"
+*End
+*CloseUI: *Option20
+
+*% Disk Drive
+*OpenUI *Option18/Optional Disk: PickOne
+*DefaultOption18: None
+*Option18 None/Not Installed: ""
+*Option18 HardDisk/Hard Disk: ""
+*Option18 RAMDisk/RAM Disk: ""
+*?Option18: "
+  save
+  false
+  (%disk?%)
+  {currentdevparams dup /Writeable known
+    {dup /Writeable get
+      {exch pop /LogicalSize get dup 0 gt exch 950000 lt eq true}{pop pop false} ifelse
+    }{pop pop} ifelse
+  } 100 string /IODevice resourceforall
+  {{(RAMDisk)}{(HardDisk)} ifelse}{(None)} ifelse
+  = flush restore"
+*End
+*CloseUI: *Option18
+
+*% Installed Memory
+*% Not supported
+
+*CloseGroup: InstallableOptions
+
+
+*% Virtual Memory
+*FreeVM: "32000000"
+
+*% Constraints
+*UIConstraints: *Option20 None *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *Option20 None
+*UIConstraints: *Option20 None *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *Option20 None
+*UIConstraints: *Option20 None *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *Option20 None
+*UIConstraints: *Option20 One *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *Option20 One
+*UIConstraints: *Option20 One *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *Option20 One
+*UIConstraints: *Option20 Two *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *Option20 Two
+*UIConstraints: *Option20 None *CoverMediaType PF500A
+*UIConstraints: *CoverMediaType PF500A *Option20 None
+*UIConstraints: *Option20 None *CoverMediaType PF500B
+*UIConstraints: *CoverMediaType PF500B *Option20 None
+*UIConstraints: *Option20 None *CoverMediaType PF500C
+*UIConstraints: *CoverMediaType PF500C *Option20 None
+*UIConstraints: *Option20 One *CoverMediaType PF500B
+*UIConstraints: *CoverMediaType PF500B *Option20 One
+*UIConstraints: *Option20 One *CoverMediaType PF500C
+*UIConstraints: *CoverMediaType PF500C *Option20 One
+*UIConstraints: *Option20 Two *CoverMediaType PF500C
+*UIConstraints: *CoverMediaType PF500C *Option20 Two
+*UIConstraints: *Option20 None *TransMediaType PF500A
+*UIConstraints: *TransMediaType PF500A *Option20 None
+*UIConstraints: *Option20 None *TransMediaType PF500B
+*UIConstraints: *TransMediaType PF500B *Option20 None
+*UIConstraints: *Option20 None *TransMediaType PF500C
+*UIConstraints: *TransMediaType PF500C *Option20 None
+*UIConstraints: *Option20 One *TransMediaType PF500B
+*UIConstraints: *TransMediaType PF500B *Option20 One
+*UIConstraints: *Option20 One *TransMediaType PF500C
+*UIConstraints: *TransMediaType PF500C *Option20 One
+*UIConstraints: *Option20 Two *TransMediaType PF500C
+*UIConstraints: *TransMediaType PF500C *Option20 Two
+*UIConstraints: *Option20 None *PageMediaType PF500A
+*UIConstraints: *PageMediaType PF500A *Option20 None
+*UIConstraints: *Option20 None *PageMediaType PF500B
+*UIConstraints: *PageMediaType PF500B *Option20 None
+*UIConstraints: *Option20 None *PageMediaType PF500C
+*UIConstraints: *PageMediaType PF500C *Option20 None
+*UIConstraints: *Option20 One *PageMediaType PF500B
+*UIConstraints: *PageMediaType PF500B *Option20 One
+*UIConstraints: *Option20 One *PageMediaType PF500C
+*UIConstraints: *PageMediaType PF500C *Option20 One
+*UIConstraints: *Option20 Two *PageMediaType PF500C
+*UIConstraints: *PageMediaType PF500C *Option20 Two
+*UIConstraints: *Duplex *MediaType Transparency
+*UIConstraints: *MediaType Transparency *Duplex DuplexTumble
+*UIConstraints: *MediaType Transparency *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Labels
+*UIConstraints: *MediaType Labels *Duplex DuplexTumble
+*UIConstraints: *MediaType Labels *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Vellum
+*UIConstraints: *MediaType Vellum *Duplex DuplexTumble
+*UIConstraints: *MediaType Vellum *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Envelope
+*UIConstraints: *MediaType Envelope *Duplex DuplexTumble
+*UIConstraints: *MediaType Envelope *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Cardstock
+*UIConstraints: *MediaType Cardstock *Duplex DuplexTumble
+*UIConstraints: *MediaType Cardstock *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *CoverMediaType Transparency
+*UIConstraints: *CoverMediaType Transparency *Duplex DuplexTumble
+*UIConstraints: *CoverMediaType Transparency *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *CoverMediaType Labels
+*UIConstraints: *CoverMediaType Labels *Duplex DuplexTumble
+*UIConstraints: *CoverMediaType Labels *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *CoverMediaType Vellum
+*UIConstraints: *CoverMediaType Vellum *Duplex DuplexTumble
+*UIConstraints: *CoverMediaType Vellum *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *CoverMediaType Envelope
+*UIConstraints: *CoverMediaType Envelope *Duplex DuplexTumble
+*UIConstraints: *CoverMediaType Envelope *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *CoverMediaType Cardstock
+*UIConstraints: *CoverMediaType Cardstock *Duplex DuplexTumble
+*UIConstraints: *CoverMediaType Cardstock *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageMediaType Transparency
+*UIConstraints: *PageMediaType Transparency *Duplex DuplexTumble
+*UIConstraints: *PageMediaType Transparency *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageMediaType Labels
+*UIConstraints: *PageMediaType Labels *Duplex DuplexTumble
+*UIConstraints: *PageMediaType Labels *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageMediaType Vellum
+*UIConstraints: *PageMediaType Vellum *Duplex DuplexTumble
+*UIConstraints: *PageMediaType Vellum *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageMediaType Envelope
+*UIConstraints: *PageMediaType Envelope *Duplex DuplexTumble
+*UIConstraints: *PageMediaType Envelope *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageMediaType Cardstock
+*UIConstraints: *PageMediaType Cardstock *Duplex DuplexTumble
+*UIConstraints: *PageMediaType Cardstock *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *TransMediaType Labels
+*UIConstraints: *TransMediaType Labels *Duplex DuplexTumble
+*UIConstraints: *TransMediaType Labels *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *TransMediaType Vellum
+*UIConstraints: *TransMediaType Vellum *Duplex DuplexTumble
+*UIConstraints: *TransMediaType Vellum *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *TransMediaType Envelope
+*UIConstraints: *TransMediaType Envelope *Duplex DuplexTumble
+*UIConstraints: *TransMediaType Envelope *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *TransMediaType Cardstock
+*UIConstraints: *TransMediaType Cardstock *Duplex DuplexTumble
+*UIConstraints: *TransMediaType Cardstock *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *MediaType Thick
+*UIConstraints: *MediaType Thick *Duplex DuplexTumble
+*UIConstraints: *MediaType Thick *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *CoverMediaType Thick
+*UIConstraints: *CoverMediaType Thick *Duplex DuplexTumble
+*UIConstraints: *CoverMediaType Thick *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageMediaType Thick
+*UIConstraints: *PageMediaType Thick *Duplex DuplexTumble
+*UIConstraints: *PageMediaType Thick *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *TransMediaType Thick
+*UIConstraints: *TransMediaType Thick *Duplex DuplexTumble
+*UIConstraints: *TransMediaType Thick *Duplex DuplexNoTumble
+*UIConstraints: *MediaType Transparency *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Transparency
+*UIConstraints: *MediaType Labels *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Labels
+*UIConstraints: *MediaType Envelope *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Envelope
+*UIConstraints: *MediaType Cardstock *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Cardstock
+*UIConstraints: *MediaType CoatedPaper *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType CoatedPaper
+*UIConstraints: *MediaType Vellum *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Vellum
+*UIConstraints: *MediaType Transparency *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *MediaType Transparency
+*UIConstraints: *MediaType Labels *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *MediaType Labels
+*UIConstraints: *MediaType Envelope *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *MediaType Envelope
+*UIConstraints: *MediaType Cardstock *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *MediaType Cardstock
+*UIConstraints: *MediaType CoatedPaper *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *MediaType CoatedPaper
+*UIConstraints: *MediaType Vellum *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *MediaType Vellum
+*UIConstraints: *MediaType Transparency *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *MediaType Transparency
+*UIConstraints: *MediaType Labels *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *MediaType Labels
+*UIConstraints: *MediaType Envelope *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *MediaType Envelope
+*UIConstraints: *MediaType Cardstock *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *MediaType Cardstock
+*UIConstraints: *MediaType CoatedPaper *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *MediaType CoatedPaper
+*UIConstraints: *MediaType Vellum *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *MediaType Vellum
+*UIConstraints: *TransMediaType Labels *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Labels
+*UIConstraints: *TransMediaType Envelope *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Envelope
+*UIConstraints: *TransMediaType Cardstock *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Cardstock
+*UIConstraints: *TransMediaType CoatedPaper *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType CoatedPaper
+*UIConstraints: *TransMediaType Vellum *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Vellum
+*UIConstraints: *MediaType Thick *InputSlot Internal
+*UIConstraints: *InputSlot Internal *MediaType Thick
+*UIConstraints: *MediaType Thick *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *MediaType Thick
+*UIConstraints: *MediaType Thick *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *MediaType Thick
+*UIConstraints: *TransMediaType Thick *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Thick
+*UIConstraints: *MediaType Transparency *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *MediaType Transparency
+*UIConstraints: *MediaType Labels *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *MediaType Labels
+*UIConstraints: *MediaType Envelope *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *MediaType Envelope
+*UIConstraints: *MediaType Cardstock *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *MediaType Cardstock
+*UIConstraints: *MediaType CoatedPaper *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *MediaType CoatedPaper
+*UIConstraints: *MediaType Vellum *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *MediaType Vellum
+*UIConstraints: *TransMediaType Labels *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Labels
+*UIConstraints: *TransMediaType Envelope *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Envelope
+*UIConstraints: *TransMediaType Cardstock *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Cardstock
+*UIConstraints: *TransMediaType CoatedPaper *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType CoatedPaper
+*UIConstraints: *TransMediaType Vellum *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Vellum
+*UIConstraints: *MediaType Thick *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *MediaType Thick
+*UIConstraints: *TransMediaType Thick *MediaType Transparency
+*UIConstraints: *MediaType Transparency *TransMediaType Thick
+*UIConstraints: *Option18 None *KCCollate QuickCopy
+*UIConstraints: *KCCollate QuickCopy *Option18 None
+*UIConstraints: *Option18 None *KCCollate JobStorage
+*UIConstraints: *KCCollate JobStorage *Option18 None
+*UIConstraints: *Option18 None *KCCollate ProofHold
+*UIConstraints: *KCCollate ProofHold *Option18 None
+*UIConstraints: *Option18 None *KCCollate PrivatePrint
+*UIConstraints: *KCCollate PrivatePrint *Option18 None
+*UIConstraints: *Option18 None *KCCollate CustomBox
+*UIConstraints: *KCCollate CustomBox *Option18 None
+*UIConstraints: *KCCollate CustomBox *Option18 RAMDisk
+*UIConstraints: *Option18 RAMDisk *KCCollate CustomBox
+*UIConstraints: *Option18 None *KCCollate On
+*UIConstraints: *KCCollate On *Option18 None
+*UIConstraints: *Option18 RAMDisk *KCCollate QuickCopy
+*UIConstraints: *KCCollate QuickCopy *Option18 RAMDisk
+*UIConstraints: *Option18 RAMDisk *KCCollate JobStorage
+*UIConstraints: *KCCollate JobStorage *Option18 RAMDisk
+*UIConstraints: *PageSize B6 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize B6
+*UIConstraints: *PageRegion B6 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion B6
+*UIConstraints: *PageSize EnvPersonal *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvPersonal
+*UIConstraints: *PageRegion EnvPersonal *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvPersonal
+*UIConstraints: *PageSize Env9 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize Env9
+*UIConstraints: *PageRegion Env9 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion Env9
+*UIConstraints: *PageSize Env10 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize Env10
+*UIConstraints: *PageRegion Env10 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion Env10
+*UIConstraints: *PageSize EnvMonarch *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvMonarch
+*UIConstraints: *PageSize EnvDL *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvDL
+*UIConstraints: *PageRegion EnvDL *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvDL
+*UIConstraints: *PageSize EnvC5 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageSize EnvC5
+*UIConstraints: *PageRegion EnvC5 *InputSlot Internal
+*UIConstraints: *InputSlot Internal *PageRegion EnvC5
+*UIConstraints: *PageSize A6 *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *PageSize A6
+*UIConstraints: *PageRegion A6 *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *PageRegion A6
+*UIConstraints: *PageSize B6 *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *PageSize B6
+*UIConstraints: *PageRegion B6 *InputSlot PF500A
+*UIConstraints: *InputSlot PF500A *PageRegion B6
+*UIConstraints: *PageSize A6 *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *PageSize A6
+*UIConstraints: *PageRegion A6 *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *PageRegion A6
+*UIConstraints: *PageSize B6 *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *PageSize B6
+*UIConstraints: *PageRegion B6 *InputSlot PF500B
+*UIConstraints: *InputSlot PF500B *PageRegion B6
+*UIConstraints: *PageSize A6 *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *PageSize A6
+*UIConstraints: *PageRegion A6 *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *PageRegion A6
+*UIConstraints: *PageSize B6 *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *PageSize B6
+*UIConstraints: *PageRegion B6 *InputSlot PF500C
+*UIConstraints: *InputSlot PF500C *PageRegion B6
+*UIConstraints: *Duplex *PageSize A6
+*UIConstraints: *PageSize A6 *Duplex DuplexTumble
+*UIConstraints: *PageSize A6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion A6
+*UIConstraints: *PageRegion A6 *Duplex DuplexTumble
+*UIConstraints: *PageRegion A6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize B6
+*UIConstraints: *PageSize B6 *Duplex DuplexTumble
+*UIConstraints: *PageSize B6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion B6
+*UIConstraints: *PageRegion B6 *Duplex DuplexTumble
+*UIConstraints: *PageRegion B6 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize EnvPersonal
+*UIConstraints: *PageSize EnvPersonal *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvPersonal *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion EnvPersonal
+*UIConstraints: *PageRegion EnvPersonal *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvPersonal *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize Env9
+*UIConstraints: *PageSize Env9 *Duplex DuplexTumble
+*UIConstraints: *PageSize Env9 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion Env9
+*UIConstraints: *PageRegion Env9 *Duplex DuplexTumble
+*UIConstraints: *PageRegion Env9 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize Env10
+*UIConstraints: *PageSize Env10 *Duplex DuplexTumble
+*UIConstraints: *PageSize Env10 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion Env10
+*UIConstraints: *PageRegion Env10 *Duplex DuplexTumble
+*UIConstraints: *PageRegion Env10 *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize EnvMonarch
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion EnvMonarch
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageSize EnvDL
+*UIConstraints: *PageSize EnvDL *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *Duplex *PageRegion EnvDL
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *ColorModel Gray *Colorreprod Textgraph
+*UIConstraints: *Colorreprod Textgraph *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Textphoto
+*UIConstraints: *Colorreprod Textphoto *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Vivid
+*UIConstraints: *Colorreprod Vivid *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Publications
+*UIConstraints: *Colorreprod Publications *ColorModel Gray
+*UIConstraints: *ColorModel Gray *Colorreprod Lineart
+*UIConstraints: *Colorreprod Lineart *ColorModel Gray
+
+*OpenGroup: GraphicsOptions/Graphics
+
+*% Resolution 
+*DefaultResolution: 600dpi
+*% KCEcoprint
+*OpenUI *KCEcoprint/EcoPrint: PickOne
+*OrderDependency: 10 AnySetup *KCEcoprint
+*DefaultKCEcoprint: Off
+*KCEcoprint Off/Off: "<< /EconoMode false >> setpagedevice"
+*KCEcoprint On/On: "<< /EconoMode true >> setpagedevice"
+*CloseUI: *KCEcoprint
+
+*% Color Model
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 10 AnySetup *ColorModel
+*DefaultColorModel: CMYK
+*ColorModel CMYK/Color (CMYK): "<< /ProcessColorModel /DeviceCMYK >> setpagedevice"
+*ColorModel Gray/Black & White: "<< /ProcessColorModel /DeviceGray >> setpagedevice"
+*?ColorModel: "
+  save
+  currentpagedevice /ProcessColorModel get
+  1 {
+    dup /DeviceGray eq {pop (Gray) exit} if
+    dup /DeviceCMYK eq {pop (CMYK) exit} if
+    pop (Unknown)
+  } repeat
+  = flush restore"
+*End
+*CloseUI: *ColorModel
+
+*% Halftone 
+*OpenUI *KCHalftone/Halftone Screen: PickOne
+*OrderDependency: 10 AnySetup *KCHalftone
+*DefaultKCHalftone: Gradation
+*KCHalftone Gradation/Optimize for Color Smoothness: "<< /DefaultHT9  1 >> setpagedevice"
+*KCHalftone Detail/Optimize for Detail: "<< /DefaultHT9  2 >> setpagedevice"
+*KCHalftone LineArt/Optimize for Line Drawing: "<< /DefaultHT9  3 >> setpagedevice"
+*End
+*CloseUI: *KCHalftone
+
+*% Glossmode 
+*OpenUI *KCGlossmode/Gloss Mode: Boolean
+*OrderDependency: 10 AnySetup *KCGlossmode
+*DefaultKCGlossmode: False
+*KCGlossmode False/Disabled: "mark 0 statusdict /setglossmode 2 copy known { get exec } if cleartomark"
+*KCGlossmode True/Enabled: "mark 1 statusdict /setglossmode 2 copy known { get exec } if cleartomark"
+*End
+*CloseUI: *KCGlossmode
+
+*% Color Reproduction 
+*OpenUI *Colorreprod/Color Reproduction: PickOne
+*OrderDependency: 10 AnySetup *Colorreprod
+*DefaultColorreprod: Printersettings
+*Colorreprod Printersettings/Printer settings: "<< /ColorReproductionMode 30 >> setpagedevice"
+*Colorreprod Textgraph/Text and Graphics: "<< /ColorReproductionMode 31 >> setpagedevice"
+*Colorreprod Textphoto/Text and Photos: "<< /ColorReproductionMode 32 >> setpagedevice"
+*Colorreprod Vivid/Vivid colors: "<< /ColorReproductionMode 33 >> setpagedevice"
+*Colorreprod Publications/Publications: "<< /ColorReproductionMode 34 >> setpagedevice"
+*Colorreprod Lineart/Line art: "<< /ColorReproductionMode 35 >> setpagedevice"
+*CloseUI: *Colorreprod
+
+*% CIE 
+*OpenUI *CIE/CIE Optimization: PickOne
+*OrderDependency: 11 AnySetup *CIE
+*DefaultCIE:  PrnDef
+*CIE PrnDef/Printer settings: ""
+*CIE False/Disabled: "<< /RejectionCIEcolor false >> setuserparams"
+*CIE True/Enabled: "<< /RejectionCIEcolor true >> setuserparams"
+*End
+*CloseUI: *CIE
+
+*CloseGroup: GraphicsOptions/Graphics
+
+*% Halftone Information 
+*DefaultHalftoneType: 1
+*ScreenFreq: "37.5"
+*ScreenAngle: "45.0"
+*ResScreenFreq 600dpi: "37.5"
+*ResScreenAngle 600dpi: "45.0"
+
+*DefaultScreenProc: Ellipse
+*ScreenProc Dot: "
+  {abs exch abs 2 copy add 1 gt
+  {1 sub dup mul exch 1 sub dup mul add 1 sub}
+  {dup mul exch dup mul add 1 exch sub} ifelse}"
+*End
+*ScreenProc Line: "{pop}"
+*ScreenProc Ellipse: "{dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub}"
+*DefaultTransfer: Null
+*Transfer Null: "{}"
+*Transfer Null.Inverse: "{1 exch sub}"
+
+*% Page Policy Definitions
+*OpenUI *PagePolicy/Page Policy: PickOne
+*OrderDependency: 15 AnySetup *PagePolicy
+*DefaultPagePolicy: On
+*PagePolicy On/AutoSizeSelect: "<< /DeferredMediaSelection true >> setpagedevice"
+*CloseUI: *PagePolicy
+
+*% Paper Handling 
+*% Page Size Definitions
+*OpenUI *PageSize: PickOne
+*OrderDependency: 40 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize A4/A4: "<< /Policies << /PageSize 7 >> /PageSize [595 842] /ImagingBBox null >> setpagedevice"
+*PageSize A5/A5: "<< /Policies << /PageSize 7 >> /PageSize [421 595] /ImagingBBox null >> setpagedevice"
+*PageSize A6/A6: "<< /Policies << /PageSize 7 >> /PageSize [297 421] /ImagingBBox null >> setpagedevice"
+*PageSize B5/B5 (JIS): "<< /Policies << /PageSize 7 >> /PageSize [516 729] /ImagingBBox null >> setpagedevice"
+*PageSize ISOB5/B5 (ISO): "<< /Policies << /PageSize 7 >> /PageSize [499 708] /ImagingBBox null >> setpagedevice"
+*PageSize B6/B6: "<< /Policies << /PageSize 7 >> /PageSize [364 516] /ImagingBBox null >> setpagedevice"
+*PageSize OficioII/Oficio II: "<< /Policies << /PageSize 7 >> /PageSize [612 936] /ImagingBBox null >> setpagedevice"
+*PageSize Folio/Folio (210 x 330mm): "<< /Policies << /PageSize 7 >> /PageSize [595 935] /ImagingBBox null >> setpagedevice"
+*PageSize Statement/Statement: "<< /Policies << /PageSize 7 >> /PageSize [396 612] /ImagingBBox null >> setpagedevice"
+*PageSize P16K/16K: "<< /Policies << /PageSize 7 >> /PageSize [558 774] /ImagingBBox null >> setpagedevice"
+*PageSize Letter/Letter: "<< /Policies << /PageSize 7 >> /PageSize [612 792] /ImagingBBox null >> setpagedevice"
+*PageSize Legal/Legal: "<< /Policies << /PageSize 7 >> /PageSize [612 1008] /ImagingBBox null >> setpagedevice"
+*PageSize Executive/Executive: "<< /Policies << /PageSize 7 >> /PageSize [522 756] /ImagingBBox null >> setpagedevice"
+*PageSize EnvPersonal/Envelope #6: "<< /Policies << /PageSize 7 >> /PageSize [261 468] /ImagingBBox null >> setpagedevice"
+*PageSize Env9/Envelope #9: "<< /Policies << /PageSize 7 >> /PageSize [279 639] /ImagingBBox null >> setpagedevice"
+*PageSize Env10/Envelope #10: "<< /Policies << /PageSize 7 >> /PageSize [297 684] /ImagingBBox null >> setpagedevice"
+*PageSize EnvMonarch/Envelope Monarch: "<< /Policies << /PageSize 7 >> /PageSize [279 540] /ImagingBBox null >> setpagedevice"
+*PageSize EnvDL/Envelope DL: "<< /Policies << /PageSize 7 >> /PageSize [312 624] /ImagingBBox null >> setpagedevice"
+*PageSize EnvC5/Envelope C5: "<< /Policies << /PageSize 7 >> /PageSize [459 649] /ImagingBBox null >> setpagedevice"
+*?PageSize: "
+  save
+  currentpagedevice /PageSize get aload pop
+  2 copy gt {exch} if
+  (Unknown)
+  19 dict
+  dup [595 842] (A4) put
+  dup [421 595] (A5) put
+  dup [297 421] (A6) put
+  dup [516 729] (B5) put
+  dup [499 708] (ISOB5) put
+  dup [364 516] (B6) put
+  dup [612 936] (OficioII) put
+  dup [595 935] (Folio) put
+  dup [396 612] (Statement) put
+  dup [558 774] (P16K) put
+  dup [612 792] (Letter) put
+  dup [612 1008] (Legal) put
+  dup [522 756] (Executive) put
+  dup [261 468] (EnvPersonal) put
+  dup [279 639] (Env9) put
+  dup [297 684] (Env10) put
+  dup [279 540] (EnvMonarch) put
+  dup [312 624] (EnvDL) put
+  dup [459 649] (EnvC5) put
+  {exch aload pop 4 index sub abs 5 le exch
+    5 index sub abs 5 le and
+    {exch pop exit}{pop} ifelse
+  } bind forall
+  = flush pop pop restore "
+*End
+*CloseUI: *PageSize
+
+*% Page Region Definitions for Frame Buffer
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 40 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion A4/A4: "<< /Policies << /PageSize 7 >> /PageSize [595 842] /ImagingBBox null >> setpagedevice"
+*PageRegion A5/A5: "<< /Policies << /PageSize 7 >> /PageSize [421 595] /ImagingBBox null >> setpagedevice"
+*PageRegion A6/A6: "<< /Policies << /PageSize 7 >> /PageSize [297 421] /ImagingBBox null >> setpagedevice"
+*PageRegion B5/B5 (JIS): "<< /Policies << /PageSize 7 >> /PageSize [516 729] /ImagingBBox null >> setpagedevice"
+*PageRegion ISOB5/B5 (ISO): "<< /Policies << /PageSize 7 >> /PageSize [499 708] /ImagingBBox null >> setpagedevice"
+*PageRegion B6/B6: "<< /Policies << /PageSize 7 >> /PageSize [364 516] /ImagingBBox null >> setpagedevice"
+*PageRegion Letter/Letter: "<< /Policies << /PageSize 7 >> /PageSize [612 792] /ImagingBBox null >> setpagedevice"
+*PageRegion Legal/Legal: "<< /Policies << /PageSize 7 >> /PageSize [612 1008] /ImagingBBox null >> setpagedevice"
+*PageRegion Executive/Executive: "<< /Policies << /PageSize 7 >> /PageSize [522 756] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvPersonal/Envelope #6: "<< /Policies << /PageSize 7 >> /PageSize [261 468] /ImagingBBox null >> setpagedevice"
+*PageRegion Env9/Envelope #9: "<< /Policies << /PageSize 7 >> /PageSize [279 639] /ImagingBBox null >> setpagedevice"
+*PageRegion Env10/Envelope #10: "<< /Policies << /PageSize 7 >> /PageSize [297 684] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvMonarch/Envelope Monarch: "<< /Policies << /PageSize 7 >> /PageSize [279 540] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvDL/Envelope DL: "<< /Policies << /PageSize 7 >> /PageSize [312 624] /ImagingBBox null >> setpagedevice"
+*PageRegion EnvC5/Envelope C5: "<< /Policies << /PageSize 7 >> /PageSize [459 649] /ImagingBBox null >> setpagedevice"
+*PageRegion OficioII/Oficio II: "<< /Policies << /PageSize 7 >> /PageSize [612 936] /ImagingBBox null >> setpagedevice"
+*PageRegion Folio/Folio (210 x 330mm): "<< /Policies << /PageSize 7 >> /PageSize [595 935] /ImagingBBox null >> setpagedevice"
+*PageRegion Statement/Statement: "<< /Policies << /PageSize 7 >> /PageSize [396 612] /ImagingBBox null >> setpagedevice"
+*PageRegion P16K/16K: "<< /Policies << /PageSize 7 >> /PageSize [558 774] /ImagingBBox null >> setpagedevice"
+*CloseUI: *PageRegion
+
+*% Imageable Area Definitions
+*DefaultImageableArea: A4
+*ImageableArea A4/A4: "12 10 583 832"
+*ImageableArea A5/A5: "12 10 409 585"
+*ImageableArea A6/A6: "12 10 285 411"
+*ImageableArea B5/B5 (JIS): "21 10 495 719"
+*ImageableArea ISOB5/B5 (ISO): "12 12 487 696"
+*ImageableArea B6/B6: "12 10 352 506"
+*ImageableArea OficioII/Oficio II: "12 12 600 924"
+*ImageableArea Folio/Folio (210 x 330mm): "12 12 583 923"
+*ImageableArea Statement/Statement: "12 12 384 600"
+*ImageableArea P16K/16K: "12 12 547 763"
+*ImageableArea Letter/Letter: "12 08 600 784"
+*ImageableArea Legal/Legal: "12 08 600 1000"
+*ImageableArea Executive/Executive: "12 08 510 748"
+*ImageableArea EnvPersonal/Envelope #6: "12 08 249 460"
+*ImageableArea Env9/Envelope #9: "12 08 267 631"
+*ImageableArea Env10/Envelope #10: "12 08 285 676"
+*ImageableArea EnvMonarch/Envelope Monarch: "12 08 267 532"
+*ImageableArea EnvDL/Envelope DL: "12 10 300 614"
+*ImageableArea EnvC5/Envelope C5: "12 10 447 639"
+*?ImageableArea: "
+  save
+  /cvp {cvi (                   ) cvs
+  print ( ) print} bind def
+  newpath clippath pathbbox
+  4 -2 roll exch 2 {ceiling cvp} repeat
+  exch 2 {floor cvp} repeat ( )
+  = flush restore"
+*End
+
+*% Physical Dimensions of Media
+*DefaultPaperDimension: A4
+*PaperDimension A4/A4: "595 842"
+*PaperDimension A5/A5: "421 595"
+*PaperDimension A6/A6: "297 421"
+*PaperDimension B5/B5 (JIS): "516 729"
+*PaperDimension ISOB5/B5 (ISO): "499 708"
+*PaperDimension B6/B6: "364 516"
+*PaperDimension OficioII/Oficio II: "612 936"
+*PaperDimension Folio/Folio (210 x 330mm): "595 935"
+*PaperDimension Statement/Statement: "396 612"
+*PaperDimension P16K/16K: "558 774"
+*PaperDimension Letter/Letter: "612 792"
+*PaperDimension Legal/Legal: "612 1008"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension EnvPersonal/Envelope #6: "261 468"
+*PaperDimension Env9/Envelope #9: "279 639"
+*PaperDimension Env10/Envelope #10: "297 684"
+*PaperDimension EnvMonarch/Envelope Monarch: "279 540"
+*PaperDimension EnvDL/Envelope DL: "312 624"
+*PaperDimension EnvC5/Envelope C5: "459 649"
+
+*% Custom Page Size Definitions
+*% Smallest = A6, Largest = LEGAL
+
+*VariablePaperSize: True
+*LeadingEdge Short: ""
+*DefaultLeadingEdge: Short
+*HWMargins: 12 12 12 12
+*MaxMediaWidth: "612"
+*MaxMediaHeight: "1008"
+*NonUIOrderDependency: 40 AnySetup *CustomPageSize
+*CustomPageSize True: "
+  pop pop pop
+  << /PageSize [ 5 -2 roll ] /ImagingBBox null
+     /DeferredMediaSelection true
+  >> setpagedevice"
+*End
+*ParamCustomPageSize Width: 1 points 278 612
+*ParamCustomPageSize Height: 2 points 420 1008
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 1 1
+
+*% Input Slot Definitions
+*OpenUI *InputSlot: PickOne
+*OrderDependency: 30 AnySetup *InputSlot
+*DefaultInputSlot: Internal
+*InputSlot Internal/Cassette 1: "<< /ManualFeed false >> setpagedevice statusdict begin 0 setpapertray end"
+*InputSlot PF500A/Cassette 2: "<< /ManualFeed false >> setpagedevice statusdict begin 1 setpapertray end"
+*InputSlot PF500B/Cassette 3: "<< /ManualFeed false >> setpagedevice statusdict begin 4 setpapertray end"
+*InputSlot PF500C/Cassette 4: "<< /ManualFeed false >> setpagedevice statusdict begin 5 setpapertray end"
+*InputSlot MF1/MP Tray: "<< /ManualFeed false >> setpagedevice statusdict begin 3 setpapertray end"
+*?InputSlot: ""
+*CloseUI: *InputSlot
+
+*OpenGroup: MediaOptions/Media Type
+
+*% MediaType Definitions
+*OpenUI *MediaType: PickOne
+*OrderDependency: 95 AnySetup *MediaType
+*DefaultMediaType: PrnDef
+*MediaType PrnDef/Unspecified: "<</ManualFeed false /MediaType (None) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Auto/Auto media selection: ""
+*MediaType Plain/Plain: "<</ManualFeed false /MediaType (Plain) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Transparency/Transparency: "<</ManualFeed false /MediaType (Transparency) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Labels/Labels: "<</ManualFeed false /MediaType (Labels) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Letterhead/Letterhead: "<</ManualFeed false /MediaType (Letterhead) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Bond/Bond: "<</ManualFeed false /MediaType (Bond) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Color/Color: "<</ManualFeed false /MediaType (Color) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Preprinted/Preprinted: "<</ManualFeed false /MediaType (Preprinted) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Prepunched/Prepunched: "<</ManualFeed false /MediaType (Prepunched) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Recycled/Recycled: "<</ManualFeed false /MediaType (Recycled) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Cardstock/Cardstock: "<</ManualFeed false /MediaType (Card Stock) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Vellum/Vellum: "<</ManualFeed false /MediaType (Vellum) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Envelope/Envelope: "<</ManualFeed false /MediaType (Envelope) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Rough/Rough: "<</ManualFeed false /MediaType (Rough) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Thick/Thick: "<</ManualFeed false /MediaType (Thick) /DeferredMediaSelection true >> setpagedevice"
+*MediaType CoatedPaper/Coated: "<</ManualFeed false /MediaType (CoatedPaper) /DeferredMediaSelection true >> setpagedevice"
+*MediaType Highqlty/High quality: "<</ManualFeed false /MediaType (Fine) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User1/Custom type 1: "<</ManualFeed false /MediaType (Custom Type1) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User2/Custom type 2: "<</ManualFeed false /MediaType (Custom Type2) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User3/Custom type 3: "<</ManualFeed false /MediaType (Custom Type3) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User4/Custom type 4: "<</ManualFeed false /MediaType (Custom Type4) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User5/Custom type 5: "<</ManualFeed false /MediaType (Custom Type5) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User6/Custom type 6: "<</ManualFeed false /MediaType (Custom Type6) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User7/Custom type 7: "<</ManualFeed false /MediaType (Custom Type7) /DeferredMediaSelection true >> setpagedevice"
+*MediaType User8/Custom type 8: "<</ManualFeed false /MediaType (Custom Type8) /DeferredMediaSelection true >> setpagedevice"
+*?MediaType: "
+  save
+    currentpagedevice /MediaType {get} stopped
+    {pop pop (Unknown)} {dup null eq {pop (Unknown)} if} ifelse = flush
+  restore"
+*End
+*CloseUI: *MediaType
+
+*CloseGroup: MediaOptions/Media Type
+
+*% CoverMediaType Definitions
+*OpenUI *CoverMediaType: PickOne
+*OrderDependency: 95 AnySetup *CoverMediaType
+*DefaultCoverMediaType: PrnDef
+*CoverMediaType PrnDef/Unspecified: "<</ManualFeed false /MediaType (None) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Plain/Plain: "<</ManualFeed false /MediaType (Plain) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Transparency/Transparency: "<</ManualFeed false /MediaType (Transparency) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Labels/Labels: "<</ManualFeed false /MediaType (Labels) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Letterhead/Letterhead: "<</ManualFeed false /MediaType (Letterhead) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Bond/Bond: "<</ManualFeed false /MediaType (Bond) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Color/Color: "<</ManualFeed false /MediaType (Color) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Preprinted/Preprinted: "<</ManualFeed false /MediaType (Preprinted) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Prepunched/Prepunched: "<</ManualFeed false /MediaType (Prepunched) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Recycled/Recycled: "<</ManualFeed false /MediaType (Recycled) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Cardstock/Cardstock: "<</ManualFeed false /MediaType (Card Stock) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Vellum/Vellum: "<</ManualFeed false /MediaType (Vellum) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Envelope/Envelope: "<</ManualFeed false /MediaType (Envelope) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Rough/Rough: "<</ManualFeed false /MediaType (Rough) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Thick/Thick: "<</ManualFeed false /MediaType (Thick) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType CoatedPaper/Coated: "<</ManualFeed false /MediaType (CoatedPaper) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Highqlty/High quality: "<</ManualFeed false /MediaType (Fine) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User1/Custom type 1: "<</ManualFeed false /MediaType (Custom Type1) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User2/Custom type 2: "<</ManualFeed false /MediaType (Custom Type2) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User3/Custom type 3: "<</ManualFeed false /MediaType (Custom Type3) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User4/Custom type 4: "<</ManualFeed false /MediaType (Custom Type4) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User5/Custom type 5: "<</ManualFeed false /MediaType (Custom Type5) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User6/Custom type 6: "<</ManualFeed false /MediaType (Custom Type6) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User7/Custom type 7: "<</ManualFeed false /MediaType (Custom Type7) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType User8/Custom type 8: "<</ManualFeed false /MediaType (Custom Type8) /DeferredMediaSelection true >> setpagedevice"
+*CoverMediaType Internal/Cassette 1: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 0 setpapertray end"
+*CoverMediaType PF500A/Cassette 2: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 1 setpapertray end"
+*CoverMediaType PF500B/Cassette 3: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 4 setpapertray end"
+*CoverMediaType PF500C/Cassette 4: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 5 setpapertray end"
+*CoverMediaType MF1/MP Tray: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 3 setpapertray end"
+*?CoverMediaType: "
+  save
+    currentpagedevice /MediaType {get} stopped
+    {pop pop (Unknown)} {dup null eq {pop (Unknown)} if} ifelse = flush
+  restore"
+*End
+*CloseUI: *CoverMediaType
+
+*% TransMediaType Definitions
+*OpenUI *TransMediaType: PickOne
+*OrderDependency: 95 AnySetup *TransMediaType
+*DefaultTransMediaType: PrnDef
+*TransMediaType PrnDef/Unspecified: "<</ManualFeed false /MediaType (None) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Plain/Plain: "<</ManualFeed false /MediaType (Plain) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Labels/Labels: "<</ManualFeed false /MediaType (Labels) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Letterhead/Letterhead: "<</ManualFeed false /MediaType (Letterhead) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Bond/Bond: "<</ManualFeed false /MediaType (Bond) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Color/Color: "<</ManualFeed false /MediaType (Color) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Preprinted/Preprinted: "<</ManualFeed false /MediaType (Preprinted) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Prepunched/Prepunched: "<</ManualFeed false /MediaType (Prepunched) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Recycled/Recycled: "<</ManualFeed false /MediaType (Recycled) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Cardstock/Cardstock: "<</ManualFeed false /MediaType (Card Stock) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Vellum/Vellum: "<</ManualFeed false /MediaType (Vellum) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Envelope/Envelope: "<</ManualFeed false /MediaType (Envelope) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Rough/Rough: "<</ManualFeed false /MediaType (Rough) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Thick/Thick: "<</ManualFeed false /MediaType (Thick) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType CoatedPaper/Coated: "<</ManualFeed false /MediaType (CoatedPaper) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Highqlty/High quality: "<</ManualFeed false /MediaType (Fine) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User1/Custom type 1: "<</ManualFeed false /MediaType (Custom Type1) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User2/Custom type 2: "<</ManualFeed false /MediaType (Custom Type2) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User3/Custom type 3: "<</ManualFeed false /MediaType (Custom Type3) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User4/Custom type 4: "<</ManualFeed false /MediaType (Custom Type4) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User5/Custom type 5: "<</ManualFeed false /MediaType (Custom Type5) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User6/Custom type 6: "<</ManualFeed false /MediaType (Custom Type6) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User7/Custom type 7: "<</ManualFeed false /MediaType (Custom Type7) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType User8/Custom type 8: "<</ManualFeed false /MediaType (Custom Type8) /DeferredMediaSelection true >> setpagedevice"
+*TransMediaType Internal/Cassette 1: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 0 setpapertray end"
+*TransMediaType PF500A/Cassette 2: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 1 setpapertray end"
+*TransMediaType PF500B/Cassette 3: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 4 setpapertray end"
+*TransMediaType PF500C/Cassette 4: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 5 setpapertray end"
+*?TransMediaType: "
+  save
+    currentpagedevice /MediaType {get} stopped
+    {pop pop (Unknown)} {dup null eq {pop (Unknown)} if} ifelse = flush
+  restore"
+*End
+*CloseUI: *TransMediaType
+
+*% PageMediaType Definitions
+*OpenUI *PageMediaType: PickOne
+*OrderDependency: 95 AnySetup *PageMediaType
+*DefaultPageMediaType: PrnDef
+*PageMediaType PrnDef/Unspecified: "<</ManualFeed false /MediaType (None) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Plain/Plain: "<</ManualFeed false /MediaType (Plain) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Transparency/Transparency: "<</ManualFeed false /MediaType (Transparency) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Labels/Labels: "<</ManualFeed false /MediaType (Labels) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Letterhead/Letterhead: "<</ManualFeed false /MediaType (Letterhead) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Bond/Bond: "<</ManualFeed false /MediaType (Bond) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Color/Color: "<</ManualFeed false /MediaType (Color) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Preprinted/Preprinted: "<</ManualFeed false /MediaType (Preprinted) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Prepunched/Prepunched: "<</ManualFeed false /MediaType (Prepunched) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Recycled/Recycled: "<</ManualFeed false /MediaType (Recycled) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Cardstock/Cardstock: "<</ManualFeed false /MediaType (Card Stock) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Vellum/Vellum: "<</ManualFeed false /MediaType (Vellum) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Envelope/Envelope: "<</ManualFeed false /MediaType (Envelope) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Rough/Rough: "<</ManualFeed false /MediaType (Rough) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Thick/Thick: "<</ManualFeed false /MediaType (Thick) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType CoatedPaper/Coated: "<</ManualFeed false /MediaType (CoatedPaper) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Highqlty/High quality: "<</ManualFeed false /MediaType (Fine) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User1/Custom type 1: "<</ManualFeed false /MediaType (Custom Type1) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User2/Custom type 2: "<</ManualFeed false /MediaType (Custom Type2) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User3/Custom type 3: "<</ManualFeed false /MediaType (Custom Type3) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User4/Custom type 4: "<</ManualFeed false /MediaType (Custom Type4) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User5/Custom type 5: "<</ManualFeed false /MediaType (Custom Type5) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User6/Custom type 6: "<</ManualFeed false /MediaType (Custom Type6) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User7/Custom type 7: "<</ManualFeed false /MediaType (Custom Type7) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType User8/Custom type 8: "<</ManualFeed false /MediaType (Custom Type8) /DeferredMediaSelection true >> setpagedevice"
+*PageMediaType Internal/Cassette 1: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 0 setpapertray end"
+*PageMediaType PF500A/Cassette 2: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 1 setpapertray end"
+*PageMediaType PF500B/Cassette 3: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 4 setpapertray end"
+*PageMediaType PF500C/Cassette 4: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 5 setpapertray end"
+*PageMediaType MF1/MP Tray: "<< /ManualFeed false /DeferredMediaSelection true >> setpagedevice statusdict begin 3 setpapertray end"
+*?PageMediaType: "
+  save
+    currentpagedevice /MediaType {get} stopped
+    {pop pop (Unknown)} {dup null eq {pop (Unknown)} if} ifelse = flush
+  restore"
+*End
+*CloseUI: *PageMediaType
+
+*RequiresPageRegion All: True
+
+*OpenGroup: FinishingOptions/Finishing
+
+*% Duplex Definitions
+*OpenUI *Duplex/Duplexing: PickOne
+*OrderDependency: 50 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/None: "statusdict begin false setduplexmode false settumble end"
+*Duplex DuplexTumble/Short Edge: "statusdict begin true setduplexmode true settumble end"
+*Duplex DuplexNoTumble/Long Edge: "statusdict begin true setduplexmode false settumble end"
+*?Duplex: "
+  save
+  statusdict begin
+  duplexmode
+  {tumble {(DuplexTumble)}{(DuplexNoTumble)} ifelse}
+  {(None)} ifelse
+  = flush end restore"
+*End
+*CloseUI: *Duplex
+
+*CloseGroup: FinishingOptions/Finishing
+
+*OpenGroup: StorageOptions/Job Settings
+
+*% Job Spooling Definitions
+*OpenUI *KCCollate/Job Settings: PickOne
+*OrderDependency: 20 AnySetup *KCCollate
+*DefaultKCCollate: PrnDef
+*KCCollate PrnDef/Printer settings: ""
+*KCCollate On/Collate: "<< /Collate true >> setpagedevice"
+*KCCollate None/None: "<< /Collate false >> setpagedevice"
+*KCCollate QuickCopy/Quick Copy: "
+  userdict /UICollateDetails known not {userdict /UICollateDetails 10 dict put} if
+  userdict /UICollateDetails get dup /Mode 0 put dup /Type 8 put /Hold 1 put <</Collate true /CollateDetails UICollateDetails>> setpagedevice"
+*End
+*KCCollate ProofHold/Proof and Hold: "
+  userdict /UICollateDetails known not {userdict /UICollateDetails 10 dict put} if
+  userdict /UICollateDetails get dup /Mode 0 put dup /Type 8 put /Hold 3 put <</Collate true /CollateDetails UICollateDetails>> setpagedevice"
+*End
+*KCCollate JobStorage/Job Storage: "
+  userdict /UICollateDetails known not {userdict /UICollateDetails 10 dict put} if
+  userdict /UICollateDetails get dup /Mode 0 put dup /Type 8 put dup /Hold 2 put dup /HoldType 0 put /HoldKey (0000) pop pop pop <</Collate true /CollateDetails UICollateDetails>> setpagedevice"
+*End
+*KCCollate PrivatePrint/Private Print: "
+  userdict /UICollateDetails known not {userdict /UICollateDetails 10 dict put} if
+  userdict /UICollateDetails get dup /Mode 0 put dup /Type 8 put dup /Hold 1 put dup /HoldType 1 put /HoldKey (0000) put <</Collate true /CollateDetails UICollateDetails>> setpagedevice"
+*End
+*KCCollate CustomBox/Custom Box: "
+  userdict /UICollateDetails known not {userdict /UICollateDetails 10 dict put} if
+  userdict /UICollateDetails get dup /Mode 0 put dup /Type 8 put dup /Hold 4 put dup /HoldType 0 put dup /HoldKey (0000) pop pop pop dup /Destination [0000] put <</Collate true /CollateDetails UICollateDetails>> setpagedevice"
+*End
+*CloseUI: *KCCollate
+
+*CloseGroup: StorageOptions/Job Settings
+
+*OpenGroup: AccountingOptions/Job Accounting
+
+*% Management Code Definitions
+*OpenUI *KmManagment/Job Accounting: PickOne
+*OrderDependency: 60 AnySetup *KmManagment
+*DefaultKmManagment: Default
+*KmManagment Default/Off: ""
+*KmManagment MG00000000/00000000: "(00000000) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000001/00000001: "(00000001) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000002/00000002: "(00000002) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000003/00000003: "(00000003) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000004/00000004: "(00000004) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000005/00000005: "(00000005) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000006/00000006: "(00000006) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000007/00000007: "(00000007) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000008/00000008: "(00000008) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000009/00000009: "(00000009) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000010/00000010: "(00000010) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000011/00000011: "(00000011) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000012/00000012: "(00000012) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000013/00000013: "(00000013) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000014/00000014: "(00000014) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000015/00000015: "(00000015) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000016/00000016: "(00000016) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000017/00000017: "(00000017) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000018/00000018: "(00000018) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000019/00000019: "(00000019) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000020/00000020: "(00000020) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000021/00000021: "(00000021) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000022/00000022: "(00000022) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000023/00000023: "(00000023) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000024/00000024: "(00000024) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000025/00000025: "(00000025) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000026/00000026: "(00000026) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000027/00000027: "(00000027) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000028/00000028: "(00000028) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000029/00000029: "(00000029) statusdict /setmanagementnumber get exec"
+*KmManagment MG00000030/00000030: "(00000030) statusdict /setmanagementnumber get exec"
+*?KmManagment: ""
+*End
+*CloseUI: *KmManagment
+
+*CloseGroup: AccountingOptions/Job Accounting
+
+*OpenGroup: KMWatermark/Watermark
+
+*OpenUI *WmFlag/Watermark Flag: PickOne
+*OrderDependency: 65 AnySetup *WmFlag
+*DefaultWmFlag: None
+*WmFlag None: "/WMFLAG 0 def"
+*WmFlag Single: "/WMFLAG 1 def"
+*WmFlag Multiple: "/WMFLAG 2 def"
+*CloseUI: *WmFlag
+
+*OpenUI *WmText/Watermark Text: PickOne
+*OrderDependency: 65 AnySetup *WmText
+*DefaultWmText: Confidential
+*WmText Confidential/CONFIDENTIAL: "/WMTEXT (CONFIDENTIAL) def"
+*WmText Original/ORIGINAL: "/WMTEXT (ORIGINAL) def"
+*WmText Copy/COPY: "/WMTEXT (COPY) def"
+*WmText DoNotPhotoCopy/DO NOT PHOTOCOPY: "/WMTEXT (DO NOT PHOTOCOPY) def"
+*WmText Draft/DRAFT: "/WMTEXT (DRAFT) def"
+*WmText Final/FINAL: "/WMTEXT (FINAL) def"
+*WmText Proof/PROOF: "/WMTEXT (PROOF) def"
+*CloseUI: *WmText
+
+*OpenUI *WmFont/Watermark Font: PickOne
+*OrderDependency: 65 AnySetup *WmFont
+*DefaultWmFont: Arial-BoldMT
+*WmFont Arial-BoldMT/Arial: "/WMFONT /Arial-BoldMT def"
+*WmFont Arial-BoldItalicMT/Arial Italic: "/WMFONT /Arial-BoldItalicMT def"
+*WmFont Courier-Bold/Courier: "/WMFONT /Courier-Bold def"
+*WmFont Courier-BoldOblique/Courier Italic: "/WMFONT /Courier-BoldOblique def"
+*WmFont Helvetica-Bold/Helvetica: "/WMFONT /Helvetica-Bold def"
+*WmFont Helvetica-BoldOblique/Helvetica Italic: "/WMFONT /Helvetica-BoldOblique def"
+*WmFont Palatino-Bold/Palatino: "/WMFONT /Palatino-Bold def"
+*WmFont Palatino-BoldItalic/Palatino Italic: "/WMFONT /Palatino-BoldItalic def"
+*WmFont Times-Bold/Times: "/WMFONT /Times-Bold def"
+*WmFont Times-BoldItalic/Times Italic: "/WMFONT /Times-BoldItalic def"
+*CloseUI: *WmFont
+
+*OpenUI *WmColor/Watermark Color: PickOne
+*OrderDependency: 65 AnySetup *WmColor
+*DefaultWmColor: Red
+*WmColor Red/Red: "/WMCOLOR {1 0 0} def"
+*WmColor Green/Green: "/WMCOLOR {0 1 0} def"
+*WmColor Blue/Blue: "/WMCOLOR {0 0 1} def"
+*WmColor Black/Black: "/WMCOLOR {0 0 0} def"
+*CloseUI: *WmColor
+
+*OpenUI *WmType/Watermark Type: PickOne
+*OrderDependency: 65 AnySetup *WmType
+*DefaultWmType: Solid
+*WmType Solid/Solid: "/WMTYPE 0 def"
+*WmType Hollow/Outline: "/WMTYPE 1 def"
+*CloseUI: *WmType
+
+*OpenUI *WmAngle/Watermark Angle: PickOne
+*OrderDependency: 65 AnySetup *WmAngle
+*DefaultWmAngle: 0
+*WmAngle -180/-180 degrees: "/WMANGLE -180 def"
+*WmAngle -170/-170 degrees: "/WMANGLE -170 def"
+*WmAngle -160/-160 degrees: "/WMANGLE -160 def"
+*WmAngle -150/-150 degrees: "/WMANGLE -150 def"
+*WmAngle -140/-140 degrees: "/WMANGLE -140 def"
+*WmAngle -130/-130 degrees: "/WMANGLE -130 def"
+*WmAngle -120/-120 degrees: "/WMANGLE -120 def"
+*WmAngle -110/-110 degrees: "/WMANGLE -110 def"
+*WmAngle -100/-100 degrees: "/WMANGLE -100 def"
+*WmAngle -90/-90 degrees: "/WMANGLE -90 def"
+*WmAngle -80/-80 degrees: "/WMANGLE -80 def"
+*WmAngle -70/-70 degrees: "/WMANGLE -70 def"
+*WmAngle -60/-60 degrees: "/WMANGLE -60 def"
+*WmAngle -50/-50 degrees: "/WMANGLE -50 def"
+*WmAngle -40/-40 degrees: "/WMANGLE -40 def"
+*WmAngle -30/-30 degrees: "/WMANGLE -30 def"
+*WmAngle -20/-20 degrees: "/WMANGLE -20 def"
+*WmAngle -10/-10 degrees: "/WMANGLE -10 def"
+*WmAngle 0/0 degrees: "/WMANGLE 0 def"
+*WmAngle 10/10 degrees: "/WMANGLE 10 def"
+*WmAngle 20/20 degrees: "/WMANGLE 20 def"
+*WmAngle 30/30 degrees: "/WMANGLE 30 def"
+*WmAngle 40/40 degrees: "/WMANGLE 40 def"
+*WmAngle 50/50 degrees: "/WMANGLE 50 def"
+*WmAngle 60/60 degrees: "/WMANGLE 60 def"
+*WmAngle 70/70 degrees: "/WMANGLE 70 def"
+*WmAngle 80/80 degrees: "/WMANGLE 80 def"
+*WmAngle 90/90 degrees: "/WMANGLE 90 def"
+*WmAngle 100/100 degrees: "/WMANGLE 100 def"
+*WmAngle 110/110 degrees: "/WMANGLE 110 def"
+*WmAngle 120/120 degrees: "/WMANGLE 120 def"
+*WmAngle 130/130 degrees: "/WMANGLE 130 def"
+*WmAngle 140/140 degrees: "/WMANGLE 140 def"
+*WmAngle 150/150 degrees: "/WMANGLE 150 def"
+*WmAngle 160/160 degrees: "/WMANGLE 160 def"
+*WmAngle 170/170 degrees: "/WMANGLE 170 def"
+*WmAngle 180/180 degrees: "/WMANGLE 180 def"
+*CloseUI: *WmAngle
+
+*OpenUI *WmSize/Watermark Size: PickOne
+*OrderDependency: 65 AnySetup *WmSize
+*DefaultWmSize: 48
+*WmSize 24/24 points: "/WMSIZE 24 def"
+*WmSize 30/30 points: "/WMSIZE 30 def"
+*WmSize 36/36 points: "/WMSIZE 36 def"
+*WmSize 42/42 points: "/WMSIZE 42 def"
+*WmSize 48/48 points: "/WMSIZE 48 def"
+*WmSize 54/54 points: "/WMSIZE 54 def"
+*WmSize 60/60 points: "/WMSIZE 60 def"
+*WmSize 66/66 points: "/WMSIZE 66 def"
+*WmSize 72/72 points: "/WMSIZE 72 def"
+*CloseUI: *WmSize
+
+*OpenUI *WmTransparent/Watermark Option: PickOne
+*OrderDependency: 65 AnySetup *WmTransparent
+*DefaultWmTransparent: watermark
+*WmTransparent watermark/Watermark: "/WMTRANSPARENT true def"
+*WmTransparent stamp/Stamp: "/WMTRANSPARENT false def"
+*CloseUI: *WmTransparent
+
+*OpenUI *WmIntensity/Watermark Intensity: PickOne
+*OrderDependency: 65 AnySetup *WmIntensity
+*DefaultWmIntensity: 3
+*WmIntensity 1/1: "/WMINTENSITY <22222222444444442222222244444444> def"
+*WmIntensity 2/2: "/WMINTENSITY <29292929292929292929292929292929> def"
+*WmIntensity 3/3: "/WMINTENSITY <55555555AAAAAAAA55555555AAAAAAAA> def"
+*WmIntensity 4/4: "/WMINTENSITY <B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6B6> def"
+*WmIntensity 5/5: "/WMINTENSITY <BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB> def"
+*CloseUI: *WmIntensity
+
+*CloseGroup: KMWatermark
+
+*% PPD Version Info 
+*OpenUI *KCVersion/PPD Version: PickOne
+*OrderDependency: 25 AnySetup *KCVersion
+*DefaultKCVersion: Default
+*KCVersion Default/8.4 [07-06-2011]: "
+globaldict /ct_AddStdCIDMap known {
+globaldict /ct_AddStdCIDMap get  length 7 eq
+{globaldict /ct_AddStdCIDMap get  0 get type /stringtype eq
+{globaldict /ct_AddStdCIDMap get  1 get 0 eq
+{globaldict /ct_AddStdCIDMap get  2 get () eq
+{globaldict /ct_AddStdCIDMap get  3 get /SubFileDecode eq
+{globaldict /ct_AddStdCIDMap get  4 get systemdict /filter get eq
+{currentglobal true setglobal globaldict
+/ct_AddStdCIDMap
+globaldict /ct_AddStdCIDMap get dup
+globaldict /ct_AddStdCIDMap get
+0 get length 1 exch
+put put setglobal
+} if} if} if} if} if} if} if"
+*End
+*CloseUI: *KCVersion
+
+*% Font Information
+*DefaultFont: Courier
+*Font AvantGarde-Book: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-BookOblique: Standard "(001.006S)" Standard ROM
+*Font AvantGarde-Demi: Standard "(001.007S)" Standard ROM
+*Font AvantGarde-DemiOblique: Standard "(001.007S)" Standard ROM
+*Font Bookman-Light: Standard "(001.004S)" Standard ROM
+*Font Bookman-LightItalic: Standard "(001.004S)" Standard ROM
+*Font Bookman-Demi: Standard "(001.004S)" Standard ROM
+*Font Bookman-DemiItalic: Standard "(001.004S)" Standard ROM
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Courier-Oblique: Standard "(002.004S)" Standard ROM
+*Font Courier-Bold: Standard "(002.004S)" Standard ROM
+*Font Courier-BoldOblique: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Oblique: Standard "(001.006S)" Standard ROM
+*Font Helvetica-Narrow-Bold: Standard "(001.007S)" Standard ROM
+*Font Helvetica-Narrow-BoldOblique: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Roman: Standard "(001.007S)" Standard ROM
+*Font NewCenturySchlbk-Italic: Standard "(001.006S)" Standard ROM
+*Font NewCenturySchlbk-Bold: Standard "(001.009S)" Standard ROM
+*Font NewCenturySchlbk-BoldItalic: Standard "(001.007S)" Standard ROM
+*Font Palatino-Roman: Standard "(001.005S)" Standard ROM
+*Font Palatino-Italic: Standard "(001.005S)" Standard ROM
+*Font Palatino-Bold: Standard "(001.005S)" Standard ROM
+*Font Palatino-BoldItalic: Standard "(001.005S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font Times-Italic: Standard "(001.007S)" Standard ROM
+*Font Times-Bold: Standard "(001.007S)" Standard ROM
+*Font Times-BoldItalic: Standard "(001.009S)" Standard ROM
+*Font ZapfChancery-MediumItalic: Standard "(001.007S)" Standard ROM
+*Font ZapfDingbats: Special "(001.004S)" Special ROM
+*Font Albertus-Medium: Standard "(001.008S)" Standard ROM
+*Font Albertus-ExtraBold: Standard "(001.008S)" Standard ROM
+*Font AntiqueOlive: Standard "(001.008S)" Standard ROM
+*Font AntiqueOlive-Italic: Standard "(001.008S)" Standard ROM
+*Font AntiqueOlive-Bold: Standard "(001.008S)" Standard ROM
+*Font Arial: Standard "(001.008S)" Standard ROM
+*Font Arial-Italic: Standard "(001.008S)" Standard ROM
+*Font Arial-Bold: Standard "(001.008S)" Standard ROM
+*Font Arial-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font CGOmega: Standard "(001.008S)" Standard ROM
+*Font CGOmega-Italic: Standard "(001.008S)" Standard ROM
+*Font CGOmega-Bold: Standard "(001.008S)" Standard ROM
+*Font CGOmega-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font CGTimes: Standard "(001.008S)" Standard ROM
+*Font CGTimes-Italic: Standard "(001.008S)" Standard ROM
+*Font CGTimes-Bold: Standard "(001.008S)" Standard ROM
+*Font CGTimes-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Clarendon-Condensed-Bold: Standard "(001.008S)" Standard ROM
+*Font Coronet: Standard "(001.008S)" Standard ROM
+*Font CourierHP: Standard "(001.008S)" Standard ROM
+*Font CourierHP-Italic: Standard "(001.008S)" Standard ROM
+*Font CourierHP-Bold: Standard "(001.008S)" Standard ROM
+*Font CourierHP-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Garamond-Antiqua: Standard "(001.008S)" Standard ROM
+*Font Garamond-Halbfett: Standard "(001.008S)" Standard ROM
+*Font Garamond-Kursiv: Standard "(001.008S)" Standard ROM
+*Font Garamond-KursivHalbfett: Standard "(001.008S)" Standard ROM
+*Font LetterGothic: Standard "(001.008S)" Standard ROM
+*Font LetterGothic-Italic: Standard "(001.008S)" Standard ROM
+*Font LetterGothic-Bold: Standard "(001.008S)" Standard ROM
+*Font Marygold: Standard "(001.008S)" Standard ROM
+*Font SymbolMT: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman-Italic: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font TimesNewRoman-Bold: Standard "(001.008S)" Standard ROM
+*Font Univers-Medium: Standard "(001.008S)" Standard ROM
+*Font Univers-MediumItalic: Standard "(001.008S)" Standard ROM
+*Font Univers-Bold: Standard "(001.008S)" Standard ROM
+*Font Univers-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-Medium: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-MediumItalic: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-Bold: Standard "(001.008S)" Standard ROM
+*Font Univers-Condensed-BoldItalic: Standard "(001.008S)" Standard ROM
+*Font Wingdings-Regular: Special "(001.008S)" Special ROM
+*?FontQuery: "
+  save
+  /str 80 string dup 0 (fonts/) putinterval def
+  {count 1 gt
+    { exch dup str 6 94 getinterval cvs
+      (/) print print (:) print
+      FontDirectory exch known
+      {(Yes)}{(No)} ifelse =
+    }{exit} ifelse
+  } bind loop (*)
+  = flush restore"
+*End
+*?FontList: "save FontDirectory { pop == } bind forall flush (*) = flush restore"
+*% Printer Messages
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "\FontName\ not found, using Courier"
+
+*% Status (format: %%[ status: <one of these> ]%% )
+*Status: "warming up"/warming up
+*Status: "idle"/idle
+*Status: "busy"/busy
+*Status: "waiting"/waiting
+*Status: "printing"/printing
+*Status: "initializing"/initializing
+*Status: "printing test page"/printing test page
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%% )
+*PrinterError: "paper entry misfeed"
+*PrinterError: "cover open"
+*PrinterError: "no paper tray"
+*PrinterError: "out of paper"
+*PrinterError: "toner low (halt)"
+*PrinterError: "warming up"
+*PrinterError: "other reason"
+*PrinterError: "video interface mode"
+*PrinterError: "offline"
+*PrinterError: "toner low (warning)"
+
+*% Input Sources (format: %%[ status: <stat>;source:<one of these> ]%% )
+*Source: "Serial"
+*Source: "Parallel"
+*Source: "LocalTalk"
+*Source: "Option"
+
+*%  End of PPD file for Kyocera FS-C5300DN (European English)
+*% German localization
+*de.Translation ModelName/Kyocera FS-C5300DN KPDL: ""
+*de.Translation JCL/JCL: ""
+*de.Translation JCLTrapping/Überfüllen: ""
+*de.JCLTrapping Off/Aus: ""
+*de.JCLTrapping Light/Hell: ""
+*de.JCLTrapping Medium/Mittel: ""
+*de.JCLTrapping Heavy/Dunkel: ""
+*de.JCLTrapping VeryHeavy/Sehr dunkel: ""
+*de.Translation InstallableOptions/Installierte Optionen: ""
+*de.Translation Option20/Papierzuführungen: ""
+*de.Option20 None/Nicht installiert: ""
+*de.Option20 One/Eine: ""
+*de.Option20 Two/Zwei: ""
+*de.Option20 Three/Drei: ""
+*de.Translation Option18/Optionaler Datenträger: ""
+*de.Option18 None/Nicht installiert: ""
+*de.Option18 HardDisk/Festplatte: ""
+*de.Option18 RAMDisk/RAM Disk: ""
+*de.Translation GraphicsOptions/Grafiken: ""
+*de.Translation KCEcoprint/EcoPrint: ""
+*de.KCEcoprint Off/Aus: ""
+*de.KCEcoprint On/Ein: ""
+*de.Translation ColorModel/Farbmodus: ""
+*de.ColorModel CMYK/Farbe (CMYK): ""
+*de.ColorModel Gray/Schwarz/Weiß: ""
+*de.Translation KCHalftone/Autotypieraster: ""
+*de.KCHalftone Gradation/Für Farbglätte optimieren: ""
+*de.KCHalftone Detail/Für Detail optimieren: ""
+*de.KCHalftone LineArt/Für Strichzeichnungen optimieren: ""
+*de.Translation KCGlossmode/Glanzmodus: ""
+*de.KCGlossmode False/Deaktiviert: ""
+*de.KCGlossmode True/Aktiviert: ""
+*de.Translation Colorreprod/Farbwiedergabe: ""
+*de.Colorreprod Printersettings/Druckereinstellungen: ""
+*de.Colorreprod Textgraph/Text und Grafiken: ""
+*de.Colorreprod Textphoto/Text und Fotos: ""
+*de.Colorreprod Vivid/Lebendige Farben: ""
+*de.Colorreprod Publications/Veröffentlichungen: ""
+*de.Colorreprod Lineart/Strichzeichnung: ""
+*de.Translation CIE/CIE Optimierung: ""
+*de.CIE PrnDef/Druckereinstellungen: ""
+*de.CIE False/Deaktiviert: ""
+*de.CIE True/Aktiviert: ""
+*de.Translation General/General: ""
+*de.Translation PagePolicy/Page Policy: ""
+*de.PagePolicy On/AutoSizeSelect: ""
+*de.Translation PageSize/Media Size: ""
+*de.PageSize A4/A4: ""
+*de.PageSize A5/A5: ""
+*de.PageSize A6/A6: ""
+*de.PageSize B5/B5 (JIS): ""
+*de.PageSize ISOB5/B5 (ISO): ""
+*de.PageSize B6/B6: ""
+*de.PageSize OficioII/Oficio II: ""
+*de.PageSize Folio/Folio (210 x 330mm): ""
+*de.PageSize Statement/Statement: ""
+*de.PageSize P16K/16K: ""
+*de.PageSize Letter/US-Letter: ""
+*de.PageSize Legal/US-Legal: ""
+*de.PageSize Executive/US-Executive: ""
+*de.PageSize EnvPersonal/Umschlag #6: ""
+*de.PageSize Env9/Umschlag #9: ""
+*de.PageSize Env10/Umschlag #10: ""
+*de.PageSize EnvMonarch/Umschlag US-Monarch: ""
+*de.PageSize EnvDL/Umschlag DL: ""
+*de.PageSize EnvC5/Umschlag C5: ""
+*de.PageSize Custom/Custom: ""
+*de.Translation PageRegion/PageRegion: ""
+*de.PageRegion A4/A4: ""
+*de.PageRegion A5/A5: ""
+*de.PageRegion A6/A6: ""
+*de.PageRegion B5/B5 (JIS): ""
+*de.PageRegion ISOB5/B5 (ISO): ""
+*de.PageRegion B6/B6: ""
+*de.PageRegion Letter/US-Letter: ""
+*de.PageRegion Legal/US-Legal: ""
+*de.PageRegion Executive/US-Executive: ""
+*de.PageRegion EnvPersonal/Umschlag #6: ""
+*de.PageRegion Env9/Umschlag #9: ""
+*de.PageRegion Env10/Umschlag #10: ""
+*de.PageRegion EnvMonarch/Umschlag US-Monarch: ""
+*de.PageRegion EnvDL/Umschlag DL: ""
+*de.PageRegion EnvC5/Umschlag C5: ""
+*de.PageRegion OficioII/Oficio II: ""
+*de.PageRegion Folio/Folio (210 x 330mm): ""
+*de.PageRegion Statement/Statement: ""
+*de.PageRegion P16K/16K: ""
+*de.PageRegion Custom/Custom: ""
+*de.Translation InputSlot/Media Source: ""
+*de.InputSlot Internal/Kassette 1: ""
+*de.InputSlot PF500A/Kassette 2: ""
+*de.InputSlot PF500B/Kassette 3: ""
+*de.InputSlot PF500C/Kassette 4: ""
+*de.InputSlot MF1/Universalzufuhr: ""
+*de.Translation CoverMediaType/CoverMediaType: ""
+*de.CoverMediaType PrnDef/Nicht angegeben: ""
+*de.CoverMediaType Plain/Normalpapier: ""
+*de.CoverMediaType Transparency/Folie: ""
+*de.CoverMediaType Labels/Etiketten: ""
+*de.CoverMediaType Letterhead/Briefkopf: ""
+*de.CoverMediaType Bond/Feinpapier: ""
+*de.CoverMediaType Color/Mehrfarbig: ""
+*de.CoverMediaType Preprinted/Vorgedruckt: ""
+*de.CoverMediaType Prepunched/Vorgelocht: ""
+*de.CoverMediaType Recycled/Recycling-Papier: ""
+*de.CoverMediaType Cardstock/Karteikarte: ""
+*de.CoverMediaType Vellum/Pergament: ""
+*de.CoverMediaType Envelope/Umschlag: ""
+*de.CoverMediaType Rough/Grobpapier: ""
+*de.CoverMediaType Thick/Dick: ""
+*de.CoverMediaType CoatedPaper/Beschichtet: ""
+*de.CoverMediaType Highqlty/Hohe Qualität: ""
+*de.CoverMediaType User1/Benutzerdefinierter Typ 1: ""
+*de.CoverMediaType User2/Benutzerdefinierter Typ 2: ""
+*de.CoverMediaType User3/Benutzerdefinierter Typ 3: ""
+*de.CoverMediaType User4/Benutzerdefinierter Typ 4: ""
+*de.CoverMediaType User5/Benutzerdefinierter Typ 5: ""
+*de.CoverMediaType User6/Benutzerdefinierter Typ 6: ""
+*de.CoverMediaType User7/Benutzerdefinierter Typ 7: ""
+*de.CoverMediaType User8/Benutzerdefinierter Typ 8: ""
+*de.CoverMediaType Internal/Kassette 1: ""
+*de.CoverMediaType PF500A/Kassette 2: ""
+*de.CoverMediaType PF500B/Kassette 3: ""
+*de.CoverMediaType PF500C/Kassette 4: ""
+*de.CoverMediaType MF1/Universalzufuhr: ""
+*de.Translation TransMediaType/TransMediaType: ""
+*de.TransMediaType PrnDef/Nicht angegeben: ""
+*de.TransMediaType Plain/Normalpapier: ""
+*de.TransMediaType Labels/Etiketten: ""
+*de.TransMediaType Letterhead/Briefkopf: ""
+*de.TransMediaType Bond/Feinpapier: ""
+*de.TransMediaType Color/Mehrfarbig: ""
+*de.TransMediaType Preprinted/Vorgedruckt: ""
+*de.TransMediaType Prepunched/Vorgelocht: ""
+*de.TransMediaType Recycled/Recycling-Papier: ""
+*de.TransMediaType Cardstock/Karteikarte: ""
+*de.TransMediaType Vellum/Pergament: ""
+*de.TransMediaType Envelope/Umschlag: ""
+*de.TransMediaType Rough/Grobpapier: ""
+*de.TransMediaType Thick/Dick: ""
+*de.TransMediaType CoatedPaper/Beschichtet: ""
+*de.TransMediaType Highqlty/Hohe Qualität: ""
+*de.TransMediaType User1/Benutzerdefinierter Typ 1: ""
+*de.TransMediaType User2/Benutzerdefinierter Typ 2: ""
+*de.TransMediaType User3/Benutzerdefinierter Typ 3: ""
+*de.TransMediaType User4/Benutzerdefinierter Typ 4: ""
+*de.TransMediaType User5/Benutzerdefinierter Typ 5: ""
+*de.TransMediaType User6/Benutzerdefinierter Typ 6: ""
+*de.TransMediaType User7/Benutzerdefinierter Typ 7: ""
+*de.TransMediaType User8/Benutzerdefinierter Typ 8: ""
+*de.TransMediaType Internal/Kassette 1: ""
+*de.TransMediaType PF500A/Kassette 2: ""
+*de.TransMediaType PF500B/Kassette 3: ""
+*de.TransMediaType PF500C/Kassette 4: ""
+*de.Translation PageMediaType/PageMediaType: ""
+*de.PageMediaType PrnDef/Nicht angegeben: ""
+*de.PageMediaType Plain/Normalpapier: ""
+*de.PageMediaType Transparency/Folie: ""
+*de.PageMediaType Labels/Etiketten: ""
+*de.PageMediaType Letterhead/Briefkopf: ""
+*de.PageMediaType Bond/Feinpapier: ""
+*de.PageMediaType Color/Mehrfarbig: ""
+*de.PageMediaType Preprinted/Vorgedruckt: ""
+*de.PageMediaType Prepunched/Vorgelocht: ""
+*de.PageMediaType Recycled/Recycling-Papier: ""
+*de.PageMediaType Cardstock/Karteikarte: ""
+*de.PageMediaType Vellum/Pergament: ""
+*de.PageMediaType Envelope/Umschlag: ""
+*de.PageMediaType Rough/Grobpapier: ""
+*de.PageMediaType Thick/Dick: ""
+*de.PageMediaType CoatedPaper/Beschichtet: ""
+*de.PageMediaType Highqlty/Hohe Qualität: ""
+*de.PageMediaType User1/Benutzerdefinierter Typ 1: ""
+*de.PageMediaType User2/Benutzerdefinierter Typ 2: ""
+*de.PageMediaType User3/Benutzerdefinierter Typ 3: ""
+*de.PageMediaType User4/Benutzerdefinierter Typ 4: ""
+*de.PageMediaType User5/Benutzerdefinierter Typ 5: ""
+*de.PageMediaType User6/Benutzerdefinierter Typ 6: ""
+*de.PageMediaType User7/Benutzerdefinierter Typ 7: ""
+*de.PageMediaType User8/Benutzerdefinierter Typ 8: ""
+*de.PageMediaType Internal/Kassette 1: ""
+*de.PageMediaType PF500A/Kassette 2: ""
+*de.PageMediaType PF500B/Kassette 3: ""
+*de.PageMediaType PF500C/Kassette 4: ""
+*de.PageMediaType MF1/Universalzufuhr: ""
+*de.Translation KCVersion/PPD Version: ""
+*de.KCVersion Default/8.4 [07-06-2011]: ""
+*de.Translation MediaOptions/Medientyp: ""
+*de.Translation MediaType/Media Type: ""
+*de.MediaType PrnDef/Nicht angegeben: ""
+*de.MediaType Auto/Automatische Medienauswahl: ""
+*de.MediaType Plain/Normalpapier: ""
+*de.MediaType Transparency/Folie: ""
+*de.MediaType Labels/Etiketten: ""
+*de.MediaType Letterhead/Briefkopf: ""
+*de.MediaType Bond/Feinpapier: ""
+*de.MediaType Color/Mehrfarbig: ""
+*de.MediaType Preprinted/Vorgedruckt: ""
+*de.MediaType Prepunched/Vorgelocht: ""
+*de.MediaType Recycled/Recycling-Papier: ""
+*de.MediaType Cardstock/Karteikarte: ""
+*de.MediaType Vellum/Pergament: ""
+*de.MediaType Envelope/Umschlag: ""
+*de.MediaType Rough/Grobpapier: ""
+*de.MediaType Thick/Dick: ""
+*de.MediaType CoatedPaper/Beschichtet: ""
+*de.MediaType Highqlty/Hohe Qualität: ""
+*de.MediaType User1/Benutzerdefinierter Typ 1: ""
+*de.MediaType User2/Benutzerdefinierter Typ 2: ""
+*de.MediaType User3/Benutzerdefinierter Typ 3: ""
+*de.MediaType User4/Benutzerdefinierter Typ 4: ""
+*de.MediaType User5/Benutzerdefinierter Typ 5: ""
+*de.MediaType User6/Benutzerdefinierter Typ 6: ""
+*de.MediaType User7/Benutzerdefinierter Typ 7: ""
+*de.MediaType User8/Benutzerdefinierter Typ 8: ""
+*de.Translation FinishingOptions/Endbearbeitung: ""
+*de.Translation Duplex/Duplex: ""
+*de.Duplex None/Keine: ""
+*de.Duplex DuplexTumble/Binden Kurze Seite: ""
+*de.Duplex DuplexNoTumble/Binden Lange Seite: ""
+*de.Translation StorageOptions/Job Zwischenspeicherung: ""
+*de.Translation KCCollate/Job Zwischenspeicherung: ""
+*de.KCCollate PrnDef/Druckereinstellungen: ""
+*de.KCCollate On/Sortieren: ""
+*de.KCCollate None/Keine: ""
+*de.KCCollate QuickCopy/Schnellkopie: ""
+*de.KCCollate ProofHold/Prüfen und aufbewahren: ""
+*de.KCCollate JobStorage/Auftragsspeicher: ""
+*de.KCCollate PrivatePrint/Private Print: ""
+*de.KCCollate CustomBox/Custom Box: ""
+*de.Translation AccountingOptions/Auftragszählung: ""
+*de.Translation KmManagment/Auftragszählung: ""
+*de.KmManagment Default/Aus: ""
+*de.KmManagment MG00000000/00000000: ""
+*de.KmManagment MG00000001/00000001: ""
+*de.KmManagment MG00000002/00000002: ""
+*de.KmManagment MG00000003/00000003: ""
+*de.KmManagment MG00000004/00000004: ""
+*de.KmManagment MG00000005/00000005: ""
+*de.KmManagment MG00000006/00000006: ""
+*de.KmManagment MG00000007/00000007: ""
+*de.KmManagment MG00000008/00000008: ""
+*de.KmManagment MG00000009/00000009: ""
+*de.KmManagment MG00000010/00000010: ""
+*de.KmManagment MG00000011/00000011: ""
+*de.KmManagment MG00000012/00000012: ""
+*de.KmManagment MG00000013/00000013: ""
+*de.KmManagment MG00000014/00000014: ""
+*de.KmManagment MG00000015/00000015: ""
+*de.KmManagment MG00000016/00000016: ""
+*de.KmManagment MG00000017/00000017: ""
+*de.KmManagment MG00000018/00000018: ""
+*de.KmManagment MG00000019/00000019: ""
+*de.KmManagment MG00000020/00000020: ""
+*de.KmManagment MG00000021/00000021: ""
+*de.KmManagment MG00000022/00000022: ""
+*de.KmManagment MG00000023/00000023: ""
+*de.KmManagment MG00000024/00000024: ""
+*de.KmManagment MG00000025/00000025: ""
+*de.KmManagment MG00000026/00000026: ""
+*de.KmManagment MG00000027/00000027: ""
+*de.KmManagment MG00000028/00000028: ""
+*de.KmManagment MG00000029/00000029: ""
+*de.KmManagment MG00000030/00000030: ""
+*de.Translation KMWatermark/Watermark: ""
+*de.Translation WmFlag/Watermark Flag: ""
+*de.WmFlag None/None: ""
+*de.WmFlag Single/Single: ""
+*de.WmFlag Multiple/Multiple: ""
+*de.Translation WmText/Watermark Text: ""
+*de.WmText Confidential/CONFIDENTIAL: ""
+*de.WmText Original/ORIGINAL: ""
+*de.WmText Copy/COPY: ""
+*de.WmText DoNotPhotoCopy/DO NOT PHOTOCOPY: ""
+*de.WmText Draft/DRAFT: ""
+*de.WmText Final/FINAL: ""
+*de.WmText Proof/PROOF: ""
+*de.Translation WmFont/Watermark Font: ""
+*de.WmFont Arial-BoldMT/Arial: ""
+*de.WmFont Arial-BoldItalicMT/Arial Italic: ""
+*de.WmFont Courier-Bold/Courier: ""
+*de.WmFont Courier-BoldOblique/Courier Italic: ""
+*de.WmFont Helvetica-Bold/Helvetica: ""
+*de.WmFont Helvetica-BoldOblique/Helvetica Italic: ""
+*de.WmFont Palatino-Bold/Palatino: ""
+*de.WmFont Palatino-BoldItalic/Palatino Italic: ""
+*de.WmFont Times-Bold/Times: ""
+*de.WmFont Times-BoldItalic/Times Italic: ""
+*de.Translation WmColor/Watermark Color: ""
+*de.WmColor Red/Rot: ""
+*de.WmColor Green/Grün: ""
+*de.WmColor Blue/Blau: ""
+*de.WmColor Black/Schwarz: ""
+*de.Translation WmType/Watermark Type: ""
+*de.WmType Solid/Solid-Schriftart: ""
+*de.WmType Hollow/Verfassen: ""
+*de.Translation WmAngle/Watermark Angle: ""
+*de.WmAngle -180/-180 Grad: ""
+*de.WmAngle -170/-170 Grad: ""
+*de.WmAngle -160/-160 Grad: ""
+*de.WmAngle -150/-150 Grad: ""
+*de.WmAngle -140/-140 Grad: ""
+*de.WmAngle -130/-130 Grad: ""
+*de.WmAngle -120/-120 Grad: ""
+*de.WmAngle -110/-110 Grad: ""
+*de.WmAngle -100/-100 Grad: ""
+*de.WmAngle -90/-90 Grad: ""
+*de.WmAngle -80/-80 Grad: ""
+*de.WmAngle -70/-70 Grad: ""
+*de.WmAngle -60/-60 Grad: ""
+*de.WmAngle -50/-50 Grad: ""
+*de.WmAngle -40/-40 Grad: ""
+*de.WmAngle -30/-30 Grad: ""
+*de.WmAngle -20/-20 Grad: ""
+*de.WmAngle -10/-10 Grad: ""
+*de.WmAngle 0/0 Grad: ""
+*de.WmAngle 10/10 Grad: ""
+*de.WmAngle 20/20 Grad: ""
+*de.WmAngle 30/30 Grad: ""
+*de.WmAngle 40/40 Grad: ""
+*de.WmAngle 50/50 Grad: ""
+*de.WmAngle 60/60 Grad: ""
+*de.WmAngle 70/70 Grad: ""
+*de.WmAngle 80/80 Grad: ""
+*de.WmAngle 90/90 Grad: ""
+*de.WmAngle 100/100 Grad: ""
+*de.WmAngle 110/110 Grad: ""
+*de.WmAngle 120/120 Grad: ""
+*de.WmAngle 130/130 Grad: ""
+*de.WmAngle 140/140 Grad: ""
+*de.WmAngle 150/150 Grad: ""
+*de.WmAngle 160/160 Grad: ""
+*de.WmAngle 170/170 Grad: ""
+*de.WmAngle 180/180 Grad: ""
+*de.Translation WmSize/Watermark Size: ""
+*de.WmSize 24/24 Punkte: ""
+*de.WmSize 30/30 Punkte: ""
+*de.WmSize 36/36 Punkte: ""
+*de.WmSize 42/42 Punkte: ""
+*de.WmSize 48/48 Punkte: ""
+*de.WmSize 54/54 Punkte: ""
+*de.WmSize 60/60 Punkte: ""
+*de.WmSize 66/66 Punkte: ""
+*de.WmSize 72/72 Punkte: ""
+*de.Translation WmTransparent/Watermark Option: ""
+*de.WmTransparent watermark/Wasserzeichen: ""
+*de.WmTransparent stamp/Stempel: ""
+*de.Translation WmIntensity/Watermark Intensity: ""
+*de.WmIntensity 1/1: ""
+*de.WmIntensity 2/2: ""
+*de.WmIntensity 3/3: ""
+*de.WmIntensity 4/4: ""
+*de.WmIntensity 5/5: ""
+*% Spanish localization
+*es.Translation ModelName/Kyocera FS-C5300DN KPDL: ""
+*es.Translation JCL/JCL: ""
+*es.Translation JCLTrapping/Reventado: ""
+*es.JCLTrapping Off/Apagado: ""
+*es.JCLTrapping Light/Claro: ""
+*es.JCLTrapping Medium/Medio: ""
+*es.JCLTrapping Heavy/Denso: ""
+*es.JCLTrapping VeryHeavy/Muy denso: ""
+*es.Translation InstallableOptions/Opciones Instalada: ""
+*es.Translation Option20/Alimentador Opcionales de Papel: ""
+*es.Option20 None/No Instalado: ""
+*es.Option20 One/Uno: ""
+*es.Option20 Two/Dos: ""
+*es.Option20 Three/Tres: ""
+*es.Translation Option18/Disco Opcional: ""
+*es.Option18 None/No Instalado: ""
+*es.Option18 HardDisk/Disco Duro: ""
+*es.Option18 RAMDisk/Disco RAM: ""
+*es.Translation GraphicsOptions/Gráficos: ""
+*es.Translation KCEcoprint/EcoPrint: ""
+*es.KCEcoprint Off/Apagado: ""
+*es.KCEcoprint On/Encendido: ""
+*es.Translation ColorModel/Modo Color: ""
+*es.ColorModel CMYK/Coloreado (CMYK): ""
+*es.ColorModel Gray/Blanco y Negro: ""
+*es.Translation KCHalftone/Pantalla de medios tonos: ""
+*es.KCHalftone Gradation/Optimizar la uniformidad del color: ""
+*es.KCHalftone Detail/Optimizar el detalle: ""
+*es.KCHalftone LineArt/Optimizar el trazado de líneas: ""
+*es.Translation KCGlossmode/Modo de colores brillantes: ""
+*es.KCGlossmode False/Desactivado: ""
+*es.KCGlossmode True/Activado: ""
+*es.Translation Colorreprod/Reproducción de color: ""
+*es.Colorreprod Printersettings/Ajustes de impresora: ""
+*es.Colorreprod Textgraph/Texto y gráficos: ""
+*es.Colorreprod Textphoto/Texto y fotografías: ""
+*es.Colorreprod Vivid/Colores intensos: ""
+*es.Colorreprod Publications/Publicaciones: ""
+*es.Colorreprod Lineart/Líneas: ""
+*es.Translation CIE/Optimización CIE: ""
+*es.CIE PrnDef/Ajustes de impresora: ""
+*es.CIE False/Desactivado: ""
+*es.CIE True/Activado: ""
+*es.Translation General/General: ""
+*es.Translation PagePolicy/Page Policy: ""
+*es.PagePolicy On/AutoSizeSelect: ""
+*es.Translation PageSize/Media Size: ""
+*es.PageSize A4/A4: ""
+*es.PageSize A5/A5: ""
+*es.PageSize A6/A6: ""
+*es.PageSize B5/B5 (JIS): ""
+*es.PageSize ISOB5/B5 (ISO): ""
+*es.PageSize B6/B6: ""
+*es.PageSize OficioII/Oficio II: ""
+*es.PageSize Folio/Folio (210 x 330mm): ""
+*es.PageSize Statement/Statement: ""
+*es.PageSize P16K/16K: ""
+*es.PageSize Letter/Carta: ""
+*es.PageSize Legal/Oficio: ""
+*es.PageSize Executive/Ejecutivo: ""
+*es.PageSize EnvPersonal/Sobre #6: ""
+*es.PageSize Env9/Sobre #9: ""
+*es.PageSize Env10/Sobre #10: ""
+*es.PageSize EnvMonarch/Sobre Monarca: ""
+*es.PageSize EnvDL/Sobre DL: ""
+*es.PageSize EnvC5/Sobre C5: ""
+*es.PageSize Custom/Custom: ""
+*es.Translation PageRegion/PageRegion: ""
+*es.PageRegion A4/A4: ""
+*es.PageRegion A5/A5: ""
+*es.PageRegion A6/A6: ""
+*es.PageRegion B5/B5 (JIS): ""
+*es.PageRegion ISOB5/B5 (ISO): ""
+*es.PageRegion B6/B6: ""
+*es.PageRegion Letter/Carta: ""
+*es.PageRegion Legal/Oficio: ""
+*es.PageRegion Executive/Ejecutivo: ""
+*es.PageRegion EnvPersonal/Sobre #6: ""
+*es.PageRegion Env9/Sobre #9: ""
+*es.PageRegion Env10/Sobre #10: ""
+*es.PageRegion EnvMonarch/Sobre Monarca: ""
+*es.PageRegion EnvDL/Sobre DL: ""
+*es.PageRegion EnvC5/Sobre C5: ""
+*es.PageRegion OficioII/Oficio II: ""
+*es.PageRegion Folio/Folio (210 x 330mm): ""
+*es.PageRegion Statement/Statement: ""
+*es.PageRegion P16K/16K: ""
+*es.PageRegion Custom/Custom: ""
+*es.Translation InputSlot/Media Source: ""
+*es.InputSlot Internal/Bandeja 1: ""
+*es.InputSlot PF500A/Bandeja 2: ""
+*es.InputSlot PF500B/Bandeja 3: ""
+*es.InputSlot PF500C/Bandeja 4: ""
+*es.InputSlot MF1/Bandeja MP: ""
+*es.Translation CoverMediaType/CoverMediaType: ""
+*es.CoverMediaType PrnDef/No especificado: ""
+*es.CoverMediaType Plain/Plain: ""
+*es.CoverMediaType Transparency/Transparencia: ""
+*es.CoverMediaType Labels/Etiquetas: ""
+*es.CoverMediaType Letterhead/Membrete: ""
+*es.CoverMediaType Bond/Bond: ""
+*es.CoverMediaType Color/Coloreado: ""
+*es.CoverMediaType Preprinted/Preimpreso: ""
+*es.CoverMediaType Prepunched/Perforado: ""
+*es.CoverMediaType Recycled/Reciclado: ""
+*es.CoverMediaType Cardstock/Cartulina: ""
+*es.CoverMediaType Vellum/Pergamino: ""
+*es.CoverMediaType Envelope/Sobre: ""
+*es.CoverMediaType Rough/Áspero: ""
+*es.CoverMediaType Thick/Grueso: ""
+*es.CoverMediaType CoatedPaper/Estucado: ""
+*es.CoverMediaType Highqlty/Alta calidad: ""
+*es.CoverMediaType User1/Tipo personalizado 1: ""
+*es.CoverMediaType User2/Tipo personalizado 2: ""
+*es.CoverMediaType User3/Tipo personalizado 3: ""
+*es.CoverMediaType User4/Tipo personalizado 4: ""
+*es.CoverMediaType User5/Tipo personalizado 5: ""
+*es.CoverMediaType User6/Tipo personalizado 6: ""
+*es.CoverMediaType User7/Tipo personalizado 7: ""
+*es.CoverMediaType User8/Tipo personalizado 8: ""
+*es.CoverMediaType Internal/Bandeja 1: ""
+*es.CoverMediaType PF500A/Bandeja 2: ""
+*es.CoverMediaType PF500B/Bandeja 3: ""
+*es.CoverMediaType PF500C/Bandeja 4: ""
+*es.CoverMediaType MF1/Bandeja MP: ""
+*es.Translation TransMediaType/TransMediaType: ""
+*es.TransMediaType PrnDef/No especificado: ""
+*es.TransMediaType Plain/Plain: ""
+*es.TransMediaType Labels/Etiquetas: ""
+*es.TransMediaType Letterhead/Membrete: ""
+*es.TransMediaType Bond/Bond: ""
+*es.TransMediaType Color/Coloreado: ""
+*es.TransMediaType Preprinted/Preimpreso: ""
+*es.TransMediaType Prepunched/Perforado: ""
+*es.TransMediaType Recycled/Reciclado: ""
+*es.TransMediaType Cardstock/Cartulina: ""
+*es.TransMediaType Vellum/Pergamino: ""
+*es.TransMediaType Envelope/Sobre: ""
+*es.TransMediaType Rough/Áspero: ""
+*es.TransMediaType Thick/Grueso: ""
+*es.TransMediaType CoatedPaper/Estucado: ""
+*es.TransMediaType Highqlty/Alta calidad: ""
+*es.TransMediaType User1/Tipo personalizado 1: ""
+*es.TransMediaType User2/Tipo personalizado 2: ""
+*es.TransMediaType User3/Tipo personalizado 3: ""
+*es.TransMediaType User4/Tipo personalizado 4: ""
+*es.TransMediaType User5/Tipo personalizado 5: ""
+*es.TransMediaType User6/Tipo personalizado 6: ""
+*es.TransMediaType User7/Tipo personalizado 7: ""
+*es.TransMediaType User8/Tipo personalizado 8: ""
+*es.TransMediaType Internal/Bandeja 1: ""
+*es.TransMediaType PF500A/Bandeja 2: ""
+*es.TransMediaType PF500B/Bandeja 3: ""
+*es.TransMediaType PF500C/Bandeja 4: ""
+*es.Translation PageMediaType/PageMediaType: ""
+*es.PageMediaType PrnDef/No especificado: ""
+*es.PageMediaType Plain/Plain: ""
+*es.PageMediaType Transparency/Transparencia: ""
+*es.PageMediaType Labels/Etiquetas: ""
+*es.PageMediaType Letterhead/Membrete: ""
+*es.PageMediaType Bond/Bond: ""
+*es.PageMediaType Color/Coloreado: ""
+*es.PageMediaType Preprinted/Preimpreso: ""
+*es.PageMediaType Prepunched/Perforado: ""
+*es.PageMediaType Recycled/Reciclado: ""
+*es.PageMediaType Cardstock/Cartulina: ""
+*es.PageMediaType Vellum/Pergamino: ""
+*es.PageMediaType Envelope/Sobre: ""
+*es.PageMediaType Rough/Áspero: ""
+*es.PageMediaType Thick/Grueso: ""
+*es.PageMediaType CoatedPaper/Estucado: ""
+*es.PageMediaType Highqlty/Alta calidad: ""
+*es.PageMediaType User1/Tipo personalizado 1: ""
+*es.PageMediaType User2/Tipo personalizado 2: ""
+*es.PageMediaType User3/Tipo personalizado 3: ""
+*es.PageMediaType User4/Tipo personalizado 4: ""
+*es.PageMediaType User5/Tipo personalizado 5: ""
+*es.PageMediaType User6/Tipo personalizado 6: ""
+*es.PageMediaType User7/Tipo personalizado 7: ""
+*es.PageMediaType User8/Tipo personalizado 8: ""
+*es.PageMediaType Internal/Bandeja 1: ""
+*es.PageMediaType PF500A/Bandeja 2: ""
+*es.PageMediaType PF500B/Bandeja 3: ""
+*es.PageMediaType PF500C/Bandeja 4: ""
+*es.PageMediaType MF1/Bandeja MP: ""
+*es.Translation KCVersion/PPD Versión: ""
+*es.KCVersion Default/8.4 [07-06-2011]: ""
+*es.Translation MediaOptions/Tipo de Medio: ""
+*es.Translation MediaType/Media Type: ""
+*es.MediaType PrnDef/No especificado: ""
+*es.MediaType Auto/Selección automática de papel: ""
+*es.MediaType Plain/Plain: ""
+*es.MediaType Transparency/Transparencia: ""
+*es.MediaType Labels/Etiquetas: ""
+*es.MediaType Letterhead/Membrete: ""
+*es.MediaType Bond/Bond: ""
+*es.MediaType Color/Coloreado: ""
+*es.MediaType Preprinted/Preimpreso: ""
+*es.MediaType Prepunched/Perforado: ""
+*es.MediaType Recycled/Reciclado: ""
+*es.MediaType Cardstock/Cartulina: ""
+*es.MediaType Vellum/Pergamino: ""
+*es.MediaType Envelope/Sobre: ""
+*es.MediaType Rough/Áspero: ""
+*es.MediaType Thick/Grueso: ""
+*es.MediaType CoatedPaper/Estucado: ""
+*es.MediaType Highqlty/Alta calidad: ""
+*es.MediaType User1/Tipo personalizado 1: ""
+*es.MediaType User2/Tipo personalizado 2: ""
+*es.MediaType User3/Tipo personalizado 3: ""
+*es.MediaType User4/Tipo personalizado 4: ""
+*es.MediaType User5/Tipo personalizado 5: ""
+*es.MediaType User6/Tipo personalizado 6: ""
+*es.MediaType User7/Tipo personalizado 7: ""
+*es.MediaType User8/Tipo personalizado 8: ""
+*es.Translation FinishingOptions/Acabado: ""
+*es.Translation Duplex/Modo Duplex: ""
+*es.Duplex None/Ninguno: ""
+*es.Duplex DuplexTumble/Orientación vertical: ""
+*es.Duplex DuplexNoTumble/Orientación horizontal: ""
+*es.Translation StorageOptions/Trabajo en Cola: ""
+*es.Translation KCCollate/Trabajo en Cola: ""
+*es.KCCollate PrnDef/Ajustes de impresora: ""
+*es.KCCollate On/Intercalar: ""
+*es.KCCollate None/Ninguno: ""
+*es.KCCollate QuickCopy/Copia rápida: ""
+*es.KCCollate ProofHold/Revisar y retener: ""
+*es.KCCollate JobStorage/Almacenar trabajos: ""
+*es.KCCollate PrivatePrint/Private Print: ""
+*es.KCCollate CustomBox/Custom Box: ""
+*es.Translation AccountingOptions/Contabilización de trabajos: ""
+*es.Translation KmManagment/Contabilización de trabajos: ""
+*es.KmManagment Default/Apagado: ""
+*es.KmManagment MG00000000/00000000: ""
+*es.KmManagment MG00000001/00000001: ""
+*es.KmManagment MG00000002/00000002: ""
+*es.KmManagment MG00000003/00000003: ""
+*es.KmManagment MG00000004/00000004: ""
+*es.KmManagment MG00000005/00000005: ""
+*es.KmManagment MG00000006/00000006: ""
+*es.KmManagment MG00000007/00000007: ""
+*es.KmManagment MG00000008/00000008: ""
+*es.KmManagment MG00000009/00000009: ""
+*es.KmManagment MG00000010/00000010: ""
+*es.KmManagment MG00000011/00000011: ""
+*es.KmManagment MG00000012/00000012: ""
+*es.KmManagment MG00000013/00000013: ""
+*es.KmManagment MG00000014/00000014: ""
+*es.KmManagment MG00000015/00000015: ""
+*es.KmManagment MG00000016/00000016: ""
+*es.KmManagment MG00000017/00000017: ""
+*es.KmManagment MG00000018/00000018: ""
+*es.KmManagment MG00000019/00000019: ""
+*es.KmManagment MG00000020/00000020: ""
+*es.KmManagment MG00000021/00000021: ""
+*es.KmManagment MG00000022/00000022: ""
+*es.KmManagment MG00000023/00000023: ""
+*es.KmManagment MG00000024/00000024: ""
+*es.KmManagment MG00000025/00000025: ""
+*es.KmManagment MG00000026/00000026: ""
+*es.KmManagment MG00000027/00000027: ""
+*es.KmManagment MG00000028/00000028: ""
+*es.KmManagment MG00000029/00000029: ""
+*es.KmManagment MG00000030/00000030: ""
+*es.Translation KMWatermark/Watermark: ""
+*es.Translation WmFlag/Watermark Flag: ""
+*es.WmFlag None/None: ""
+*es.WmFlag Single/Single: ""
+*es.WmFlag Multiple/Multiple: ""
+*es.Translation WmText/Watermark Text: ""
+*es.WmText Confidential/CONFIDENTIAL: ""
+*es.WmText Original/ORIGINAL: ""
+*es.WmText Copy/COPY: ""
+*es.WmText DoNotPhotoCopy/DO NOT PHOTOCOPY: ""
+*es.WmText Draft/DRAFT: ""
+*es.WmText Final/FINAL: ""
+*es.WmText Proof/PROOF: ""
+*es.Translation WmFont/Watermark Font: ""
+*es.WmFont Arial-BoldMT/Arial: ""
+*es.WmFont Arial-BoldItalicMT/Arial Italic: ""
+*es.WmFont Courier-Bold/Courier: ""
+*es.WmFont Courier-BoldOblique/Courier Italic: ""
+*es.WmFont Helvetica-Bold/Helvetica: ""
+*es.WmFont Helvetica-BoldOblique/Helvetica Italic: ""
+*es.WmFont Palatino-Bold/Palatino: ""
+*es.WmFont Palatino-BoldItalic/Palatino Italic: ""
+*es.WmFont Times-Bold/Times: ""
+*es.WmFont Times-BoldItalic/Times Italic: ""
+*es.Translation WmColor/Watermark Color: ""
+*es.WmColor Red/Rojo: ""
+*es.WmColor Green/Verde: ""
+*es.WmColor Blue/Azul: ""
+*es.WmColor Black/Negro: ""
+*es.Translation WmType/Watermark Type: ""
+*es.WmType Solid/Sólido: ""
+*es.WmType Hollow/Contorno: ""
+*es.Translation WmAngle/Watermark Angle: ""
+*es.WmAngle -180/-180 grados: ""
+*es.WmAngle -170/-170 grados: ""
+*es.WmAngle -160/-160 grados: ""
+*es.WmAngle -150/-150 grados: ""
+*es.WmAngle -140/-140 grados: ""
+*es.WmAngle -130/-130 grados: ""
+*es.WmAngle -120/-120 grados: ""
+*es.WmAngle -110/-110 grados: ""
+*es.WmAngle -100/-100 grados: ""
+*es.WmAngle -90/-90 grados: ""
+*es.WmAngle -80/-80 grados: ""
+*es.WmAngle -70/-70 grados: ""
+*es.WmAngle -60/-60 grados: ""
+*es.WmAngle -50/-50 grados: ""
+*es.WmAngle -40/-40 grados: ""
+*es.WmAngle -30/-30 grados: ""
+*es.WmAngle -20/-20 grados: ""
+*es.WmAngle -10/-10 grados: ""
+*es.WmAngle 0/0 grados: ""
+*es.WmAngle 10/10 grados: ""
+*es.WmAngle 20/20 grados: ""
+*es.WmAngle 30/30 grados: ""
+*es.WmAngle 40/40 grados: ""
+*es.WmAngle 50/50 grados: ""
+*es.WmAngle 60/60 grados: ""
+*es.WmAngle 70/70 grados: ""
+*es.WmAngle 80/80 grados: ""
+*es.WmAngle 90/90 grados: ""
+*es.WmAngle 100/100 grados: ""
+*es.WmAngle 110/110 grados: ""
+*es.WmAngle 120/120 grados: ""
+*es.WmAngle 130/130 grados: ""
+*es.WmAngle 140/140 grados: ""
+*es.WmAngle 150/150 grados: ""
+*es.WmAngle 160/160 grados: ""
+*es.WmAngle 170/170 grados: ""
+*es.WmAngle 180/180 grados: ""
+*es.Translation WmSize/Watermark Size: ""
+*es.WmSize 24/24 puntos: ""
+*es.WmSize 30/30 puntos: ""
+*es.WmSize 36/36 puntos: ""
+*es.WmSize 42/42 puntos: ""
+*es.WmSize 48/48 puntos: ""
+*es.WmSize 54/54 puntos: ""
+*es.WmSize 60/60 puntos: ""
+*es.WmSize 66/66 puntos: ""
+*es.WmSize 72/72 puntos: ""
+*es.Translation WmTransparent/Watermark Option: ""
+*es.WmTransparent watermark/Marca de agua: ""
+*es.WmTransparent stamp/Sello: ""
+*es.Translation WmIntensity/Watermark Intensity: ""
+*es.WmIntensity 1/1: ""
+*es.WmIntensity 2/2: ""
+*es.WmIntensity 3/3: ""
+*es.WmIntensity 4/4: ""
+*es.WmIntensity 5/5: ""
+*% French localization
+*fr.Translation ModelName/Kyocera FS-C5300DN KPDL: ""
+*fr.Translation JCL/JCL: ""
+*fr.Translation JCLTrapping/Prise de l'encre: ""
+*fr.JCLTrapping Off/Inactif: ""
+*fr.JCLTrapping Light/Léger: ""
+*fr.JCLTrapping Medium/Moyenne: ""
+*fr.JCLTrapping Heavy/Intense: ""
+*fr.JCLTrapping VeryHeavy/Trés intense: ""
+*fr.Translation InstallableOptions/Options Installée: ""
+*fr.Translation Option20/Bacs Papier Optionnels: ""
+*fr.Option20 None/Non Installé: ""
+*fr.Option20 One/Un: ""
+*fr.Option20 Two/Deux: ""
+*fr.Option20 Three/Trois: ""
+*fr.Translation Option18/Disque optionnel: ""
+*fr.Option18 None/Non Installé: ""
+*fr.Option18 HardDisk/Disque Dur: ""
+*fr.Option18 RAMDisk/Disque RAM: ""
+*fr.Translation GraphicsOptions/Graphiques: ""
+*fr.Translation KCEcoprint/EcoPrint: ""
+*fr.KCEcoprint Off/Inactif: ""
+*fr.KCEcoprint On/Actif: ""
+*fr.Translation ColorModel/Mode Couleur: ""
+*fr.ColorModel CMYK/Couleur (CMYK): ""
+*fr.ColorModel Gray/Noir & Blanc: ""
+*fr.Translation KCHalftone/Écran demi-tons: ""
+*fr.KCHalftone Gradation/Optimiser pour lissé des couleurs: ""
+*fr.KCHalftone Detail/Optimiser pour détails: ""
+*fr.KCHalftone LineArt/Optimiser pour tracé: ""
+*fr.Translation KCGlossmode/Mode brillant: ""
+*fr.KCGlossmode False/Désactivé: ""
+*fr.KCGlossmode True/Activé: ""
+*fr.Translation Colorreprod/Reproduction des couleurs: ""
+*fr.Colorreprod Printersettings/Param. imprimante: ""
+*fr.Colorreprod Textgraph/Texte et graphiques: ""
+*fr.Colorreprod Textphoto/Texte et photos: ""
+*fr.Colorreprod Vivid/Couleurs vives: ""
+*fr.Colorreprod Publications/Publications: ""
+*fr.Colorreprod Lineart/Dessin au trait: ""
+*fr.Translation CIE/ Optimisation CIE: ""
+*fr.CIE PrnDef/Param. imprimante: ""
+*fr.CIE False/Désactivé: ""
+*fr.CIE True/Activé: ""
+*fr.Translation General/General: ""
+*fr.Translation PagePolicy/Page Policy: ""
+*fr.PagePolicy On/AutoSizeSelect: ""
+*fr.Translation PageSize/Media Size: ""
+*fr.PageSize A4/A4: ""
+*fr.PageSize A5/A5: ""
+*fr.PageSize A6/A6: ""
+*fr.PageSize B5/B5 (JIS): ""
+*fr.PageSize ISOB5/B5 (ISO): ""
+*fr.PageSize B6/B6: ""
+*fr.PageSize OficioII/Oficio II: ""
+*fr.PageSize Folio/Folio (210 x 330mm): ""
+*fr.PageSize Statement/Statement: ""
+*fr.PageSize P16K/16K: ""
+*fr.PageSize Letter/Lettre US: ""
+*fr.PageSize Legal/Légal US: ""
+*fr.PageSize Executive/Exécutive US: ""
+*fr.PageSize EnvPersonal/Enveloppe #6: ""
+*fr.PageSize Env9/Enveloppe #9: ""
+*fr.PageSize Env10/Enveloppe #10: ""
+*fr.PageSize EnvMonarch/Enveloppe Monarch: ""
+*fr.PageSize EnvDL/Enveloppe DL: ""
+*fr.PageSize EnvC5/Enveloppe C5: ""
+*fr.PageSize Custom/Custom: ""
+*fr.Translation PageRegion/PageRegion: ""
+*fr.PageRegion A4/A4: ""
+*fr.PageRegion A5/A5: ""
+*fr.PageRegion A6/A6: ""
+*fr.PageRegion B5/B5 (JIS): ""
+*fr.PageRegion ISOB5/B5 (ISO): ""
+*fr.PageRegion B6/B6: ""
+*fr.PageRegion Letter/Lettre US: ""
+*fr.PageRegion Legal/Légal US: ""
+*fr.PageRegion Executive/Exécutive US: ""
+*fr.PageRegion EnvPersonal/Enveloppe #6: ""
+*fr.PageRegion Env9/Enveloppe #9: ""
+*fr.PageRegion Env10/Enveloppe #10: ""
+*fr.PageRegion EnvMonarch/Enveloppe Monarch: ""
+*fr.PageRegion EnvDL/Enveloppe DL: ""
+*fr.PageRegion EnvC5/Enveloppe C5: ""
+*fr.PageRegion OficioII/Oficio II: ""
+*fr.PageRegion Folio/Folio (210 x 330mm): ""
+*fr.PageRegion Statement/Statement: ""
+*fr.PageRegion P16K/16K: ""
+*fr.PageRegion Custom/Custom: ""
+*fr.Translation InputSlot/Media Source: ""
+*fr.InputSlot Internal/Magasin 1: ""
+*fr.InputSlot PF500A/Magasin 2: ""
+*fr.InputSlot PF500B/Magasin 3: ""
+*fr.InputSlot PF500C/Magasin 4: ""
+*fr.InputSlot MF1/Bac polyvalent: ""
+*fr.Translation CoverMediaType/CoverMediaType: ""
+*fr.CoverMediaType PrnDef/Non spécifié: ""
+*fr.CoverMediaType Plain/Normal: ""
+*fr.CoverMediaType Transparency/Transparent: ""
+*fr.CoverMediaType Labels/Étiquettes: ""
+*fr.CoverMediaType Letterhead/À en-tête: ""
+*fr.CoverMediaType Bond/Papier couché: ""
+*fr.CoverMediaType Color/Couleur: ""
+*fr.CoverMediaType Preprinted/Pré-imprimé: ""
+*fr.CoverMediaType Prepunched/Perforé: ""
+*fr.CoverMediaType Recycled/Recyclé: ""
+*fr.CoverMediaType Cardstock/Bristol: ""
+*fr.CoverMediaType Vellum/Vélin: ""
+*fr.CoverMediaType Envelope/Enveloppe: ""
+*fr.CoverMediaType Rough/Rugueux: ""
+*fr.CoverMediaType Thick/Épais: ""
+*fr.CoverMediaType CoatedPaper/Couché: ""
+*fr.CoverMediaType Highqlty/Haute qualité: ""
+*fr.CoverMediaType User1/Personnalisé  1: ""
+*fr.CoverMediaType User2/Personnalisé  2: ""
+*fr.CoverMediaType User3/Personnalisé  3: ""
+*fr.CoverMediaType User4/Personnalisé  4: ""
+*fr.CoverMediaType User5/Personnalisé  5: ""
+*fr.CoverMediaType User6/Personnalisé  6: ""
+*fr.CoverMediaType User7/Personnalisé  7: ""
+*fr.CoverMediaType User8/Personnalisé  8: ""
+*fr.CoverMediaType Internal/Magasin 1: ""
+*fr.CoverMediaType PF500A/Magasin 2: ""
+*fr.CoverMediaType PF500B/Magasin 3: ""
+*fr.CoverMediaType PF500C/Magasin 4: ""
+*fr.CoverMediaType MF1/Bac polyvalent: ""
+*fr.Translation TransMediaType/TransMediaType: ""
+*fr.TransMediaType PrnDef/Non spécifié: ""
+*fr.TransMediaType Plain/Normal: ""
+*fr.TransMediaType Labels/Étiquettes: ""
+*fr.TransMediaType Letterhead/À en-tête: ""
+*fr.TransMediaType Bond/Papier couché: ""
+*fr.TransMediaType Color/Couleur: ""
+*fr.TransMediaType Preprinted/Pré-imprimé: ""
+*fr.TransMediaType Prepunched/Perforé: ""
+*fr.TransMediaType Recycled/Recyclé: ""
+*fr.TransMediaType Cardstock/Bristol: ""
+*fr.TransMediaType Vellum/Vélin: ""
+*fr.TransMediaType Envelope/Enveloppe: ""
+*fr.TransMediaType Rough/Rugueux: ""
+*fr.TransMediaType Thick/Épais: ""
+*fr.TransMediaType CoatedPaper/Couché: ""
+*fr.TransMediaType Highqlty/Haute qualité: ""
+*fr.TransMediaType User1/Personnalisé  1: ""
+*fr.TransMediaType User2/Personnalisé  2: ""
+*fr.TransMediaType User3/Personnalisé  3: ""
+*fr.TransMediaType User4/Personnalisé  4: ""
+*fr.TransMediaType User5/Personnalisé  5: ""
+*fr.TransMediaType User6/Personnalisé  6: ""
+*fr.TransMediaType User7/Personnalisé  7: ""
+*fr.TransMediaType User8/Personnalisé  8: ""
+*fr.TransMediaType Internal/Magasin 1: ""
+*fr.TransMediaType PF500A/Magasin 2: ""
+*fr.TransMediaType PF500B/Magasin 3: ""
+*fr.TransMediaType PF500C/Magasin 4: ""
+*fr.Translation PageMediaType/PageMediaType: ""
+*fr.PageMediaType PrnDef/Non spécifié: ""
+*fr.PageMediaType Plain/Normal: ""
+*fr.PageMediaType Transparency/Transparent: ""
+*fr.PageMediaType Labels/Étiquettes: ""
+*fr.PageMediaType Letterhead/À en-tête: ""
+*fr.PageMediaType Bond/Papier couché: ""
+*fr.PageMediaType Color/Couleur: ""
+*fr.PageMediaType Preprinted/Pré-imprimé: ""
+*fr.PageMediaType Prepunched/Perforé: ""
+*fr.PageMediaType Recycled/Recyclé: ""
+*fr.PageMediaType Cardstock/Bristol: ""
+*fr.PageMediaType Vellum/Vélin: ""
+*fr.PageMediaType Envelope/Enveloppe: ""
+*fr.PageMediaType Rough/Rugueux: ""
+*fr.PageMediaType Thick/Épais: ""
+*fr.PageMediaType CoatedPaper/Couché: ""
+*fr.PageMediaType Highqlty/Haute qualité: ""
+*fr.PageMediaType User1/Personnalisé  1: ""
+*fr.PageMediaType User2/Personnalisé  2: ""
+*fr.PageMediaType User3/Personnalisé  3: ""
+*fr.PageMediaType User4/Personnalisé  4: ""
+*fr.PageMediaType User5/Personnalisé  5: ""
+*fr.PageMediaType User6/Personnalisé  6: ""
+*fr.PageMediaType User7/Personnalisé  7: ""
+*fr.PageMediaType User8/Personnalisé  8: ""
+*fr.PageMediaType Internal/Magasin 1: ""
+*fr.PageMediaType PF500A/Magasin 2: ""
+*fr.PageMediaType PF500B/Magasin 3: ""
+*fr.PageMediaType PF500C/Magasin 4: ""
+*fr.PageMediaType MF1/Bac polyvalent: ""
+*fr.Translation KCVersion/PPD Version: ""
+*fr.KCVersion Default/8.4 [07-06-2011]: ""
+*fr.Translation MediaOptions/Type de Média: ""
+*fr.Translation MediaType/Media Type: ""
+*fr.MediaType PrnDef/Non spécifié: ""
+*fr.MediaType Auto/Sélection automatique du support: ""
+*fr.MediaType Plain/Normal: ""
+*fr.MediaType Transparency/Transparent: ""
+*fr.MediaType Labels/Étiquettes: ""
+*fr.MediaType Letterhead/À en-tête: ""
+*fr.MediaType Bond/Papier couché: ""
+*fr.MediaType Color/Couleur: ""
+*fr.MediaType Preprinted/Pré-imprimé: ""
+*fr.MediaType Prepunched/Perforé: ""
+*fr.MediaType Recycled/Recyclé: ""
+*fr.MediaType Cardstock/Bristol: ""
+*fr.MediaType Vellum/Vélin: ""
+*fr.MediaType Envelope/Enveloppe: ""
+*fr.MediaType Rough/Rugueux: ""
+*fr.MediaType Thick/Épais: ""
+*fr.MediaType CoatedPaper/Couché: ""
+*fr.MediaType Highqlty/Haute qualité: ""
+*fr.MediaType User1/Personnalisé  1: ""
+*fr.MediaType User2/Personnalisé  2: ""
+*fr.MediaType User3/Personnalisé  3: ""
+*fr.MediaType User4/Personnalisé  4: ""
+*fr.MediaType User5/Personnalisé  5: ""
+*fr.MediaType User6/Personnalisé  6: ""
+*fr.MediaType User7/Personnalisé  7: ""
+*fr.MediaType User8/Personnalisé  8: ""
+*fr.Translation FinishingOptions/Finition: ""
+*fr.Translation Duplex/Mode Duplex: ""
+*fr.Duplex None/Aucun: ""
+*fr.Duplex DuplexTumble/Bord Relié Court: ""
+*fr.Duplex DuplexNoTumble/Bord Relié Long: ""
+*fr.Translation StorageOptions/Travail Spoulé: ""
+*fr.Translation KCCollate/Travail Spoulé: ""
+*fr.KCCollate PrnDef/Param. imprimante: ""
+*fr.KCCollate On/Assembler: ""
+*fr.KCCollate None/Aucun: ""
+*fr.KCCollate QuickCopy/Copie rapide: ""
+*fr.KCCollate ProofHold/Vérification avant impression: ""
+*fr.KCCollate JobStorage/Mémoire de tâches: ""
+*fr.KCCollate PrivatePrint/Private Print: ""
+*fr.KCCollate CustomBox/Custom Box: ""
+*fr.Translation AccountingOptions/Comptabilisation des travaux: ""
+*fr.Translation KmManagment/Comptabilisation des travaux: ""
+*fr.KmManagment Default/Inactif: ""
+*fr.KmManagment MG00000000/00000000: ""
+*fr.KmManagment MG00000001/00000001: ""
+*fr.KmManagment MG00000002/00000002: ""
+*fr.KmManagment MG00000003/00000003: ""
+*fr.KmManagment MG00000004/00000004: ""
+*fr.KmManagment MG00000005/00000005: ""
+*fr.KmManagment MG00000006/00000006: ""
+*fr.KmManagment MG00000007/00000007: ""
+*fr.KmManagment MG00000008/00000008: ""
+*fr.KmManagment MG00000009/00000009: ""
+*fr.KmManagment MG00000010/00000010: ""
+*fr.KmManagment MG00000011/00000011: ""
+*fr.KmManagment MG00000012/00000012: ""
+*fr.KmManagment MG00000013/00000013: ""
+*fr.KmManagment MG00000014/00000014: ""
+*fr.KmManagment MG00000015/00000015: ""
+*fr.KmManagment MG00000016/00000016: ""
+*fr.KmManagment MG00000017/00000017: ""
+*fr.KmManagment MG00000018/00000018: ""
+*fr.KmManagment MG00000019/00000019: ""
+*fr.KmManagment MG00000020/00000020: ""
+*fr.KmManagment MG00000021/00000021: ""
+*fr.KmManagment MG00000022/00000022: ""
+*fr.KmManagment MG00000023/00000023: ""
+*fr.KmManagment MG00000024/00000024: ""
+*fr.KmManagment MG00000025/00000025: ""
+*fr.KmManagment MG00000026/00000026: ""
+*fr.KmManagment MG00000027/00000027: ""
+*fr.KmManagment MG00000028/00000028: ""
+*fr.KmManagment MG00000029/00000029: ""
+*fr.KmManagment MG00000030/00000030: ""
+*fr.Translation KMWatermark/Watermark: ""
+*fr.Translation WmFlag/Watermark Flag: ""
+*fr.WmFlag None/None: ""
+*fr.WmFlag Single/Single: ""
+*fr.WmFlag Multiple/Multiple: ""
+*fr.Translation WmText/Watermark Text: ""
+*fr.WmText Confidential/CONFIDENTIAL: ""
+*fr.WmText Original/ORIGINAL: ""
+*fr.WmText Copy/COPY: ""
+*fr.WmText DoNotPhotoCopy/DO NOT PHOTOCOPY: ""
+*fr.WmText Draft/DRAFT: ""
+*fr.WmText Final/FINAL: ""
+*fr.WmText Proof/PROOF: ""
+*fr.Translation WmFont/Watermark Font: ""
+*fr.WmFont Arial-BoldMT/Arial: ""
+*fr.WmFont Arial-BoldItalicMT/Arial Italic: ""
+*fr.WmFont Courier-Bold/Courier: ""
+*fr.WmFont Courier-BoldOblique/Courier Italic: ""
+*fr.WmFont Helvetica-Bold/Helvetica: ""
+*fr.WmFont Helvetica-BoldOblique/Helvetica Italic: ""
+*fr.WmFont Palatino-Bold/Palatino: ""
+*fr.WmFont Palatino-BoldItalic/Palatino Italic: ""
+*fr.WmFont Times-Bold/Times: ""
+*fr.WmFont Times-BoldItalic/Times Italic: ""
+*fr.Translation WmColor/Watermark Color: ""
+*fr.WmColor Red/Rouge: ""
+*fr.WmColor Green/Vert: ""
+*fr.WmColor Blue/Bleu: ""
+*fr.WmColor Black/Noir: ""
+*fr.Translation WmType/Watermark Type: ""
+*fr.WmType Solid/Plein: ""
+*fr.WmType Hollow/Plan: ""
+*fr.Translation WmAngle/Watermark Angle: ""
+*fr.WmAngle -180/-180 degrés: ""
+*fr.WmAngle -170/-170 degrés: ""
+*fr.WmAngle -160/-160 degrés: ""
+*fr.WmAngle -150/-150 degrés: ""
+*fr.WmAngle -140/-140 degrés: ""
+*fr.WmAngle -130/-130 degrés: ""
+*fr.WmAngle -120/-120 degrés: ""
+*fr.WmAngle -110/-110 degrés: ""
+*fr.WmAngle -100/-100 degrés: ""
+*fr.WmAngle -90/-90 degrés: ""
+*fr.WmAngle -80/-80 degrés: ""
+*fr.WmAngle -70/-70 degrés: ""
+*fr.WmAngle -60/-60 degrés: ""
+*fr.WmAngle -50/-50 degrés: ""
+*fr.WmAngle -40/-40 degrés: ""
+*fr.WmAngle -30/-30 degrés: ""
+*fr.WmAngle -20/-20 degrés: ""
+*fr.WmAngle -10/-10 degrés: ""
+*fr.WmAngle 0/0 degrés: ""
+*fr.WmAngle 10/10 degrés: ""
+*fr.WmAngle 20/20 degrés: ""
+*fr.WmAngle 30/30 degrés: ""
+*fr.WmAngle 40/40 degrés: ""
+*fr.WmAngle 50/50 degrés: ""
+*fr.WmAngle 60/60 degrés: ""
+*fr.WmAngle 70/70 degrés: ""
+*fr.WmAngle 80/80 degrés: ""
+*fr.WmAngle 90/90 degrés: ""
+*fr.WmAngle 100/100 degrés: ""
+*fr.WmAngle 110/110 degrés: ""
+*fr.WmAngle 120/120 degrés: ""
+*fr.WmAngle 130/130 degrés: ""
+*fr.WmAngle 140/140 degrés: ""
+*fr.WmAngle 150/150 degrés: ""
+*fr.WmAngle 160/160 degrés: ""
+*fr.WmAngle 170/170 degrés: ""
+*fr.WmAngle 180/180 degrés: ""
+*fr.Translation WmSize/Watermark Size: ""
+*fr.WmSize 24/24 points: ""
+*fr.WmSize 30/30 points: ""
+*fr.WmSize 36/36 points: ""
+*fr.WmSize 42/42 points: ""
+*fr.WmSize 48/48 points: ""
+*fr.WmSize 54/54 points: ""
+*fr.WmSize 60/60 points: ""
+*fr.WmSize 66/66 points: ""
+*fr.WmSize 72/72 points: ""
+*fr.Translation WmTransparent/Watermark Option: ""
+*fr.WmTransparent watermark/Filigrane: ""
+*fr.WmTransparent stamp/Tampon: ""
+*fr.Translation WmIntensity/Watermark Intensity: ""
+*fr.WmIntensity 1/1: ""
+*fr.WmIntensity 2/2: ""
+*fr.WmIntensity 3/3: ""
+*fr.WmIntensity 4/4: ""
+*fr.WmIntensity 5/5: ""
+*% Italian localization
+*it.Translation ModelName/Kyocera FS-C5300DN KPDL: ""
+*it.Translation JCL/JCL: ""
+*it.Translation JCLTrapping/Registrazione colori: ""
+*it.JCLTrapping Off/Disattivato: ""
+*it.JCLTrapping Light/Minima: ""
+*it.JCLTrapping Medium/Medio: ""
+*it.JCLTrapping Heavy/Alta: ""
+*it.JCLTrapping VeryHeavy/Molto alta: ""
+*it.Translation InstallableOptions/Opzioni Installate: ""
+*it.Translation Option20/Alimentatori Carta : ""
+*it.Option20 None/Non Installato: ""
+*it.Option20 One/Uno: ""
+*it.Option20 Two/Due: ""
+*it.Option20 Three/Tre: ""
+*it.Translation Option18/Disco Opzionale: ""
+*it.Option18 None/Non Installato: ""
+*it.Option18 HardDisk/Hard Disk: ""
+*it.Option18 RAMDisk/Disco RAM: ""
+*it.Translation GraphicsOptions/Grafica: ""
+*it.Translation KCEcoprint/EcoPrint: ""
+*it.KCEcoprint Off/Disattivato: ""
+*it.KCEcoprint On/Attivo: ""
+*it.Translation ColorModel/Modalità Colore: ""
+*it.ColorModel CMYK/Colorata (CMYK): ""
+*it.ColorModel Gray/Bianco & Nero: ""
+*it.Translation KCHalftone/Retino mezzitoni: ""
+*it.KCHalftone Gradation/Ottimizza per uniformità colore: ""
+*it.KCHalftone Detail/Ottimizza per dettagli: ""
+*it.KCHalftone LineArt/Ottimizza per disegni al tratto: ""
+*it.Translation KCGlossmode/Modalità patinata: ""
+*it.KCGlossmode False/Disattivato: ""
+*it.KCGlossmode True/Attivato: ""
+*it.Translation Colorreprod/Riproduzione colore: ""
+*it.Colorreprod Printersettings/Impostaz. stampante: ""
+*it.Colorreprod Textgraph/Testo e grafica: ""
+*it.Colorreprod Textphoto/Testo e foto: ""
+*it.Colorreprod Vivid/Colori vivaci: ""
+*it.Colorreprod Publications/Pubblicazioni: ""
+*it.Colorreprod Lineart/Line art: ""
+*it.Translation CIE/Ottimizzazione CIE: ""
+*it.CIE PrnDef/Impostaz. stampante: ""
+*it.CIE False/Disattivato: ""
+*it.CIE True/Attivato: ""
+*it.Translation General/General: ""
+*it.Translation PagePolicy/Page Policy: ""
+*it.PagePolicy On/AutoSizeSelect: ""
+*it.Translation PageSize/Media Size: ""
+*it.PageSize A4/A4: ""
+*it.PageSize A5/A5: ""
+*it.PageSize A6/A6: ""
+*it.PageSize B5/B5 (JIS): ""
+*it.PageSize ISOB5/B5 (ISO): ""
+*it.PageSize B6/B6: ""
+*it.PageSize OficioII/Oficio II: ""
+*it.PageSize Folio/Folio (210 x 330mm): ""
+*it.PageSize Statement/Statement: ""
+*it.PageSize P16K/16K: ""
+*it.PageSize Letter/Letter: ""
+*it.PageSize Legal/Legal: ""
+*it.PageSize Executive/Executive: ""
+*it.PageSize EnvPersonal/Busta #6: ""
+*it.PageSize Env9/Busta #9: ""
+*it.PageSize Env10/Busta #10: ""
+*it.PageSize EnvMonarch/Busta Monarch: ""
+*it.PageSize EnvDL/Busta DL: ""
+*it.PageSize EnvC5/Busta C5: ""
+*it.PageSize Custom/Custom: ""
+*it.Translation PageRegion/PageRegion: ""
+*it.PageRegion A4/A4: ""
+*it.PageRegion A5/A5: ""
+*it.PageRegion A6/A6: ""
+*it.PageRegion B5/B5 (JIS): ""
+*it.PageRegion ISOB5/B5 (ISO): ""
+*it.PageRegion B6/B6: ""
+*it.PageRegion Letter/Letter: ""
+*it.PageRegion Legal/Legal: ""
+*it.PageRegion Executive/Executive: ""
+*it.PageRegion EnvPersonal/Busta #6: ""
+*it.PageRegion Env9/Busta #9: ""
+*it.PageRegion Env10/Busta #10: ""
+*it.PageRegion EnvMonarch/Busta Monarch: ""
+*it.PageRegion EnvDL/Busta DL: ""
+*it.PageRegion EnvC5/Busta C5: ""
+*it.PageRegion OficioII/Oficio II: ""
+*it.PageRegion Folio/Folio (210 x 330mm): ""
+*it.PageRegion Statement/Statement: ""
+*it.PageRegion P16K/16K: ""
+*it.PageRegion Custom/Custom: ""
+*it.Translation InputSlot/Media Source: ""
+*it.InputSlot Internal/Cassetto 1: ""
+*it.InputSlot PF500A/Cassetto 2: ""
+*it.InputSlot PF500B/Cassetto 3: ""
+*it.InputSlot PF500C/Cassetto 4: ""
+*it.InputSlot MF1/Vassoio bypass: ""
+*it.Translation CoverMediaType/CoverMediaType: ""
+*it.CoverMediaType PrnDef/Non specificato: ""
+*it.CoverMediaType Plain/Normale: ""
+*it.CoverMediaType Transparency/Lucido: ""
+*it.CoverMediaType Labels/Etichette: ""
+*it.CoverMediaType Letterhead/Intestata: ""
+*it.CoverMediaType Bond/Pregiata: ""
+*it.CoverMediaType Color/A colori: ""
+*it.CoverMediaType Preprinted/Prestampata: ""
+*it.CoverMediaType Prepunched/Perforata: ""
+*it.CoverMediaType Recycled/Riciclata: ""
+*it.CoverMediaType Cardstock/Cartoncino: ""
+*it.CoverMediaType Vellum/Velina: ""
+*it.CoverMediaType Envelope/Busta: ""
+*it.CoverMediaType Rough/Grezza: ""
+*it.CoverMediaType Thick/Spessa: ""
+*it.CoverMediaType CoatedPaper/Patinata: ""
+*it.CoverMediaType Highqlty/Alta qualità: ""
+*it.CoverMediaType User1/Tipo personalizzato 1: ""
+*it.CoverMediaType User2/Tipo personalizzato 2: ""
+*it.CoverMediaType User3/Tipo personalizzato 3: ""
+*it.CoverMediaType User4/Tipo personalizzato 4: ""
+*it.CoverMediaType User5/Tipo personalizzato 5: ""
+*it.CoverMediaType User6/Tipo personalizzato 6: ""
+*it.CoverMediaType User7/Tipo personalizzato 7: ""
+*it.CoverMediaType User8/Tipo personalizzato 8: ""
+*it.CoverMediaType Internal/Cassetto 1: ""
+*it.CoverMediaType PF500A/Cassetto 2: ""
+*it.CoverMediaType PF500B/Cassetto 3: ""
+*it.CoverMediaType PF500C/Cassetto 4: ""
+*it.CoverMediaType MF1/Vassoio bypass: ""
+*it.Translation TransMediaType/TransMediaType: ""
+*it.TransMediaType PrnDef/Non specificato: ""
+*it.TransMediaType Plain/Normale: ""
+*it.TransMediaType Labels/Etichette: ""
+*it.TransMediaType Letterhead/Intestata: ""
+*it.TransMediaType Bond/Pregiata: ""
+*it.TransMediaType Color/A colori: ""
+*it.TransMediaType Preprinted/Prestampata: ""
+*it.TransMediaType Prepunched/Perforata: ""
+*it.TransMediaType Recycled/Riciclata: ""
+*it.TransMediaType Cardstock/Cartoncino: ""
+*it.TransMediaType Vellum/Velina: ""
+*it.TransMediaType Envelope/Busta: ""
+*it.TransMediaType Rough/Grezza: ""
+*it.TransMediaType Thick/Spessa: ""
+*it.TransMediaType CoatedPaper/Patinata: ""
+*it.TransMediaType Highqlty/Alta qualità: ""
+*it.TransMediaType User1/Tipo personalizzato 1: ""
+*it.TransMediaType User2/Tipo personalizzato 2: ""
+*it.TransMediaType User3/Tipo personalizzato 3: ""
+*it.TransMediaType User4/Tipo personalizzato 4: ""
+*it.TransMediaType User5/Tipo personalizzato 5: ""
+*it.TransMediaType User6/Tipo personalizzato 6: ""
+*it.TransMediaType User7/Tipo personalizzato 7: ""
+*it.TransMediaType User8/Tipo personalizzato 8: ""
+*it.TransMediaType Internal/Cassetto 1: ""
+*it.TransMediaType PF500A/Cassetto 2: ""
+*it.TransMediaType PF500B/Cassetto 3: ""
+*it.TransMediaType PF500C/Cassetto 4: ""
+*it.Translation PageMediaType/PageMediaType: ""
+*it.PageMediaType PrnDef/Non specificato: ""
+*it.PageMediaType Plain/Normale: ""
+*it.PageMediaType Transparency/Lucido: ""
+*it.PageMediaType Labels/Etichette: ""
+*it.PageMediaType Letterhead/Intestata: ""
+*it.PageMediaType Bond/Pregiata: ""
+*it.PageMediaType Color/A colori: ""
+*it.PageMediaType Preprinted/Prestampata: ""
+*it.PageMediaType Prepunched/Perforata: ""
+*it.PageMediaType Recycled/Riciclata: ""
+*it.PageMediaType Cardstock/Cartoncino: ""
+*it.PageMediaType Vellum/Velina: ""
+*it.PageMediaType Envelope/Busta: ""
+*it.PageMediaType Rough/Grezza: ""
+*it.PageMediaType Thick/Spessa: ""
+*it.PageMediaType CoatedPaper/Patinata: ""
+*it.PageMediaType Highqlty/Alta qualità: ""
+*it.PageMediaType User1/Tipo personalizzato 1: ""
+*it.PageMediaType User2/Tipo personalizzato 2: ""
+*it.PageMediaType User3/Tipo personalizzato 3: ""
+*it.PageMediaType User4/Tipo personalizzato 4: ""
+*it.PageMediaType User5/Tipo personalizzato 5: ""
+*it.PageMediaType User6/Tipo personalizzato 6: ""
+*it.PageMediaType User7/Tipo personalizzato 7: ""
+*it.PageMediaType User8/Tipo personalizzato 8: ""
+*it.PageMediaType Internal/Cassetto 1: ""
+*it.PageMediaType PF500A/Cassetto 2: ""
+*it.PageMediaType PF500B/Cassetto 3: ""
+*it.PageMediaType PF500C/Cassetto 4: ""
+*it.PageMediaType MF1/Vassoio bypass: ""
+*it.Translation KCVersion/PPD Versione: ""
+*it.KCVersion Default/8.4 [07-06-2011]: ""
+*it.Translation MediaOptions/Tipo di Supporto: ""
+*it.Translation MediaType/Media Type: ""
+*it.MediaType PrnDef/Non specificato: ""
+*it.MediaType Auto/Selezione automatica supporto: ""
+*it.MediaType Plain/Normale: ""
+*it.MediaType Transparency/Lucido: ""
+*it.MediaType Labels/Etichette: ""
+*it.MediaType Letterhead/Intestata: ""
+*it.MediaType Bond/Pregiata: ""
+*it.MediaType Color/A colori: ""
+*it.MediaType Preprinted/Prestampata: ""
+*it.MediaType Prepunched/Perforata: ""
+*it.MediaType Recycled/Riciclata: ""
+*it.MediaType Cardstock/Cartoncino: ""
+*it.MediaType Vellum/Velina: ""
+*it.MediaType Envelope/Busta: ""
+*it.MediaType Rough/Grezza: ""
+*it.MediaType Thick/Spessa: ""
+*it.MediaType CoatedPaper/Patinata: ""
+*it.MediaType Highqlty/Alta qualità: ""
+*it.MediaType User1/Tipo personalizzato 1: ""
+*it.MediaType User2/Tipo personalizzato 2: ""
+*it.MediaType User3/Tipo personalizzato 3: ""
+*it.MediaType User4/Tipo personalizzato 4: ""
+*it.MediaType User5/Tipo personalizzato 5: ""
+*it.MediaType User6/Tipo personalizzato 6: ""
+*it.MediaType User7/Tipo personalizzato 7: ""
+*it.MediaType User8/Tipo personalizzato 8: ""
+*it.Translation FinishingOptions/Finitura: ""
+*it.Translation Duplex/Modalità Fronte Retro: ""
+*it.Duplex None/Nessuno: ""
+*it.Duplex DuplexTumble/Lato Corto: ""
+*it.Duplex DuplexNoTumble/Lato Lungo: ""
+*it.Translation StorageOptions/Gestione Proc. di Stampa: ""
+*it.Translation KCCollate/Gestione Proc. di Stampa: ""
+*it.KCCollate PrnDef/Impostaz. stampante: ""
+*it.KCCollate On/Fascicola: ""
+*it.KCCollate None/Nessuno: ""
+*it.KCCollate QuickCopy/Copia rapida: ""
+*it.KCCollate ProofHold/Controlla e mantieni: ""
+*it.KCCollate JobStorage/Memorizzazione processi di stampa: ""
+*it.KCCollate PrivatePrint/Private Print: ""
+*it.KCCollate CustomBox/Custom Box: ""
+*it.Translation AccountingOptions/Contabilità processi: ""
+*it.Translation KmManagment/Contabilità processi: ""
+*it.KmManagment Default/Disattivato: ""
+*it.KmManagment MG00000000/00000000: ""
+*it.KmManagment MG00000001/00000001: ""
+*it.KmManagment MG00000002/00000002: ""
+*it.KmManagment MG00000003/00000003: ""
+*it.KmManagment MG00000004/00000004: ""
+*it.KmManagment MG00000005/00000005: ""
+*it.KmManagment MG00000006/00000006: ""
+*it.KmManagment MG00000007/00000007: ""
+*it.KmManagment MG00000008/00000008: ""
+*it.KmManagment MG00000009/00000009: ""
+*it.KmManagment MG00000010/00000010: ""
+*it.KmManagment MG00000011/00000011: ""
+*it.KmManagment MG00000012/00000012: ""
+*it.KmManagment MG00000013/00000013: ""
+*it.KmManagment MG00000014/00000014: ""
+*it.KmManagment MG00000015/00000015: ""
+*it.KmManagment MG00000016/00000016: ""
+*it.KmManagment MG00000017/00000017: ""
+*it.KmManagment MG00000018/00000018: ""
+*it.KmManagment MG00000019/00000019: ""
+*it.KmManagment MG00000020/00000020: ""
+*it.KmManagment MG00000021/00000021: ""
+*it.KmManagment MG00000022/00000022: ""
+*it.KmManagment MG00000023/00000023: ""
+*it.KmManagment MG00000024/00000024: ""
+*it.KmManagment MG00000025/00000025: ""
+*it.KmManagment MG00000026/00000026: ""
+*it.KmManagment MG00000027/00000027: ""
+*it.KmManagment MG00000028/00000028: ""
+*it.KmManagment MG00000029/00000029: ""
+*it.KmManagment MG00000030/00000030: ""
+*it.Translation KMWatermark/Watermark: ""
+*it.Translation WmFlag/Watermark Flag: ""
+*it.WmFlag None/None: ""
+*it.WmFlag Single/Single: ""
+*it.WmFlag Multiple/Multiple: ""
+*it.Translation WmText/Watermark Text: ""
+*it.WmText Confidential/CONFIDENTIAL: ""
+*it.WmText Original/ORIGINAL: ""
+*it.WmText Copy/COPY: ""
+*it.WmText DoNotPhotoCopy/DO NOT PHOTOCOPY: ""
+*it.WmText Draft/DRAFT: ""
+*it.WmText Final/FINAL: ""
+*it.WmText Proof/PROOF: ""
+*it.Translation WmFont/Watermark Font: ""
+*it.WmFont Arial-BoldMT/Arial: ""
+*it.WmFont Arial-BoldItalicMT/Arial Italic: ""
+*it.WmFont Courier-Bold/Courier: ""
+*it.WmFont Courier-BoldOblique/Courier Italic: ""
+*it.WmFont Helvetica-Bold/Helvetica: ""
+*it.WmFont Helvetica-BoldOblique/Helvetica Italic: ""
+*it.WmFont Palatino-Bold/Palatino: ""
+*it.WmFont Palatino-BoldItalic/Palatino Italic: ""
+*it.WmFont Times-Bold/Times: ""
+*it.WmFont Times-BoldItalic/Times Italic: ""
+*it.Translation WmColor/Watermark Color: ""
+*it.WmColor Red/Rosso: ""
+*it.WmColor Green/Verde: ""
+*it.WmColor Blue/Blu: ""
+*it.WmColor Black/Nero: ""
+*it.Translation WmType/Watermark Type: ""
+*it.WmType Solid/Piene: ""
+*it.WmType Hollow/Contorno: ""
+*it.Translation WmAngle/Watermark Angle: ""
+*it.WmAngle -180/-180 gradi: ""
+*it.WmAngle -170/-170 gradi: ""
+*it.WmAngle -160/-160 gradi: ""
+*it.WmAngle -150/-150 gradi: ""
+*it.WmAngle -140/-140 gradi: ""
+*it.WmAngle -130/-130 gradi: ""
+*it.WmAngle -120/-120 gradi: ""
+*it.WmAngle -110/-110 gradi: ""
+*it.WmAngle -100/-100 gradi: ""
+*it.WmAngle -90/-90 gradi: ""
+*it.WmAngle -80/-80 gradi: ""
+*it.WmAngle -70/-70 gradi: ""
+*it.WmAngle -60/-60 gradi: ""
+*it.WmAngle -50/-50 gradi: ""
+*it.WmAngle -40/-40 gradi: ""
+*it.WmAngle -30/-30 gradi: ""
+*it.WmAngle -20/-20 gradi: ""
+*it.WmAngle -10/-10 gradi: ""
+*it.WmAngle 0/0 gradi: ""
+*it.WmAngle 10/10 gradi: ""
+*it.WmAngle 20/20 gradi: ""
+*it.WmAngle 30/30 gradi: ""
+*it.WmAngle 40/40 gradi: ""
+*it.WmAngle 50/50 gradi: ""
+*it.WmAngle 60/60 gradi: ""
+*it.WmAngle 70/70 gradi: ""
+*it.WmAngle 80/80 gradi: ""
+*it.WmAngle 90/90 gradi: ""
+*it.WmAngle 100/100 gradi: ""
+*it.WmAngle 110/110 gradi: ""
+*it.WmAngle 120/120 gradi: ""
+*it.WmAngle 130/130 gradi: ""
+*it.WmAngle 140/140 gradi: ""
+*it.WmAngle 150/150 gradi: ""
+*it.WmAngle 160/160 gradi: ""
+*it.WmAngle 170/170 gradi: ""
+*it.WmAngle 180/180 gradi: ""
+*it.Translation WmSize/Watermark Size: ""
+*it.WmSize 24/24 punti: ""
+*it.WmSize 30/30 punti: ""
+*it.WmSize 36/36 punti: ""
+*it.WmSize 42/42 punti: ""
+*it.WmSize 48/48 punti: ""
+*it.WmSize 54/54 punti: ""
+*it.WmSize 60/60 punti: ""
+*it.WmSize 66/66 punti: ""
+*it.WmSize 72/72 punti: ""
+*it.Translation WmTransparent/Watermark Option: ""
+*it.WmTransparent watermark/Filigrana: ""
+*it.WmTransparent stamp/Timbro: ""
+*it.Translation WmIntensity/Watermark Intensity: ""
+*it.WmIntensity 1/1: ""
+*it.WmIntensity 2/2: ""
+*it.WmIntensity 3/3: ""
+*it.WmIntensity 4/4: ""
+*it.WmIntensity 5/5: ""
+*% Korean localization
+*ko.Translation ModelName/Kyocera FS-C5300DN KPDL: ""
+*ko.Translation JCL/JCL: ""
+*ko.Translation JCLTrapping/트래핑: ""
+*ko.JCLTrapping Off/사용 안함: ""
+*ko.JCLTrapping Light/밝게: ""
+*ko.JCLTrapping Medium/중간: ""
+*ko.JCLTrapping Heavy/진하게: ""
+*ko.JCLTrapping VeryHeavy/매우 진하게: ""
+*ko.Translation InstallableOptions/설치된 옵션: ""
+*ko.Translation Option20/용지 공급기: ""
+*ko.Option20 None/설치 안됨: ""
+*ko.Option20 One/하나: ""
+*ko.Option20 Two/둘: ""
+*ko.Option20 Three/셋: ""
+*ko.Translation Option18/옵션 디스크: ""
+*ko.Option18 None/설치 안됨: ""
+*ko.Option18 HardDisk/하드 디스크: ""
+*ko.Option18 RAMDisk/RAM 디스크: ""
+*ko.Translation GraphicsOptions/그래픽: ""
+*ko.Translation KCEcoprint/Ecoprint: ""
+*ko.KCEcoprint Off/사용 안함: ""
+*ko.KCEcoprint On/사용: ""
+*ko.Translation ColorModel/색상 모드: ""
+*ko.ColorModel CMYK/컬러 (CMYK): ""
+*ko.ColorModel Gray/흑백: ""
+*ko.Translation KCHalftone/하프톤 화면: ""
+*ko.KCHalftone Gradation/정확한 색상에 맞게 최적화(색상계): ""
+*ko.KCHalftone Detail/색상 대비에 맞게 최적화(이미지 최적화): ""
+*ko.KCHalftone LineArt/색상 채도에 맞게 최적화(그래프 최적화): ""
+*ko.Translation KCGlossmode/광택 모드: ""
+*ko.KCGlossmode False/사용 안함: ""
+*ko.KCGlossmode True/사용: ""
+*ko.Translation Colorreprod/색상 복제: ""
+*ko.Colorreprod Printersettings/프린터 설정: ""
+*ko.Colorreprod Textgraph/텍스트 및 그래픽: ""
+*ko.Colorreprod Textphoto/텍스트 및 사진: ""
+*ko.Colorreprod Vivid/생생한 컬러: ""
+*ko.Colorreprod Publications/간행물: ""
+*ko.Colorreprod Lineart/라인 아트: ""
+*ko.Translation CIE/CIE 최적화: ""
+*ko.CIE PrnDef/프린터 설정: ""
+*ko.CIE False/사용 안함: ""
+*ko.CIE True/사용: ""
+*ko.Translation General/General: ""
+*ko.Translation PagePolicy/Page Policy: ""
+*ko.PagePolicy On/AutoSizeSelect: ""
+*ko.Translation PageSize/Media Size: ""
+*ko.PageSize A4/A4: ""
+*ko.PageSize A5/A5: ""
+*ko.PageSize A6/A6: ""
+*ko.PageSize B5/B5 (JIS): ""
+*ko.PageSize ISOB5/B5 (ISO): ""
+*ko.PageSize B6/B6: ""
+*ko.PageSize OficioII/Oficio II: ""
+*ko.PageSize Folio/Folio (210 x 330mm): ""
+*ko.PageSize Statement/Statement: ""
+*ko.PageSize P16K/16K: ""
+*ko.PageSize Letter/Letter: ""
+*ko.PageSize Legal/Legal: ""
+*ko.PageSize Executive/Executive: ""
+*ko.PageSize EnvPersonal/봉투 #6: ""
+*ko.PageSize Env9/봉투 #9: ""
+*ko.PageSize Env10/봉투 #10: ""
+*ko.PageSize EnvMonarch/봉투 Monarch: ""
+*ko.PageSize EnvDL/봉투 DL: ""
+*ko.PageSize EnvC5/봉투 C5: ""
+*ko.PageSize Custom/Custom: ""
+*ko.Translation PageRegion/PageRegion: ""
+*ko.PageRegion A4/A4: ""
+*ko.PageRegion A5/A5: ""
+*ko.PageRegion A6/A6: ""
+*ko.PageRegion B5/B5 (JIS): ""
+*ko.PageRegion ISOB5/B5 (ISO): ""
+*ko.PageRegion B6/B6: ""
+*ko.PageRegion Letter/Letter: ""
+*ko.PageRegion Legal/Legal: ""
+*ko.PageRegion Executive/Executive: ""
+*ko.PageRegion EnvPersonal/봉투 #6: ""
+*ko.PageRegion Env9/봉투 #9: ""
+*ko.PageRegion Env10/봉투 #10: ""
+*ko.PageRegion EnvMonarch/봉투 Monarch: ""
+*ko.PageRegion EnvDL/봉투 DL: ""
+*ko.PageRegion EnvC5/봉투 C5: ""
+*ko.PageRegion OficioII/Oficio II: ""
+*ko.PageRegion Folio/Folio (210 x 330mm): ""
+*ko.PageRegion Statement/Statement: ""
+*ko.PageRegion P16K/16K: ""
+*ko.PageRegion Custom/Custom: ""
+*ko.Translation InputSlot/Media Source: ""
+*ko.InputSlot Internal/카세트 1: ""
+*ko.InputSlot PF500A/카세트 2: ""
+*ko.InputSlot PF500B/카세트 3: ""
+*ko.InputSlot PF500C/카세트 4: ""
+*ko.InputSlot MF1/다용도 용지함: ""
+*ko.Translation CoverMediaType/CoverMediaType: ""
+*ko.CoverMediaType PrnDef/지정되지 않음: ""
+*ko.CoverMediaType Plain/일반용지: ""
+*ko.CoverMediaType Transparency/OHP필름: ""
+*ko.CoverMediaType Labels/레이블: ""
+*ko.CoverMediaType Letterhead/레터 헤드: ""
+*ko.CoverMediaType Bond/본드지: ""
+*ko.CoverMediaType Color/컬러지: ""
+*ko.CoverMediaType Preprinted/미리 인쇄된 용지: ""
+*ko.CoverMediaType Prepunched/사전 펀치: ""
+*ko.CoverMediaType Recycled/재생지: ""
+*ko.CoverMediaType Cardstock/카드 용지: ""
+*ko.CoverMediaType Vellum/벨럼: ""
+*ko.CoverMediaType Envelope/봉투: ""
+*ko.CoverMediaType Rough/갱지: ""
+*ko.CoverMediaType Thick/두꺼운 용지: ""
+*ko.CoverMediaType CoatedPaper/코팅 용지: ""
+*ko.CoverMediaType Highqlty/고급지: ""
+*ko.CoverMediaType User1/사용자 정의 1: ""
+*ko.CoverMediaType User2/사용자 정의 2: ""
+*ko.CoverMediaType User3/사용자 정의 3: ""
+*ko.CoverMediaType User4/사용자 정의 4: ""
+*ko.CoverMediaType User5/사용자 정의 5: ""
+*ko.CoverMediaType User6/사용자 정의 6: ""
+*ko.CoverMediaType User7/사용자 정의 7: ""
+*ko.CoverMediaType User8/사용자 정의 8: ""
+*ko.CoverMediaType Internal/카세트 1: ""
+*ko.CoverMediaType PF500A/카세트 2: ""
+*ko.CoverMediaType PF500B/카세트 3: ""
+*ko.CoverMediaType PF500C/카세트 4: ""
+*ko.CoverMediaType MF1/다용도 용지함: ""
+*ko.Translation TransMediaType/TransMediaType: ""
+*ko.TransMediaType PrnDef/지정되지 않음: ""
+*ko.TransMediaType Plain/일반용지: ""
+*ko.TransMediaType Labels/레이블: ""
+*ko.TransMediaType Letterhead/레터 헤드: ""
+*ko.TransMediaType Bond/본드지: ""
+*ko.TransMediaType Color/컬러지: ""
+*ko.TransMediaType Preprinted/미리 인쇄된 용지: ""
+*ko.TransMediaType Prepunched/사전 펀치: ""
+*ko.TransMediaType Recycled/재생지: ""
+*ko.TransMediaType Cardstock/카드 용지: ""
+*ko.TransMediaType Vellum/벨럼: ""
+*ko.TransMediaType Envelope/봉투: ""
+*ko.TransMediaType Rough/갱지: ""
+*ko.TransMediaType Thick/두꺼운 용지: ""
+*ko.TransMediaType CoatedPaper/코팅 용지: ""
+*ko.TransMediaType Highqlty/고급지: ""
+*ko.TransMediaType User1/사용자 정의 1: ""
+*ko.TransMediaType User2/사용자 정의 2: ""
+*ko.TransMediaType User3/사용자 정의 3: ""
+*ko.TransMediaType User4/사용자 정의 4: ""
+*ko.TransMediaType User5/사용자 정의 5: ""
+*ko.TransMediaType User6/사용자 정의 6: ""
+*ko.TransMediaType User7/사용자 정의 7: ""
+*ko.TransMediaType User8/사용자 정의 8: ""
+*ko.TransMediaType Internal/카세트 1: ""
+*ko.TransMediaType PF500A/카세트 2: ""
+*ko.TransMediaType PF500B/카세트 3: ""
+*ko.TransMediaType PF500C/카세트 4: ""
+*ko.Translation PageMediaType/PageMediaType: ""
+*ko.PageMediaType PrnDef/지정되지 않음: ""
+*ko.PageMediaType Plain/일반용지: ""
+*ko.PageMediaType Transparency/OHP필름: ""
+*ko.PageMediaType Labels/레이블: ""
+*ko.PageMediaType Letterhead/레터 헤드: ""
+*ko.PageMediaType Bond/본드지: ""
+*ko.PageMediaType Color/컬러지: ""
+*ko.PageMediaType Preprinted/미리 인쇄된 용지: ""
+*ko.PageMediaType Prepunched/사전 펀치: ""
+*ko.PageMediaType Recycled/재생지: ""
+*ko.PageMediaType Cardstock/카드 용지: ""
+*ko.PageMediaType Vellum/벨럼: ""
+*ko.PageMediaType Envelope/봉투: ""
+*ko.PageMediaType Rough/갱지: ""
+*ko.PageMediaType Thick/두꺼운 용지: ""
+*ko.PageMediaType CoatedPaper/코팅 용지: ""
+*ko.PageMediaType Highqlty/고급지: ""
+*ko.PageMediaType User1/사용자 정의 1: ""
+*ko.PageMediaType User2/사용자 정의 2: ""
+*ko.PageMediaType User3/사용자 정의 3: ""
+*ko.PageMediaType User4/사용자 정의 4: ""
+*ko.PageMediaType User5/사용자 정의 5: ""
+*ko.PageMediaType User6/사용자 정의 6: ""
+*ko.PageMediaType User7/사용자 정의 7: ""
+*ko.PageMediaType User8/사용자 정의 8: ""
+*ko.PageMediaType Internal/카세트 1: ""
+*ko.PageMediaType PF500A/카세트 2: ""
+*ko.PageMediaType PF500B/카세트 3: ""
+*ko.PageMediaType PF500C/카세트 4: ""
+*ko.PageMediaType MF1/다용도 용지함: ""
+*ko.Translation KCVersion/PPD 버전: ""
+*ko.KCVersion Default/8.4 [2010-12-07]: ""
+*ko.Translation MediaOptions/미디어 종류: ""
+*ko.Translation MediaType/Media Type: ""
+*ko.MediaType PrnDef/지정되지 않음: ""
+*ko.MediaType Auto/용지 자동 선택: ""
+*ko.MediaType Plain/일반용지: ""
+*ko.MediaType Transparency/OHP필름: ""
+*ko.MediaType Labels/레이블: ""
+*ko.MediaType Letterhead/레터 헤드: ""
+*ko.MediaType Bond/본드지: ""
+*ko.MediaType Color/컬러지: ""
+*ko.MediaType Preprinted/미리 인쇄된 용지: ""
+*ko.MediaType Prepunched/사전 펀치: ""
+*ko.MediaType Recycled/재생지: ""
+*ko.MediaType Cardstock/카드 용지: ""
+*ko.MediaType Vellum/벨럼: ""
+*ko.MediaType Envelope/봉투: ""
+*ko.MediaType Rough/갱지: ""
+*ko.MediaType Thick/두꺼운 용지: ""
+*ko.MediaType CoatedPaper/코팅 용지: ""
+*ko.MediaType Highqlty/고급지: ""
+*ko.MediaType User1/사용자 정의 1: ""
+*ko.MediaType User2/사용자 정의 2: ""
+*ko.MediaType User3/사용자 정의 3: ""
+*ko.MediaType User4/사용자 정의 4: ""
+*ko.MediaType User5/사용자 정의 5: ""
+*ko.MediaType User6/사용자 정의 6: ""
+*ko.MediaType User7/사용자 정의 7: ""
+*ko.MediaType User8/사용자 정의 8: ""
+*ko.Translation FinishingOptions/마감: ""
+*ko.Translation Duplex/양면 인쇄: ""
+*ko.Duplex None/없음: ""
+*ko.Duplex DuplexTumble/짧은 가장자리: ""
+*ko.Duplex DuplexNoTumble/긴 가장자리: ""
+*ko.Translation StorageOptions/작업 설정: ""
+*ko.Translation KCCollate/작업 설정: ""
+*ko.KCCollate PrnDef/프린터 설정: ""
+*ko.KCCollate On/페이지 맞춤: ""
+*ko.KCCollate None/없음: ""
+*ko.KCCollate QuickCopy/신속 복사: ""
+*ko.KCCollate ProofHold/교정 및 대기: ""
+*ko.KCCollate JobStorage/작업 저장: ""
+*ko.KCCollate PrivatePrint/Private Print: ""
+*ko.KCCollate CustomBox/Custom Box: ""
+*ko.Translation AccountingOptions/작업량 통계 시스템: ""
+*ko.Translation KmManagment/작업량 통계 시스템: ""
+*ko.KmManagment Default/사용 안함: ""
+*ko.KmManagment MG00000000/00000000: ""
+*ko.KmManagment MG00000001/00000001: ""
+*ko.KmManagment MG00000002/00000002: ""
+*ko.KmManagment MG00000003/00000003: ""
+*ko.KmManagment MG00000004/00000004: ""
+*ko.KmManagment MG00000005/00000005: ""
+*ko.KmManagment MG00000006/00000006: ""
+*ko.KmManagment MG00000007/00000007: ""
+*ko.KmManagment MG00000008/00000008: ""
+*ko.KmManagment MG00000009/00000009: ""
+*ko.KmManagment MG00000010/00000010: ""
+*ko.KmManagment MG00000011/00000011: ""
+*ko.KmManagment MG00000012/00000012: ""
+*ko.KmManagment MG00000013/00000013: ""
+*ko.KmManagment MG00000014/00000014: ""
+*ko.KmManagment MG00000015/00000015: ""
+*ko.KmManagment MG00000016/00000016: ""
+*ko.KmManagment MG00000017/00000017: ""
+*ko.KmManagment MG00000018/00000018: ""
+*ko.KmManagment MG00000019/00000019: ""
+*ko.KmManagment MG00000020/00000020: ""
+*ko.KmManagment MG00000021/00000021: ""
+*ko.KmManagment MG00000022/00000022: ""
+*ko.KmManagment MG00000023/00000023: ""
+*ko.KmManagment MG00000024/00000024: ""
+*ko.KmManagment MG00000025/00000025: ""
+*ko.KmManagment MG00000026/00000026: ""
+*ko.KmManagment MG00000027/00000027: ""
+*ko.KmManagment MG00000028/00000028: ""
+*ko.KmManagment MG00000029/00000029: ""
+*ko.KmManagment MG00000030/00000030: ""
+*ko.Translation KMWatermark/Watermark: ""
+*ko.Translation WmFlag/Watermark Flag: ""
+*ko.WmFlag None/None: ""
+*ko.WmFlag Single/Single: ""
+*ko.WmFlag Multiple/Multiple: ""
+*ko.Translation WmText/Watermark Text: ""
+*ko.WmText Confidential/CONFIDENTIAL: ""
+*ko.WmText Original/ORIGINAL: ""
+*ko.WmText Copy/COPY: ""
+*ko.WmText DoNotPhotoCopy/DO NOT PHOTOCOPY: ""
+*ko.WmText Draft/DRAFT: ""
+*ko.WmText Final/FINAL: ""
+*ko.WmText Proof/PROOF: ""
+*ko.Translation WmFont/Watermark Font: ""
+*ko.WmFont Arial-BoldMT/Arial: ""
+*ko.WmFont Arial-BoldItalicMT/Arial Italic: ""
+*ko.WmFont Courier-Bold/Courier: ""
+*ko.WmFont Courier-BoldOblique/Courier Italic: ""
+*ko.WmFont Helvetica-Bold/Helvetica: ""
+*ko.WmFont Helvetica-BoldOblique/Helvetica Italic: ""
+*ko.WmFont Palatino-Bold/Palatino: ""
+*ko.WmFont Palatino-BoldItalic/Palatino Italic: ""
+*ko.WmFont Times-Bold/Times: ""
+*ko.WmFont Times-BoldItalic/Times Italic: ""
+*ko.Translation WmColor/Watermark Color: ""
+*ko.WmColor Red/빨강: ""
+*ko.WmColor Green/녹색: ""
+*ko.WmColor Blue/파랑: ""
+*ko.WmColor Black/검정: ""
+*ko.Translation WmType/Watermark Type: ""
+*ko.WmType Solid/채움: ""
+*ko.WmType Hollow/윤곽선: ""
+*ko.Translation WmAngle/Watermark Angle: ""
+*ko.WmAngle -180/-180 도: ""
+*ko.WmAngle -170/-170 도: ""
+*ko.WmAngle -160/-160 도: ""
+*ko.WmAngle -150/-150 도: ""
+*ko.WmAngle -140/-140 도: ""
+*ko.WmAngle -130/-130 도: ""
+*ko.WmAngle -120/-120 도: ""
+*ko.WmAngle -110/-110 도: ""
+*ko.WmAngle -100/-100 도: ""
+*ko.WmAngle -90/-90 도: ""
+*ko.WmAngle -80/-80 도: ""
+*ko.WmAngle -70/-70 도: ""
+*ko.WmAngle -60/-60 도: ""
+*ko.WmAngle -50/-50 도: ""
+*ko.WmAngle -40/-40 도: ""
+*ko.WmAngle -30/-30 도: ""
+*ko.WmAngle -20/-20 도: ""
+*ko.WmAngle -10/-10 도: ""
+*ko.WmAngle 0/0 도: ""
+*ko.WmAngle 10/10 도: ""
+*ko.WmAngle 20/20 도: ""
+*ko.WmAngle 30/30 도: ""
+*ko.WmAngle 40/40 도: ""
+*ko.WmAngle 50/50 도: ""
+*ko.WmAngle 60/60 도: ""
+*ko.WmAngle 70/70 도: ""
+*ko.WmAngle 80/80 도: ""
+*ko.WmAngle 90/90 도: ""
+*ko.WmAngle 100/100 도: ""
+*ko.WmAngle 110/110 도: ""
+*ko.WmAngle 120/120 도: ""
+*ko.WmAngle 130/130 도: ""
+*ko.WmAngle 140/140 도: ""
+*ko.WmAngle 150/150 도: ""
+*ko.WmAngle 160/160 도: ""
+*ko.WmAngle 170/170 도: ""
+*ko.WmAngle 180/180 도: ""
+*ko.Translation WmSize/Watermark Size: ""
+*ko.WmSize 24/24 포인트: ""
+*ko.WmSize 30/30 포인트: ""
+*ko.WmSize 36/36 포인트: ""
+*ko.WmSize 42/42 포인트: ""
+*ko.WmSize 48/48 포인트: ""
+*ko.WmSize 54/54 포인트: ""
+*ko.WmSize 60/60 포인트: ""
+*ko.WmSize 66/66 포인트: ""
+*ko.WmSize 72/72 포인트: ""
+*ko.Translation WmTransparent/Watermark Option: ""
+*ko.WmTransparent watermark/워터마크: ""
+*ko.WmTransparent stamp/스탬프: ""
+*ko.Translation WmIntensity/Watermark Intensity: ""
+*ko.WmIntensity 1/1: ""
+*ko.WmIntensity 2/2: ""
+*ko.WmIntensity 3/3: ""
+*ko.WmIntensity 4/4: ""
+*ko.WmIntensity 5/5: ""
+*% Portuguese localization
+*pt.Translation ModelName/Kyocera FS-C5300DN KPDL: ""
+*pt.Translation JCL/JCL: ""
+*pt.Translation JCLTrapping/Trapping: ""
+*pt.JCLTrapping Off/Desactivado: ""
+*pt.JCLTrapping Light/Leve: ""
+*pt.JCLTrapping Medium/Médio: ""
+*pt.JCLTrapping Heavy/Forte: ""
+*pt.JCLTrapping VeryHeavy/Muito forte: ""
+*pt.Translation InstallableOptions/Opções Instalada: ""
+*pt.Translation Option20/Alimentador Opcionales de Papel: ""
+*pt.Option20 None/Não Instalado: ""
+*pt.Option20 One/Um: ""
+*pt.Option20 Two/Dois: ""
+*pt.Option20 Three/Três: ""
+*pt.Translation Option18/Disco Opcional: ""
+*pt.Option18 None/Não Instalado: ""
+*pt.Option18 HardDisk/Disco Rígido: ""
+*pt.Option18 RAMDisk/Disco RAM: ""
+*pt.Translation GraphicsOptions/Gráficos: ""
+*pt.Translation KCEcoprint/EcoPrint: ""
+*pt.KCEcoprint Off/Desactivado: ""
+*pt.KCEcoprint On/Activado: ""
+*pt.Translation ColorModel/Modo Cor: ""
+*pt.ColorModel CMYK/Colorido (CMYK): ""
+*pt.ColorModel Gray/Preto e Branco: ""
+*pt.Translation KCHalftone/Retícula de meio-tom: ""
+*pt.KCHalftone Gradation/Otimizar para suavidade de cores: ""
+*pt.KCHalftone Detail/Otimizar para detalhes: ""
+*pt.KCHalftone LineArt/Otimizar para o desenho de linhas: ""
+*pt.Translation KCGlossmode/Modo brilhante: ""
+*pt.KCGlossmode False/Desativado: ""
+*pt.KCGlossmode True/Ativo: ""
+*pt.Translation Colorreprod/Reprodução de cores: ""
+*pt.Colorreprod Printersettings/Conf. da impressora: ""
+*pt.Colorreprod Textgraph/Texto e gráficos: ""
+*pt.Colorreprod Textphoto/Texto e fotos: ""
+*pt.Colorreprod Vivid/Cores vivas: ""
+*pt.Colorreprod Publications/Publicações: ""
+*pt.Colorreprod Lineart/Arte de linha: ""
+*pt.Translation CIE/Otimização CIE: ""
+*pt.CIE PrnDef/Conf. da impressora: ""
+*pt.CIE False/Desativado: ""
+*pt.CIE True/Ativo: ""
+*pt.Translation General/General: ""
+*pt.Translation PagePolicy/Page Policy: ""
+*pt.PagePolicy On/AutoSizeSelect: ""
+*pt.Translation PageSize/Media Size: ""
+*pt.PageSize A4/A4: ""
+*pt.PageSize A5/A5: ""
+*pt.PageSize A6/A6: ""
+*pt.PageSize B5/B5 (JIS): ""
+*pt.PageSize ISOB5/B5 (ISO): ""
+*pt.PageSize B6/B6: ""
+*pt.PageSize OficioII/Oficio II: ""
+*pt.PageSize Folio/Folio (210 x 330mm): ""
+*pt.PageSize Statement/Statement: ""
+*pt.PageSize P16K/16K: ""
+*pt.PageSize Letter/Carta: ""
+*pt.PageSize Legal/Oficio: ""
+*pt.PageSize Executive/Executivo: ""
+*pt.PageSize EnvPersonal/Envelope #6: ""
+*pt.PageSize Env9/Envelope #9: ""
+*pt.PageSize Env10/Envelope #10: ""
+*pt.PageSize EnvMonarch/Envelope Monarch: ""
+*pt.PageSize EnvDL/Envelope DL: ""
+*pt.PageSize EnvC5/Envelope C5: ""
+*pt.PageSize Custom/Custom: ""
+*pt.Translation PageRegion/PageRegion: ""
+*pt.PageRegion A4/A4: ""
+*pt.PageRegion A5/A5: ""
+*pt.PageRegion A6/A6: ""
+*pt.PageRegion B5/B5 (JIS): ""
+*pt.PageRegion ISOB5/B5 (ISO): ""
+*pt.PageRegion B6/B6: ""
+*pt.PageRegion Letter/Carta: ""
+*pt.PageRegion Legal/Oficio: ""
+*pt.PageRegion Executive/Executivo: ""
+*pt.PageRegion EnvPersonal/Envelope #6: ""
+*pt.PageRegion Env9/Envelope #9: ""
+*pt.PageRegion Env10/Envelope #10: ""
+*pt.PageRegion EnvMonarch/Envelope Monarch: ""
+*pt.PageRegion EnvDL/Envelope DL: ""
+*pt.PageRegion EnvC5/Envelope C5: ""
+*pt.PageRegion OficioII/Oficio II: ""
+*pt.PageRegion Folio/Folio (210 x 330mm): ""
+*pt.PageRegion Statement/Statement: ""
+*pt.PageRegion P16K/16K: ""
+*pt.PageRegion Custom/Custom: ""
+*pt.Translation InputSlot/Media Source: ""
+*pt.InputSlot Internal/Cassete 1: ""
+*pt.InputSlot PF500A/Cassete 2: ""
+*pt.InputSlot PF500B/Cassete 3: ""
+*pt.InputSlot PF500C/Cassete 4: ""
+*pt.InputSlot MF1/Bandeja MP: ""
+*pt.Translation CoverMediaType/CoverMediaType: ""
+*pt.CoverMediaType PrnDef/Não especificado: ""
+*pt.CoverMediaType Plain/Comum: ""
+*pt.CoverMediaType Transparency/Transparência: ""
+*pt.CoverMediaType Labels/Etiquetas: ""
+*pt.CoverMediaType Letterhead/Timbrado: ""
+*pt.CoverMediaType Bond/Bond: ""
+*pt.CoverMediaType Color/Colorido: ""
+*pt.CoverMediaType Preprinted/Pré-impresso: ""
+*pt.CoverMediaType Prepunched/Perfurado: ""
+*pt.CoverMediaType Recycled/Reciclado: ""
+*pt.CoverMediaType Cardstock/Cartão: ""
+*pt.CoverMediaType Vellum/Velino: ""
+*pt.CoverMediaType Envelope/Envelope: ""
+*pt.CoverMediaType Rough/Rugoso: ""
+*pt.CoverMediaType Thick/Espesso: ""
+*pt.CoverMediaType CoatedPaper/Cuchê: ""
+*pt.CoverMediaType Highqlty/Alta qualidade: ""
+*pt.CoverMediaType User1/Tipo personalizado 1: ""
+*pt.CoverMediaType User2/Tipo personalizado 2: ""
+*pt.CoverMediaType User3/Tipo personalizado 3: ""
+*pt.CoverMediaType User4/Tipo personalizado 4: ""
+*pt.CoverMediaType User5/Tipo personalizado 5: ""
+*pt.CoverMediaType User6/Tipo personalizado 6: ""
+*pt.CoverMediaType User7/Tipo personalizado 7: ""
+*pt.CoverMediaType User8/Tipo personalizado 8: ""
+*pt.CoverMediaType Internal/Cassete 1: ""
+*pt.CoverMediaType PF500A/Cassete 2: ""
+*pt.CoverMediaType PF500B/Cassete 3: ""
+*pt.CoverMediaType PF500C/Cassete 4: ""
+*pt.CoverMediaType MF1/Bandeja MP: ""
+*pt.Translation TransMediaType/TransMediaType: ""
+*pt.TransMediaType PrnDef/Não especificado: ""
+*pt.TransMediaType Plain/Comum: ""
+*pt.TransMediaType Labels/Etiquetas: ""
+*pt.TransMediaType Letterhead/Timbrado: ""
+*pt.TransMediaType Bond/Bond: ""
+*pt.TransMediaType Color/Colorido: ""
+*pt.TransMediaType Preprinted/Pré-impresso: ""
+*pt.TransMediaType Prepunched/Perfurado: ""
+*pt.TransMediaType Recycled/Reciclado: ""
+*pt.TransMediaType Cardstock/Cartão: ""
+*pt.TransMediaType Vellum/Velino: ""
+*pt.TransMediaType Envelope/Envelope: ""
+*pt.TransMediaType Rough/Rugoso: ""
+*pt.TransMediaType Thick/Espesso: ""
+*pt.TransMediaType CoatedPaper/Cuchê: ""
+*pt.TransMediaType Highqlty/Alta qualidade: ""
+*pt.TransMediaType User1/Tipo personalizado 1: ""
+*pt.TransMediaType User2/Tipo personalizado 2: ""
+*pt.TransMediaType User3/Tipo personalizado 3: ""
+*pt.TransMediaType User4/Tipo personalizado 4: ""
+*pt.TransMediaType User5/Tipo personalizado 5: ""
+*pt.TransMediaType User6/Tipo personalizado 6: ""
+*pt.TransMediaType User7/Tipo personalizado 7: ""
+*pt.TransMediaType User8/Tipo personalizado 8: ""
+*pt.TransMediaType Internal/Cassete 1: ""
+*pt.TransMediaType PF500A/Cassete 2: ""
+*pt.TransMediaType PF500B/Cassete 3: ""
+*pt.TransMediaType PF500C/Cassete 4: ""
+*pt.Translation PageMediaType/PageMediaType: ""
+*pt.PageMediaType PrnDef/Não especificado: ""
+*pt.PageMediaType Plain/Comum: ""
+*pt.PageMediaType Transparency/Transparência: ""
+*pt.PageMediaType Labels/Etiquetas: ""
+*pt.PageMediaType Letterhead/Timbrado: ""
+*pt.PageMediaType Bond/Bond: ""
+*pt.PageMediaType Color/Colorido: ""
+*pt.PageMediaType Preprinted/Pré-impresso: ""
+*pt.PageMediaType Prepunched/Perfurado: ""
+*pt.PageMediaType Recycled/Reciclado: ""
+*pt.PageMediaType Cardstock/Cartão: ""
+*pt.PageMediaType Vellum/Velino: ""
+*pt.PageMediaType Envelope/Envelope: ""
+*pt.PageMediaType Rough/Rugoso: ""
+*pt.PageMediaType Thick/Espesso: ""
+*pt.PageMediaType CoatedPaper/Cuchê: ""
+*pt.PageMediaType Highqlty/Alta qualidade: ""
+*pt.PageMediaType User1/Tipo personalizado 1: ""
+*pt.PageMediaType User2/Tipo personalizado 2: ""
+*pt.PageMediaType User3/Tipo personalizado 3: ""
+*pt.PageMediaType User4/Tipo personalizado 4: ""
+*pt.PageMediaType User5/Tipo personalizado 5: ""
+*pt.PageMediaType User6/Tipo personalizado 6: ""
+*pt.PageMediaType User7/Tipo personalizado 7: ""
+*pt.PageMediaType User8/Tipo personalizado 8: ""
+*pt.PageMediaType Internal/Cassete 1: ""
+*pt.PageMediaType PF500A/Cassete 2: ""
+*pt.PageMediaType PF500B/Cassete 3: ""
+*pt.PageMediaType PF500C/Cassete 4: ""
+*pt.PageMediaType MF1/Bandeja MP: ""
+*pt.Translation KCVersion/PPD Versão: ""
+*pt.KCVersion Default/8.4 [07-06-2011]: ""
+*pt.Translation MediaOptions/Tipo de Mídia: ""
+*pt.Translation MediaType/Media Type: ""
+*pt.MediaType PrnDef/Não especificado: ""
+*pt.MediaType Auto/Seleção automática de mídia: ""
+*pt.MediaType Plain/Comum: ""
+*pt.MediaType Transparency/Transparência: ""
+*pt.MediaType Labels/Etiquetas: ""
+*pt.MediaType Letterhead/Timbrado: ""
+*pt.MediaType Bond/Bond: ""
+*pt.MediaType Color/Colorido: ""
+*pt.MediaType Preprinted/Pré-impresso: ""
+*pt.MediaType Prepunched/Perfurado: ""
+*pt.MediaType Recycled/Reciclado: ""
+*pt.MediaType Cardstock/Cartão: ""
+*pt.MediaType Vellum/Velino: ""
+*pt.MediaType Envelope/Envelope: ""
+*pt.MediaType Rough/Rugoso: ""
+*pt.MediaType Thick/Espesso: ""
+*pt.MediaType CoatedPaper/Cuchê: ""
+*pt.MediaType Highqlty/Alta qualidade: ""
+*pt.MediaType User1/Tipo personalizado 1: ""
+*pt.MediaType User2/Tipo personalizado 2: ""
+*pt.MediaType User3/Tipo personalizado 3: ""
+*pt.MediaType User4/Tipo personalizado 4: ""
+*pt.MediaType User5/Tipo personalizado 5: ""
+*pt.MediaType User6/Tipo personalizado 6: ""
+*pt.MediaType User7/Tipo personalizado 7: ""
+*pt.MediaType User8/Tipo personalizado 8: ""
+*pt.Translation FinishingOptions/Acabamento: ""
+*pt.Translation Duplex/Modo Duplex: ""
+*pt.Duplex None/Nenhum: ""
+*pt.Duplex DuplexTumble/Juntar pelo lado mais curto: ""
+*pt.Duplex DuplexNoTumble/Juntar pelo lado mais comprido: ""
+*pt.Translation StorageOptions/Spool do Trabalho: ""
+*pt.Translation KCCollate/Spool do Trabalho: ""
+*pt.KCCollate PrnDef/Conf. da impressora: ""
+*pt.KCCollate On/Agrupar: ""
+*pt.KCCollate None/Nenhum: ""
+*pt.KCCollate QuickCopy/Cópia rápida: ""
+*pt.KCCollate ProofHold/Cópia com espera: ""
+*pt.KCCollate JobStorage/Armazenamento de trabalho: ""
+*pt.KCCollate PrivatePrint/Private Print: ""
+*pt.KCCollate CustomBox/Custom Box: ""
+*pt.Translation AccountingOptions/Controle de trabalho: ""
+*pt.Translation KmManagment/Controle de trabalho: ""
+*pt.KmManagment Default/Desactivado: ""
+*pt.KmManagment MG00000000/00000000: ""
+*pt.KmManagment MG00000001/00000001: ""
+*pt.KmManagment MG00000002/00000002: ""
+*pt.KmManagment MG00000003/00000003: ""
+*pt.KmManagment MG00000004/00000004: ""
+*pt.KmManagment MG00000005/00000005: ""
+*pt.KmManagment MG00000006/00000006: ""
+*pt.KmManagment MG00000007/00000007: ""
+*pt.KmManagment MG00000008/00000008: ""
+*pt.KmManagment MG00000009/00000009: ""
+*pt.KmManagment MG00000010/00000010: ""
+*pt.KmManagment MG00000011/00000011: ""
+*pt.KmManagment MG00000012/00000012: ""
+*pt.KmManagment MG00000013/00000013: ""
+*pt.KmManagment MG00000014/00000014: ""
+*pt.KmManagment MG00000015/00000015: ""
+*pt.KmManagment MG00000016/00000016: ""
+*pt.KmManagment MG00000017/00000017: ""
+*pt.KmManagment MG00000018/00000018: ""
+*pt.KmManagment MG00000019/00000019: ""
+*pt.KmManagment MG00000020/00000020: ""
+*pt.KmManagment MG00000021/00000021: ""
+*pt.KmManagment MG00000022/00000022: ""
+*pt.KmManagment MG00000023/00000023: ""
+*pt.KmManagment MG00000024/00000024: ""
+*pt.KmManagment MG00000025/00000025: ""
+*pt.KmManagment MG00000026/00000026: ""
+*pt.KmManagment MG00000027/00000027: ""
+*pt.KmManagment MG00000028/00000028: ""
+*pt.KmManagment MG00000029/00000029: ""
+*pt.KmManagment MG00000030/00000030: ""
+*pt.Translation KMWatermark/Watermark: ""
+*pt.Translation WmFlag/Watermark Flag: ""
+*pt.WmFlag None/None: ""
+*pt.WmFlag Single/Single: ""
+*pt.WmFlag Multiple/Multiple: ""
+*pt.Translation WmText/Watermark Text: ""
+*pt.WmText Confidential/CONFIDENTIAL: ""
+*pt.WmText Original/ORIGINAL: ""
+*pt.WmText Copy/COPY: ""
+*pt.WmText DoNotPhotoCopy/DO NOT PHOTOCOPY: ""
+*pt.WmText Draft/DRAFT: ""
+*pt.WmText Final/FINAL: ""
+*pt.WmText Proof/PROOF: ""
+*pt.Translation WmFont/Watermark Font: ""
+*pt.WmFont Arial-BoldMT/Arial: ""
+*pt.WmFont Arial-BoldItalicMT/Arial Italic: ""
+*pt.WmFont Courier-Bold/Courier: ""
+*pt.WmFont Courier-BoldOblique/Courier Italic: ""
+*pt.WmFont Helvetica-Bold/Helvetica: ""
+*pt.WmFont Helvetica-BoldOblique/Helvetica Italic: ""
+*pt.WmFont Palatino-Bold/Palatino: ""
+*pt.WmFont Palatino-BoldItalic/Palatino Italic: ""
+*pt.WmFont Times-Bold/Times: ""
+*pt.WmFont Times-BoldItalic/Times Italic: ""
+*pt.Translation WmColor/Watermark Color: ""
+*pt.WmColor Red/Vermelho: ""
+*pt.WmColor Green/Verde: ""
+*pt.WmColor Blue/Azul: ""
+*pt.WmColor Black/Preto: ""
+*pt.Translation WmType/Watermark Type: ""
+*pt.WmType Solid/Sólido: ""
+*pt.WmType Hollow/Contorno: ""
+*pt.Translation WmAngle/Watermark Angle: ""
+*pt.WmAngle -180/-180 graus: ""
+*pt.WmAngle -170/-170 graus: ""
+*pt.WmAngle -160/-160 graus: ""
+*pt.WmAngle -150/-150 graus: ""
+*pt.WmAngle -140/-140 graus: ""
+*pt.WmAngle -130/-130 graus: ""
+*pt.WmAngle -120/-120 graus: ""
+*pt.WmAngle -110/-110 graus: ""
+*pt.WmAngle -100/-100 graus: ""
+*pt.WmAngle -90/-90 graus: ""
+*pt.WmAngle -80/-80 graus: ""
+*pt.WmAngle -70/-70 graus: ""
+*pt.WmAngle -60/-60 graus: ""
+*pt.WmAngle -50/-50 graus: ""
+*pt.WmAngle -40/-40 graus: ""
+*pt.WmAngle -30/-30 graus: ""
+*pt.WmAngle -20/-20 graus: ""
+*pt.WmAngle -10/-10 graus: ""
+*pt.WmAngle 0/0 graus: ""
+*pt.WmAngle 10/10 graus: ""
+*pt.WmAngle 20/20 graus: ""
+*pt.WmAngle 30/30 graus: ""
+*pt.WmAngle 40/40 graus: ""
+*pt.WmAngle 50/50 graus: ""
+*pt.WmAngle 60/60 graus: ""
+*pt.WmAngle 70/70 graus: ""
+*pt.WmAngle 80/80 graus: ""
+*pt.WmAngle 90/90 graus: ""
+*pt.WmAngle 100/100 graus: ""
+*pt.WmAngle 110/110 graus: ""
+*pt.WmAngle 120/120 graus: ""
+*pt.WmAngle 130/130 graus: ""
+*pt.WmAngle 140/140 graus: ""
+*pt.WmAngle 150/150 graus: ""
+*pt.WmAngle 160/160 graus: ""
+*pt.WmAngle 170/170 graus: ""
+*pt.WmAngle 180/180 graus: ""
+*pt.Translation WmSize/Watermark Size: ""
+*pt.WmSize 24/24 pontos: ""
+*pt.WmSize 30/30 pontos: ""
+*pt.WmSize 36/36 pontos: ""
+*pt.WmSize 42/42 pontos: ""
+*pt.WmSize 48/48 pontos: ""
+*pt.WmSize 54/54 pontos: ""
+*pt.WmSize 60/60 pontos: ""
+*pt.WmSize 66/66 pontos: ""
+*pt.WmSize 72/72 pontos: ""
+*pt.Translation WmTransparent/Watermark Option: ""
+*pt.WmTransparent watermark/Marca d'água: ""
+*pt.WmTransparent stamp/Carimbo: ""
+*pt.Translation WmIntensity/Watermark Intensity: ""
+*pt.WmIntensity 1/1: ""
+*pt.WmIntensity 2/2: ""
+*pt.WmIntensity 3/3: ""
+*pt.WmIntensity 4/4: ""
+*pt.WmIntensity 5/5: ""
+*cupsLanguages: "de es fr it ko pt"
