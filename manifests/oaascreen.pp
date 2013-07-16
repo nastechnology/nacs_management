@@ -1,11 +1,11 @@
-# == Class: nacs_management::oaascreensize
+# == Class: nacs_management::oaascreen
 #
 # This is the basic setup for nacs_management and creates the NACSManage
 # directory on all NACS support Operating Systems.
 #
 # === Examples
 #
-# include nacs_management::oaascreensize
+# include nacs_management::oaascreen
 #
 # === Authors
 #
@@ -15,7 +15,7 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-class nacs_management::oaascreensize {
+class nacs_management::oaascreen {
 	if ($operatingsystem == 'windows') {
 		file { 'C:/NACSManage/dccmd.exe':
 			ensure	=> present,

@@ -22,7 +22,7 @@ class nacs_management::install_printers::nhs_copier {
 	        mode   => '0655',
 	        owner  => 'root',
 	        group  => '_lp',
-	        source => 'puppet:///modules/nacs_mac_management/nhs_copier.ppd',
+	        source => 'puppet:///modules/nacs_management/nhs_copier.ppd',
 	        before => Printer['nhs_copier'],
 	    }
 
