@@ -18,15 +18,10 @@
 class nacs_management::defaultprinter($server,$printer) {
 
     file { "C:\NACSManage\defaultprint.reg":
-        ensure  => file,
-	owner	=> 'Everyone',
-	group 	=> 'Administrators',
-	mode	=> '0777',
-   	content => template("nacs_management/defaultprinter.erb"),
+        ensure  => absent,
     }
 
-    exec { 'setdefaultprintperms':
-	command => 'C:\SetACL.exe -on "C:\NACSManage\defaultprint.reg" -ot file -actn ace -ace "n:Everyone;p:full"',
-	require => File['C:\NACSManage\defaultprint.reg'],
+    exec { 'setdefaultprinter':
+	command => 'RUNDLL32 PRINTUI.DLL,PrintUIEntry /y /n\\$server\$printer',
     }
 }
