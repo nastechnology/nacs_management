@@ -1,4 +1,4 @@
-# == Class: nacs_management::oaascreensize
+# == Class: nacs_management::oaascreen
 #
 # This is the basic setup for nacs_management and creates the NACSManage
 # directory on all NACS support Operating Systems.
@@ -15,11 +15,11 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-class nacs_management::oaascreensize {
+class nacs_management::oaascreen {
 	if ($operatingsystem == 'windows') {
 		file { 'C:/NACSManage/dccmd.exe':
 			ensure	=> present,
-			source  => "puppet:///modules/nacs_win_management/dccmd.exe",
+			source  => "puppet:///modules/nacs_management/dccmd.exe",
 			mode	=> '0777',
 			owner	=> 'Administrator',
 			group   => 'Administrators',
@@ -28,7 +28,7 @@ class nacs_management::oaascreensize {
 
 	    file { 'C:/NACSManage/dc.exe':
 			ensure  => present,
-			source  => "puppet:///modules/nacs_win_management/dc.exe",
+			source  => "puppet:///modules/nacs_management/dc.exe",
 			mode  	=> '0777',
 			owner	=> 'Administrator',
 			group	=> 'Administrators',
@@ -37,7 +37,7 @@ class nacs_management::oaascreensize {
 
 	    file { 'C:/NACSManage/changescreensize.bat':
 			ensure  => present,
-			source  => "puppet:///modules/nacs_win_management/changescreensize.bat",
+			source  => "puppet:///modules/nacs_management/changescreensize.bat",
 			mode 	=> '0777',
 			owner	=> 'Administrator',
 			group	=> 'Administrators',

@@ -22,7 +22,7 @@ class nacs_management::install_printers::nhs_color {
 		    mode   => '0655',
 		    owner  => 'root',
 		    group  => '_lp',
-		    source => 'puppet:///modules/nacs_mac_management/nhs_color.ppd',
+		    source => 'puppet:///modules/nacs_management/nhs_color.ppd',
 		    before => Printer['nhs_color'],
 		}
 

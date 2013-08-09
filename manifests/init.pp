@@ -24,7 +24,7 @@ class nacs_management {
                 group   => "staff",
                 mode    => 0755,
 		}
-
+	if($operatingsystem == 'Darwin'){
 		file {'/Library/Preferences/com.apple.loginwindow.plist':
 	        ensure => present,
 	        owner => root,
@@ -38,7 +38,7 @@ class nacs_management {
 
 	    exec {'Hide sub-500 users':
         	command => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
-        }
+            }
 
 	    property_list_key { 'LoginwindowText':
 	        ensure => present,
@@ -54,13 +54,14 @@ class nacs_management {
 	      key    => 'enabled',
 	      value  => 'no',
 	    }
+	}
     }
     else {
 	# Assumes Windows - for now
 		file { "C:/NACSManage":
 		    ensure => directory,
-		    owner  => 'Administrator',
-		    group  => 'Administrators',
+		    owner  => 'Everyone',
+		    group  => 'Everyone',
 		    mode   => 0755,
 		}
     }

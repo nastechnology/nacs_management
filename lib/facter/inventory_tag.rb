@@ -6,7 +6,7 @@ Facter.add("inventory_tag") do
     setcode do
         case Facter.value(:operatingsystem)
         when "Darwin"
-                 result = Facter::Util::Resolution.exec("/usr/bin/grep 'tag = ' /opt/fusioninventory$
+                 result = Facter::Util::Resolution.exec("/usr/bin/grep 'tag = ' /opt/fusioninventory-agent/agent.cfg")
                  thestring = result[6..result.length]
         when "windows"
                require 'win32/registry'
