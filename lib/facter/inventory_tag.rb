@@ -14,8 +14,6 @@ Facter.add("inventory_tag") do
                     thestring = reg['tag']
                end
         end
-
-        thestring
     end
 end
 

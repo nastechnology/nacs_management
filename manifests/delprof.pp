@@ -16,7 +16,11 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management::delprof {
+<<<<<<< HEAD
 	if($operatingsystem == 'windows') {
+=======
+	if($operatingsystem == 'windows') {}
+>>>>>>> e3b7b8d5162b2a289c419f4290fab122ffe2bd50
 		file { 'C:/NACSManage/DelProf2.exe':
 		   ensure => 'file',
 		   owner => 'Administrator',

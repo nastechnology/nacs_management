@@ -5,7 +5,7 @@
 #
 # === Examples
 #
-# include nacs_management::oaascreensize
+# include nacs_management::oaascreen
 #
 # === Authors
 #
