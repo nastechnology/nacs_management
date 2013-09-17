@@ -24,7 +24,7 @@ class nacs_management::elementaryfonts {
     }
 
     exec { 'CopyElementaryFonts':
-        command => 'xcopy "C:\NACSManage\elementaryfonts\*.ttf" "C:\WINDOWS\Fonts" /y',
+        command => 'cmd.exe /c xcopy "C:\NACSManage\elementaryfonts\*.ttf" "C:\WINDOWS\Fonts" /y',
         require => Exec['SetFontDirPerms'],
     }
 }

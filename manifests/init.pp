@@ -62,7 +62,7 @@ class nacs_management {
 		    ensure => directory,
 		    owner  => 'Everyone',
 		    group  => 'Everyone',
-		    mode   => 0755,
+		    mode   => 0777,
 		}
     }
 

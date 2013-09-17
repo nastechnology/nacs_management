@@ -21,18 +21,18 @@ class nacs_management::oaascreen {
 			ensure	=> present,
 			source  => "puppet:///modules/nacs_management/dccmd.exe",
 			mode	=> '0777',
-			owner	=> 'Administrator',
-			group   => 'Administrators',
-			replace => false,	
+			owner	=> 'Everyone',
+			group   => 'Everyone',
+			replace => true,	
 	    }
 
 	    file { 'C:/NACSManage/dc.exe':
 			ensure  => present,
 			source  => "puppet:///modules/nacs_management/dc.exe",
 			mode  	=> '0777',
-			owner	=> 'Administrator',
-			group	=> 'Administrators',
-			replace => false,
+			owner	=> 'Everyone',
+			group	=> 'Everyone',
+			replace => true,
 	    }
 
 	    file { 'C:/NACSManage/changescreensize.bat':
