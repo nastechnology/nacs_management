@@ -32,13 +32,17 @@
 #
 class nacs_management::techspecs {
 
-    case $operatingsystem {
-	'Darwin':{
-	    include nacs_management::techspecs::mac
-	}
-	default:{
-	    include nacs_management::techspecs::win
-	}
+  case $::operatingsystem {
+    'Darwin':{
+      include nacs_management::techspecs::mac
     }
 
+    'Ubuntu':{
+      include nacs_management::techspecs::ubuntu
+    }
+
+    default:{
+      include nacs_management::techspecs::win
+    }
+  }
 }

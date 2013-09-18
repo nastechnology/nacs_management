@@ -1,7 +1,20 @@
 require 'spec_helper'
 
 describe 'nacs_management', :type => 'class' do
- let(:facts) { {:operatingsystem => 'Darwin' } }
+  it { should contain_class('nacs_management') }
+  
+  context 'operatingsystem => Darwin' do
+    let(:facts) { { :operatingsystem => 'Darwin'} }
+  end
+
+  context 'operatingsystem => windows' do
+  	let(:facts) { { :operatingsystem => 'windows'} }
+  end
+
+  context 'operatingsystem => Ubuntu' do
+  	let(:facts) { { :operatingsystem => 'Ubuntu'} }
+  end
+ #let(:facts) { {:operatingsystem => 'Darwin' } }
 
 #  describe 'with operatingsystem equals windows' do
 #	let(:facts) { {:operatingsystem => 'windows'} }
