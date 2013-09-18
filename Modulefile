@@ -1,4 +1,4 @@
-name 'nacs_management'
+name 'nastechnology-nacs_management'
 version '0.2.1'
 source 'https://github.com/nastechnology/nacs_management'
 author 'Mark Myers / Napoleon Area Schools'
