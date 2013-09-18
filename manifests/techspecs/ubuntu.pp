@@ -1,5 +1,5 @@
 
-# == Class: nacs_management::techspecs::mac
+# == Class: nacs_management::techspecs::ubuntu
 #
 # This class takes all specific facts and district custom facts
 # and stores them in a plist or in the registry for easy retrieval
