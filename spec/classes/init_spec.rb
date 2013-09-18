@@ -5,6 +5,12 @@ describe 'nacs_management', :type => 'class' do
   
   context 'operatingsystem => Darwin' do
     let(:facts) { { :operatingsystem => 'Darwin'} }
+
+    it do
+      should contain_file('/opt/NACSManage').with({
+        'ensure' => 'directory',
+        'owner'
+      })
   end
 
   context 'operatingsystem => windows' do

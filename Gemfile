@@ -9,5 +9,5 @@ end
 gem 'rake'
 gem 'puppet-lint'
 gem 'rspec-puppet'
-gem 'puppet'
-gem 'puppetlabs_spec_helper'
+gem 'puppet', puppetversion
+#gem 'puppetlabs_spec_helper'
