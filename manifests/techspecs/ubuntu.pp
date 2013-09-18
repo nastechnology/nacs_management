@@ -1,4 +1,3 @@
-
 # == Class: nacs_management::techspecs::ubuntu
 #
 # This class takes all specific facts and district custom facts

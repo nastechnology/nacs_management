@@ -16,37 +16,32 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management::oaascreen {
-	if ($operatingsystem == 'windows') {
-		file { 'C:/NACSManage/dccmd.exe':
-			ensure	=> present,
-			source  => "puppet:///modules/nacs_management/dccmd.exe",
-			mode	=> '0777',
-			owner	=> 'Everyone',
-			group   => 'Everyone',
-			replace => true,	
-	    }
+  if ($::operatingsystem == 'windows') {
+    file { 'C:/NACSManage/dccmd.exe':
+      ensure  => 'present',
+      source  => 'puppet:///modules/nacs_management/dccmd.exe',
+      mode    => '0777',
+      owner   => 'Everyone',
+      group   => 'Everyone',
+      replace => true,
+    }
 
-	    file { 'C:/NACSManage/dc.exe':
-			ensure  => present,
-			source  => "puppet:///modules/nacs_management/dc.exe",
-			mode  	=> '0777',
-			owner	=> 'Everyone',
-			group	=> 'Everyone',
-			replace => true,
-	    }
+    file { 'C:/NACSManage/dc.exe':
+      ensure  => present,
+      source  => 'puppet:///modules/nacs_management/dc.exe',
+      mode    => '0777',
+      owner   => 'Everyone',
+      group   => 'Everyone',
+      replace => true,
+    }
 
-	    file { 'C:/NACSManage/changescreensize.bat':
-			ensure  => present,
-			source  => "puppet:///modules/nacs_management/changescreensize.bat",
-			mode 	=> '0777',
-			owner	=> 'Administrator',
-			group	=> 'Administrators',
-			replace => false,
-	    }
-
-	    #exec {'AdjustScreen':
-		#	require	  => File['C:/dc.exe'],
-		#	command   => "C:\dc.exe -width=1024 -height=768 -force",
-	    #}
-	}
+    file { 'C:/NACSManage/changescreensize.bat':
+      ensure  => 'present',
+      source  => 'puppet:///modules/nacs_management/changescreensize.bat',
+      mode    => '0777',
+      owner   => 'Administrator',
+      group   => 'Administrators',
+      replace => false,
+    }
+  }
 }
