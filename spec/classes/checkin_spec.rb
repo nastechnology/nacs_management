@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe 'nacs_management::checkin'  do
 
-  it { should contain_class('nacs_management::checkin') }
+  
+
   context 'with operatingsystem => Darwin' do
     let(:facts) { {:operatingsystem => 'Darwin'} }
     it do
@@ -10,7 +11,7 @@ describe 'nacs_management::checkin'  do
         'ensure'  => 'file',
         'owner'   => 'technology',
         'group'   => 'staff',
-        'mode'    => '0755',
+        'mode'    => '0755'
       })
     end
 
