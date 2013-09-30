@@ -33,7 +33,7 @@ class nacs_management {
 	    }
 
       exec { 'HideTechUser':
-        command => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
+        command => "/usr/bin/defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` == 0 ]; then /usr/bin/defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment fi",
       }	
 
       exec {'Hide sub-500 users':
