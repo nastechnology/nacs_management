@@ -59,9 +59,9 @@ class nacs_management {
     # Assumes Windows - for now
 	  file { "C:/NACSManage":
       ensure => directory,
-      owner  => 'Everyone',
-      group  => 'Everyone',
-      mode   => 0777,
+      owner  => 'Administrator',
+      group  => 'Administrators',
+      mode   => 0755,
     }
   }
 }

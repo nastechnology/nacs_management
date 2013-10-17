@@ -22,7 +22,7 @@ class nacs_management::saxon {
     replace => 'no',
     owner   => 'SYSTEM',
     group   => 'Administrators',
-    mode    => '0777',
+    mode    => '0755',
     source  => 'puppet:///modules/nacs_management/MFCOLEUI.DLL',
   }
 
