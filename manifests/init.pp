@@ -57,11 +57,16 @@ class nacs_management {
     }
   } else {
     # Assumes Windows - for now
-	  file { "C:/NACSManage":
+    file { "C:/NACSManage":
       ensure => directory,
       owner  => 'Administrator',
       group  => 'Administrators',
-      mode   => 0755,
+      mode   => 0777,
+    }
+
+    file { "C:/NACSManage/set-shortcut.ps1":
+      ensure => file,
+      source => 'puppet:///modules/nacs_management/set-shortcut.ps1',
     }
   }
 }
