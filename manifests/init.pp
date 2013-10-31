@@ -40,20 +40,22 @@ class nacs_management {
         command => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
       }
 
-	    property_list_key { 'LoginwindowText':
-	      ensure => present,
-        path   => '/Library/Preferences/com.apple.loginwindow.plist',
-	      key    => 'LoginwindowText',
-	      value  => "Property of Napoleon Area City Schools, if found call 419-599-7015",
-	    }
+      exec { 'LoginwindowText':
+        command  => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText 'Property of Napoleon Area City Schools, if found call 419-599-7015'",
+      }
 
 	    # Disable Gatekeeper in 10.8
-	    property_list_key { 'Disable Gatekeeper':
-	      ensure => present,
-	      path   => '/var/db/SystemPolicy-prefs.plist',
-	      key    => 'enabled',
-	      value  => 'no',
-	    }
+	    #property_list_key { 'Disable Gatekeeper':
+	    #  ensure => present,
+	    #  path   => '/var/db/SystemPolicy-prefs.plist',
+	    #  key    => 'enabled',
+	    #  value  => 'no',
+	    #}
+       # Disable Gatekeeper in 10.8
+            exec { 'Disable Gatekeeper':
+              command  => '/usr/sbin/spctl --master-disable',
+            }
+
     }
   } else {
     # Assumes Windows - for now
