@@ -18,11 +18,19 @@
 class nacs_management {
 
   if ($operatingsystem == 'Darwin') or ($operatingsystem == 'Ubuntu'){
-	  file {"/opt/NACSManage":
+    file { '/opt':
+      ensure => directory,
+      owner  => 'technology',
+      group  => 'staff',
+      mode   => 0755,
+    }
+    
+	  file { '/opt/NACSManage':
         ensure  => directory,
         owner   => "technology",
         group   => "staff",
         mode    => 0755,
+        require => File['/opt'],
 	  }
 
     if($operatingsystem == 'Darwin'){
