@@ -32,13 +32,24 @@
 #
 class nacs_management::techspecs::mac {
 
-  property_list_key { 'ComputerName':
-    ensure     => present,
-    path       => '/Library/Preferences/org.nacs.NACSTech.techspecs.plist',
-    key        => 'ComputerName',
-    value      => $::hostname,
-    value_type => 'string',
+  file { '/opt/NACSManage/facts.txt':
+    ensure => file,
+    owner   => 'technology',
+    group   => 'staff',
+    mode    => 0777,
   }
+
+  exec { 'ComputerName':
+    command => "/bin/echo 'ComputerName=${hostname}' >> /opt/NACSManage/facts.txt",    
+  }
+
+  #property_list_key { 'ComputerName':
+  #  ensure     => present,
+  #  path       => '/Library/Preferences/org.nacs.NACSTech.techspecs.plist',
+  #  key        => 'ComputerName',
+  #  value      => $::hostname,
+  #  value_type => 'string',
+  #}
 
   property_list_key { 'SerialNumber':
     ensure     => present,
