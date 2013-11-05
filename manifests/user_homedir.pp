@@ -27,7 +27,7 @@ class nacs_management::user_homedir($user = 'UNSET', $server = 'UNSET') {
     }
 
     case $user {
-      /[0-9]/: { $fulluser = $id + $user }
+      /[0-9]/: { $fulluser = "${id}${user}" }
       default: { $fulluser = $user }
     }
 
