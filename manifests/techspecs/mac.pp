@@ -39,8 +39,10 @@ class nacs_management::techspecs::mac {
     mode   => 0777,
   }
 
-  exec { 'ComputerName':
-    command => "/bin/echo 'ComputerName=${hostname}' >> /opt/NACSManage/facts.txt",    
+  if ($computername != ''){
+    exec { 'ComputerName':
+      command => "/bin/echo 'ComputerName=${hostname}' >> /etc/facter/facts.d/facts.txt",    
+    }
   }
 
   exec { 'SerialNumber':
