@@ -32,7 +32,7 @@
 #
 class nacs_management::techspecs::mac {
 
-  file { '/opt/NACSManage/facts.txt':
+  file { '/etc/facter/facts.d/facts.txt':
     ensure => file,
     owner  => 'technology',
     group  => 'staff',

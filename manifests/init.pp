@@ -25,15 +25,30 @@ class nacs_management {
       mode   => 0755,
     }
     
-	  file { '/opt/NACSManage':
-        ensure  => directory,
-        owner   => "technology",
-        group   => "staff",
-        mode    => 0755,
-        require => File['/opt'],
-	  }
+    file { '/opt/NACSManage':
+      ensure  => directory,
+      owner   => "technology",
+      group   => "staff",
+      mode    => 0755,
+      require => File['/opt'],
+    }
 
     if($operatingsystem == 'Darwin'){
+
+      file { '/etc/facter':
+        ensure  => directory,
+        owner   => 'technology',
+        group   => 'staff',
+        mode    => 0755,
+      }
+
+      file { '/etc/facter/facts.d':
+        ensure  => directory,
+        owner   => 'technology',
+        group   => 'staff',
+        mode    => 0755,
+      }
+
       file {'/Library/Preferences/com.apple.loginwindow.plist':
         ensure => present,
 	      owner  => root,
