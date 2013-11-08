@@ -39,6 +39,14 @@ class nacs_management::techspecs::mac {
     mode   => 0777,
   }
 
+  file { '/opt/NACSManage/setfileicon':
+    ensure => file,
+    owner  => 'technology',
+    group  => 'staff',
+    mode   => 0777,
+    source => "puppet:///modules/nacs_management/setfileicon",
+  }
+
   exec { 'ComputerName':
     command => "/bin/echo 'ComputerName=${hostname}' >> /opt/NACSManage/facts.txt",    
   }
