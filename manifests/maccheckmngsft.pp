@@ -7,7 +7,7 @@ class nacs_management::maccheckmngsft {
     require => Exec['munkidownload']
   }
 
-  exec { 'RunClientIdentifier'
+  exec { 'RunClientIdentifier':
     command => "/usr/bin/defaults write /Library/Preferences/ManagedInstalls ClientIdentifier '${hostname}.nas.local'"
   }
 }
