@@ -45,6 +45,14 @@ class nacs_management::techspecs::mac {
     }
   }
 
+  file { '/opt/NACSManage/setfileicon':
+    ensure => file,
+    owner  => 'technology',
+    group  => 'staff',
+    mode   => 0777,
+    source => "puppet:///modules/nacs_management/setfileicon",
+  }
+
   exec { 'SerialNumber':
     command => "/bin/echo 'SerialNumber=${sp_serial_number}' >> /opt/NACSManage/facts.txt",
   }
