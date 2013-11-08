@@ -1,4 +1,4 @@
-# == Class: nacs_management::mapdrive
+# == Class: nacs_management::map
 #
 # Map Drives for Mac OS X
 #
@@ -14,5 +14,5 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-class nacs_management::mapdrive {
+class nacs_management::map {
 }
