@@ -50,7 +50,7 @@ define nacs_management::printers ($printer = $name) {
     'cbi_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/cbi_copier",
+        uri         => "lpd://10.20.11.7/",
         description => "CBI Copier",
         location    => "Joe Goods classroom",
         shared    => false,
@@ -61,7 +61,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_deca': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_deca",
+        uri         => "lpd://10.20.15.235/",
         description => "DECA Printer",
         location    => "DECA",
         shared    => false,
@@ -83,7 +83,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_140_c': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_140_c",
+        uri         => "lpd://10.20.15.248/",
         description => "FSCI Color printer",
         location    => "NHS 140",
         shared    => false,
@@ -94,7 +94,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_131_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_131_copier",
+        uri         => "lpd://10.20.15.226/",
         description => "Guidance Ciopier",
         location    => "NHS Guidance",
         shared    => false,
@@ -105,7 +105,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_wkrm_copier",
+        uri         => "lpd://10.20.15.233",
         description => "Ricoh 7500 Copier",
         location    => "NHS 231",
         shared    => false,
@@ -116,7 +116,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier_2': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_wkrm_copier_2",
+        uri         => "lpd://10.20.15.232",
         description => "Ricoh 7500 Copier 2",
         location    => "NHS 231",
         shared    => false,
@@ -127,7 +127,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_231': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_wkrm_231",
+        uri         => "lpd://10.20.15.234/",
         description => "NHS Workroom 231",
         location    => "NHS 231",
         shared    => false,
@@ -138,7 +138,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_207': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_207",
+        uri         => "lpd://10.20.15.247",
         description => "NHS Workroom 207",
         location    => "NHS 207",
         shared    => false,
@@ -149,7 +149,7 @@ define nacs_management::printers ($printer = $name) {
     'hs_stafflounge': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/hs_stafflounge",
+        uri         => "lpd://10.20.15.254",
         description => "NHS Staff Lounge",
         location    => "NHS Staff Lounge",
         shared    => false,
@@ -160,7 +160,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_library': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_library",
+        uri         => "lpd://10.20.15.244",
         description => "NHS Library",
         location    => "NHS Library",
         shared    => false,
@@ -171,7 +171,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_218': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_218",
+        uri         => "lpd://10.20.11.229",
         description => "Lori Drewes",
         location    => "NHS 218",
         shared    => false,
@@ -182,7 +182,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_library_aide': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_library_aide",
+        uri         => "lpd://10.20.11.230/",
         description => "Library Aide printer",
         location    => "NHS Library",
         shared    => false,
