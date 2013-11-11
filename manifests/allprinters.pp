@@ -27,22 +27,22 @@ class nacs_management::allprinters {
     ensure   => installed,
   } 
 
-  package { 'foomatic-rip-4.0.6.230.dmg':
+  package { 'foomatic-rip-5.0.dmg':
     provider => pkgdmg,
-    source   => 'http://tech.napoleonareaschools.org/foomatic-rip-4.0.6.230.dmg',
+    source   => 'http://tech.napoleonareaschools.org/foomatic-rip-5.0.dmg',
     ensure   => installed,
   }
 
-  package { 'gplgs-8.71.dmg':
+  package { 'gplgs-8.72.dmg':
     provider => pkgdmg,
-    source   => 'http://tech.napoleonareaschools.org/gplgs-8.71.dmg',
+    source   => 'http://tech.napoleonareaschools.org/gplgs-8.72.dmg',
     ensure   => installed,
     require  => Package['foomatic-rip-4.0.6.230.dmg']
   }
 
-  package { 'pxlmono-1.9.dmg':
+  package { 'pxlmono-2.0.dmg':
     provider => pkgdmg,
-    source   => 'http://tech.napoleonareaschools.org/pxlmono-1.9.dmg',
+    source   => 'http://tech.napoleonareaschools.org/pxlmono-2.0.dmg',
     ensure   => installed,
     require  => Package['gplgs-8.71.dmg']
   }
