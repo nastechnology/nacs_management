@@ -232,7 +232,7 @@ define nacs_management::printers ($printer = $name) {
         description => "CES Kindergarten Colorlaser",
         location    => "CES Kindergarten",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera\ FS-C5350DN.PPD",
       }
     }
 
@@ -298,7 +298,7 @@ define nacs_management::printers ($printer = $name) {
         description => "C.D. Brillhart 108 Printer",
         location    => "CDB 108",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resourced/Kyocera\ FS-3920DN.PPD",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera\ FS-3920DN.PPD",
       }
     }
 
@@ -310,7 +310,7 @@ define nacs_management::printers ($printer = $name) {
         description => "NMS Office Copier",
         location    => "NMS Office",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
       }
     }
 
@@ -321,7 +321,7 @@ define nacs_management::printers ($printer = $name) {
         description => "CES/NMS Basement Copier",
         location    => "CES/NMS Basement work room",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
       }
     }
 
