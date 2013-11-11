@@ -37,14 +37,14 @@ class nacs_management::allprinters {
     provider => pkgdmg,
     source   => 'http://tech.napoleonareaschools.org/gplgs-8.72.dmg',
     ensure   => installed,
-    require  => Package['foomatic-rip-4.0.6.230.dmg']
+    require  => Package['foomatic-rip-5.0.dmg']
   }
 
   package { 'pxlmono-2.0.dmg':
     provider => pkgdmg,
     source   => 'http://tech.napoleonareaschools.org/pxlmono-2.0.dmg',
     ensure   => installed,
-    require  => Package['gplgs-8.71.dmg']
+    require  => Package['gplgs-8.72.dmg']
   }
 
   package { 'bizhub_C554_108.dmg':
