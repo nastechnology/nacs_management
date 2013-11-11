@@ -47,4 +47,16 @@ class nacs_management::allprinters {
     require  => Package['gplgs-8.71.dmg']
   }
 
+  package { 'bizhub_C554_108.dmg':
+    provider => pkgdmg,
+    source   => 'http://tech.napoleonareaschools.org/bizhub_C554_108.dmg',
+    ensure   => installed,
+  }
+
+  package { 'bizhub_751_108.dmg':
+    provider => pkgdmg,
+    source   => 'http://tech.napoleonareaschools.org/bizhub_751_108.dmg',
+    ensure   => installed,
+  }
+
 }

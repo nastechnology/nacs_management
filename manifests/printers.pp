@@ -235,5 +235,16 @@ define nacs_management::printers ($printer = $name) {
         ppd         => "/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz",
       }
     }
+
+    'cdb_wkrm_colorlaser': {
+      printer { $printer:
+        ensure      => present,
+        uri         => "lpd://10.20.55.12/",
+        description => "Central Office Copier",
+        location    => "CES Office",
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera\ FS-C5100DN.PPD",
+      }
+    }
   }
 }
