@@ -232,7 +232,7 @@ define nacs_management::printers ($printer = $name) {
         description => "CES Kindergarten Colorlaser",
         location    => "CES Kindergarten",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera\ FS-C5350DN.PPD",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-C5350DN.PPD",
       }
     }
 
@@ -243,7 +243,7 @@ define nacs_management::printers ($printer = $name) {
         description => "C.D. Brillhart Workroom Colorlaser",
         location    => "CDB Workroom",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera\ FS-C5100DN.PPD",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-C5100DN.PPD",
       }
     }
 
@@ -265,7 +265,7 @@ define nacs_management::printers ($printer = $name) {
         description => "C.D. Brillhart Workroom printer",
         location    => "CDB Workroom",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Kyocera\ FS-1030D.PPD",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Kyocera FS-1030D.PPD",
       }
     }
 
@@ -276,7 +276,7 @@ define nacs_management::printers ($printer = $name) {
         description => "C.D. Brillhart modular printer",
         localtion   => "CDB Modular",
         shared      => false,
-        ppd         => "/Library/Pritners/PPDs/Contents/Resources/en.lproj/Kyocera\ FS-3900DN.PPD",
+        ppd         => "/Library/Pritners/PPDs/Contents/Resources/en.lproj/Kyocera FS-3900DN.PPD",
       }
     }
 
@@ -298,7 +298,7 @@ define nacs_management::printers ($printer = $name) {
         description => "C.D. Brillhart 108 Printer",
         location    => "CDB 108",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera\ FS-3920DN.PPD",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-3920DN.PPD",
       }
     }
 
