@@ -97,7 +97,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_art': {
       printer { $printer:
         ensure      => present,
-        uri         => "smb://nas-printserver/nhs_art",
+        uri         => "lpd://10.20.15.228/",
         description => "Art Printer",
         location    => "Art",
         shared    => false,
