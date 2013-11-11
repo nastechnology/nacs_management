@@ -229,8 +229,8 @@ define nacs_management::printers ($printer = $name) {
       printer { $printer:
         ensure      => present,
         uri         => "lpd://10.20.33.11/",
-        description => "Central Office Copier",
-        location    => "CES Office",
+        description => "CES Kindergarten Colorlaser",
+        location    => "CES Kindergarten",
         shared      => false,
         ppd         => "/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz",
       }
@@ -240,10 +240,89 @@ define nacs_management::printers ($printer = $name) {
       printer { $printer:
         ensure      => present,
         uri         => "lpd://10.20.55.12/",
-        description => "Central Office Copier",
-        location    => "CES Office",
+        description => "C.D. Brillhart Workroom Colorlaser",
+        location    => "CDB Workroom",
         shared      => false,
         ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera\ FS-C5100DN.PPD",
+      }
+    }
+
+    'cdb_wkrm_copier': {
+      printer { $printer:
+        ensure      => present,
+        uri         => "lpd://10.20.55.11/",
+        description => "C.D. Brillhart Workroom Copier",
+        location    => "CDB Workroom",
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_6500-pxlmono-Ricoh.ppd.gz",
+      }
+    }
+
+    'cdb_wkrm': {
+      printer { $printer:
+        ensure      => present,
+        uri         => "lpd://10.20.55.15",
+        description => "C.D. Brillhart Workroom printer",
+        location    => "CDB Workroom",
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Kyocera\ FS-1030D.PPD",
+      }
+    }
+
+    'cdb_mod': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.55.10',
+        description => "C.D. Brillhart modular printer",
+        localtion   => "CDB Modular",
+        shared      => false,
+        ppd         => "/Library/Pritners/PPDs/Contents/Resources/en.lproj/Kyocera\ FS-3900DN.PPD",
+      }
+    }
+
+    'cdb_108_copier': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.55.13',
+        description => "C.D. Brillhart 108 Copier",
+        location    => "CDB 108",
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
+      }
+    }
+
+    'cdb_108': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.55.14',
+        description => "C.D. Brillhart 108 Printer",
+        location    => "CDB 108",
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resourced/Kyocera\ FS-3920DN.PPD",
+      }
+    }
+
+    # NMS Printers
+    'nms_office_copier': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.25.120',
+        description => "NMS Office Copier",
+        location    => "NMS Office",
+        shared      => false,
+        ppd         => "Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz"
+      }
+    }
+
+    # WES Printers
+    'wes_wkrm_copier': {
+      printer { $printer:
+        ensure      => present,
+        uri         => "lpd://10.20.45.124/",
+        description => "West Workroom Copier",
+        location    => "WES Workroom",
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_6500-pxlmono-Ricoh.ppd.gz",
       }
     }
   }
