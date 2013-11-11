@@ -310,7 +310,18 @@ define nacs_management::printers ($printer = $name) {
         description => "NMS Office Copier",
         location    => "NMS Office",
         shared      => false,
-        ppd         => "Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz"
+        ppd         => "/Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
+      }
+    }
+
+    'nms_ces_ricoh_7500': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.33.10',
+        description => "CES/NMS Basement Copier",
+        location    => "CES/NMS Basement work room",
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
       }
     }
 
