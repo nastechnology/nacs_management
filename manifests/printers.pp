@@ -287,7 +287,7 @@ define nacs_management::printers ($printer = $name) {
         description => "C.D. Brillhart 108 Copier",
         location    => "CDB 108",
         shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resourced/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
       }
     }
 
