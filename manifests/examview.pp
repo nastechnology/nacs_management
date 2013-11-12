@@ -15,7 +15,7 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management::examview {
-    if ($operatingsystem == 'windows'){
+  if ($operatingsystem == 'windows'){
 
 	file { "C:\Documents and Settings\All Users\Desktop\ExamView Player.lnk":
 	    ensure  => file,
@@ -32,5 +32,5 @@ class nacs_management::examview {
 	    source => 'puppet:///modules/nacs_management/ExamView Test Manager.lnk',
 	}
 
-    }
+  }
 }

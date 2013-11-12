@@ -16,25 +16,25 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management::delprof {
-	if($operatingsystem == 'windows') {
-		file { 'C:/NACSManage/DelProf2.exe':
-		   ensure => 'file',
-		   owner => 'Administrator',
-		   group => 'Administrators',
-		   mode => 0777,
-		   source => "puppet:///modules/nacs_management/DelProf2.exe",
-		}
-		
-		scheduled_task { 'DeleteOldProfiles':
-		   ensure    => present,
-		   enabled   => true,
-		   command   => "C:/NACSManage/DelProf2.exe",
-		   arguments => "/ed:admin* /q /i /d:80",
-		   #require  => File['C:/NACSManage/DelProf2.exe'],
-		   trigger   => {
-			schedule   => daily,
-		  	start_time => '09:00',
-		   }
-		}
-	}
+  if($operatingsystem == 'windows') {
+    file { 'C:/NACSManage/DelProf2.exe':
+	  ensure => 'file',
+      owner => 'Administrator',
+      group => 'Administrators',
+      mode => 0777,
+      source => "puppet:///modules/nacs_management/DelProf2.exe",
+    }	
+
+    scheduled_task { 'DeleteOldProfiles':
+      ensure    => present,
+      enabled   => true,
+      command   => "C:/NACSManage/DelProf2.exe",
+      arguments => "/ed:admin* /q /i /d:80",
+      #require  => File['C:/NACSManage/DelProf2.exe'],
+      trigger   => {
+        schedule   => daily,
+        start_time => '09:00',
+      }
+    }    
+  }
 }

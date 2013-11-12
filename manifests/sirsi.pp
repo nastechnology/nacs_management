@@ -17,23 +17,25 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management::sirsi {
-  $pkg = 'SirsiWorkflows'
+  if ($operatingsystem == 'windows'){
+    $pkg = 'SirsiWorkflows'
 
-  package { $pkg:
-    ensure  => 'installed',
-  }
+    package { $pkg:
+      ensure  => 'installed',
+    }
 
-  exec { 'ChangeSirsiPerms':
-    command => 'C:\SetACL.exe -on "C:\Program Files\Sirsi" -ot file -actn ace -ace "n:Everyone;p:full"',
-    require => Package['SirsiWorkflows'],
-  }
+    exec { 'ChangeSirsiPerms':
+      command => 'C:\SetACL.exe -on "C:\Program Files\Sirsi" -ot file -actn ace -ace "n:Everyone;p:full"',
+      require => Package['SirsiWorkflows'],
+    }
 
-  file { 'C:/WINDOWS/Fonts/free3of9 barcode font.ttf':
-    ensure  => 'file',
-    owner   => 'SYSTEM',
-    group   => 'Users',
-    mode    => '0777',
-    source  => 'puppet:///modules/nacs_management/free3of9 barcode font.ttf',
-    require => Exec['ChangeSirsiPerms'],
+    file { 'C:/WINDOWS/Fonts/free3of9 barcode font.ttf':
+      ensure  => 'file',
+      owner   => 'SYSTEM',
+      group   => 'Users',
+      mode    => '0777',
+      source  => 'puppet:///modules/nacs_management/free3of9 barcode font.ttf',
+      require => Exec['ChangeSirsiPerms'],
+    }
   }
 }

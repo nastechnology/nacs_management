@@ -1,5 +1,6 @@
 class nacs_management::elementaryfonts {
 
+  if($operatingsystem == 'windows'){
     package { 'elementaryfonts':
         ensure => installed,
     }
@@ -27,4 +28,5 @@ class nacs_management::elementaryfonts {
         command => 'cmd.exe /c xcopy "C:\NACSManage\elementaryfonts\*.ttf" "C:\WINDOWS\Fonts" /y',
         require => Exec['SetFontDirPerms'],
     }
+  }  
 }
