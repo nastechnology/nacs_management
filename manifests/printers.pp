@@ -32,7 +32,7 @@ define nacs_management::printers ($printer = $name) {
         description => "NHS Copier in Teacher Workroom",
         location    => "NHS Office",
         shared	    => false,
-        ppd		      => "/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz",
+        ppd		    => "/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz",
 	    }
 	  }
 
@@ -325,6 +325,72 @@ define nacs_management::printers ($printer = $name) {
       }
     }
 
+    'nms_8lab': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.23.246',
+        description => 'NMS 8 Lab HP 4050 Printer',
+        location    => 'NMS 8 Lab',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/HP-LaserJet_4050-pxlmono.ppd.gz",
+      }
+    }
+
+    'nms_band': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.23.245',
+        description => 'NMS Band HP LaserJet 6P',
+        location    => 'NMS Band',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/HP-LaserJet_5-pxlmono.ppd.gz",
+      }
+    }
+
+    'nms_colorlaser': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.25.121',
+        description => 'NMS Kyocera C5030DN Colorlaser',
+        location    => 'NMS Office',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-C5350DN.PPD",
+      }
+    }
+
+    'nms_library': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.35.15',
+        description => 'NMS Library HP LaserJet 2100',
+        location    => 'NMS Library',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/HP-LaserJet_2100-pxlmono.ppd.gz",
+      }
+    }
+
+    'nms_office': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.25.122',
+        description => 'NMS Office Printer HP LaserJet',
+        location    => 'NMS Office',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/HP-LaserJet_2300-pxlmono.ppd.gz",
+      }
+    }
+
+    'nms_upstairs_copier': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.25.124',
+        description => 'NMS Upstairs Bizhub 601',
+        location    => 'NMS Upstairs Workroom',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz",
+      }
+    }
+
     # WES Printers
     'wes_wkrm_copier': {
       printer { $printer:
@@ -334,6 +400,50 @@ define nacs_management::printers ($printer = $name) {
         location    => "WES Workroom",
         shared      => false,
         ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_6500-pxlmono-Ricoh.ppd.gz",
+      }
+    }
+
+    'wes_112': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.45.121',
+        description => 'West Kyocera 3920DN',
+        location    => 'WES 112',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-3920DN.PPD",
+      }
+    }
+
+    'wes_library': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.43.10',
+        description => 'West Library Kyocera 3920DN',
+        location    => 'WES Library',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-3920DN.PPD",
+      }
+    }
+
+    'wes_office': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.45.122',
+        description => 'West Office Bizhub 601 copoier',
+        location    => 'WES Office',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz",
+      }
+    }
+
+    'wes_wkrm_color': {
+      printer { $printer:
+        ensure      => present,
+        uri         => 'lpd://10.20.45.123',
+        description => 'West Workroom Colorlaser 5350',
+        location    => 'WES Workroom',
+        shared      => false,
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-C5350DN.PPD",
       }
     }
   }
