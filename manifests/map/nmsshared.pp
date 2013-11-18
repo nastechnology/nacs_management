@@ -24,7 +24,7 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 define nacs_management::map::nmsshared ($user) {
-  $server = "nas-fs.nasadm.local"
+  $server = "nas-fs.nas.local"
   $share = "nms_shared"
   
   file { "/Users/${user}/Desktop/NMSShared.afploc":
