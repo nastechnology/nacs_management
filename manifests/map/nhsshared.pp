@@ -24,10 +24,10 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 define nacs_management::map::nhsshared ($user) {
-  $server = "nas-fs.nasadm.local"
+  $server = "nas-fs.nas.local"
   $share = "nhs_shared"
   
-  file { "/Users/${user}/Desktop/NMSShared.afploc":
+  file { "/Users/${user}/Desktop/NHSShared.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
   }
