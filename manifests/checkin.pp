@@ -34,7 +34,7 @@ class nacs_management::checkin {
     }
   }
 
-  if(!$ipaddress =~ /10.20/i.to_s){
+  if(!$ipaddress =~ /^10.20/){
     file { $checkinfile:
       ensure  => file,
       owner   => $owner,
