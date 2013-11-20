@@ -1,7 +1,7 @@
-# == Defintion: nacs_management::map::admk
+# == Defintion: nacs_management::map::cesoffice
 #
 # This creates an .afploc file on the users desktop
-# for admin K
+# for central_office
 #
 # == Parameters
 #  - The $server is the server the share is on
@@ -12,8 +12,7 @@
 #
 # === Examples
 #
-# nacs_management::map::admk{ '100XXXXKDrive':
-#   server => 'server.domain.local',
+# nacs_management::map::cesoffice{ '100XXXXKDrive':
 #   user   => '100XXXX'
 # }
 #
@@ -25,18 +24,18 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::map::admk ($user) {
+define nacs_management::map::cesoffice ($user) {
   $server = "adm-fs.nasadm.local"
   $share = "district"
   
-  file { "/Users/${user}/Desktop/KDrive.afploc":
+  file { "/Users/${user}/Desktop/CESOfficeDrive.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
   }
 
   exec { 'ChangeIcon':
-    command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/KDrive.afploc'",
-    require => File["/Users/${user}/Desktop/KDrive.afploc"],
+    command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/CESOfficeDrive.afploc'",
+    require => File["/Users/${user}/Desktop/CESOfficeDrive.afploc"],
   }
 
 }

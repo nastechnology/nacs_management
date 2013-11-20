@@ -33,8 +33,8 @@ define nacs_management::map::alldistrict ($user) {
   }
 
   exec { 'ChangeIcon':
-    command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/IDrive.afploc'",
-    require => File["/Users/${user}/Desktop/IDrive.afploc"],
+    command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/AllDistrict.afploc'",
+    require => File["/Users/${user}/Desktop/AllDistrict.afploc"],
   }
 
 }
