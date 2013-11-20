@@ -25,7 +25,7 @@
 #
 define nacs_management::chdesktopicon ($user,$file = $name) {
 
-  exec { "ChangeIcon${file}":
+  exec { "ChangeIcon${user}${file}":
     command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/${file}'",
     require => File["/Users/${user}/Desktop/${file}"],
   }
