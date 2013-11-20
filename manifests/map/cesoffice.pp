@@ -32,10 +32,9 @@ define nacs_management::map::cesoffice ($user) {
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
   }
-
-  exec { 'ChangeIcon':
-    command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/CESOfficeDrive.afploc'",
-    require => File["/Users/${user}/Desktop/CESOfficeDrive.afploc"],
+  
+  nacs_management::chdesktopicon { 'CESOfficeDrive.afploc':
+    user => $user,
   }
 
 }

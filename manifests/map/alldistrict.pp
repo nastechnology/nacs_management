@@ -32,9 +32,8 @@ define nacs_management::map::alldistrict ($user) {
     content => template("nacs_management/afploc.erb"),
   }
 
-  exec { 'ChangeIcon':
-    command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/AllDistrict.afploc'",
-    require => File["/Users/${user}/Desktop/AllDistrict.afploc"],
+  nacs_management::chdesktopicon { 'AllDistrict.afploc':
+    user => $user,
   }
 
 }

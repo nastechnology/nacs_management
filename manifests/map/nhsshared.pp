@@ -32,9 +32,8 @@ define nacs_management::map::nhsshared ($user) {
     content => template("nacs_management/afploc.erb"),
   }
 
-  exec { 'ChangeIcon':
-    command => "/opt/NACSManage/setfileicon '/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/InternetLocationGeneric.icns' '/Users/${user}/Desktop/NHSShared.afploc'",
-    require => File["/Users/${user}/Desktop/NHSShared.afploc"],
+  nacs_management::chdesktopicon { 'NHSShared.afploc':
+    user => $user,
   }
 
 }

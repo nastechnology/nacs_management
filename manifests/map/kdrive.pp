@@ -1,20 +1,18 @@
-# == Defintion: nacs_management::map::admk
+# == Defintion: nacs_management::map::kdrive
 #
 # This creates an .afploc file on the users desktop
-# for admin K
+# for the k drive on nas-fs
 #
 # == Parameters
-#  - The $server is the server the share is on
 #  - The $username is the place for the desktop shortcut
 #
 # == Actions
-#  - Creates afploc file for network i drive
+#  - Creates afploc file for network k drive
 #
 # === Examples
 #
-# nacs_management::map::admk{ '100XXXXKDrive':
-#   server => 'server.domain.local',
-#   user   => '100XXXX'
+# nacs_management::map::kdrive{ '100XXXXKdrive':
+#   user => '100XXXX'
 # }
 #
 # === Authors
@@ -25,9 +23,7 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::map::admk ($user) {
-  $server = "adm-fs.nasadm.local"
-  $share = "district"
+define nacs_management::map::kdrive ($user) {
   
   file { "/Users/${user}/Desktop/KDrive.afploc":
     ensure  => file,
@@ -37,5 +33,4 @@ define nacs_management::map::admk ($user) {
   nacs_management::chdesktopicon { 'KDrive.afploc':
     user => $user,
   }
-
 }
