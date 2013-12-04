@@ -32,20 +32,6 @@
 #
 class nacs_management::techspecs::mac {
 
-  file { '/etc/facter/facts.d':
-    ensure => directory,
-    owner  => 'root',
-    group  => 'wheel',
-    mode   => 0777,
-  }
-
-  file { '/opt/NACSManage':
-    ensure => directory,
-    owner  => 'technology',
-    group  => 'staff',
-    mode   => 0777,
-  }
-
   file { '/etc/facter/facts.d/facts.txt':
     ensure  => file,
     owner   => 'technology',

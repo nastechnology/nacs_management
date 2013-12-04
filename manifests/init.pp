@@ -44,9 +44,9 @@ class nacs_management {
 
       file { '/etc/facter/facts.d':
         ensure  => directory,
-        owner   => 'technology',
-        group   => 'staff',
-        mode    => 0755,
+        owner   => 'root',
+        group   => 'wheel',
+        mode    => 0777,
       }
 
       file {'/Library/Preferences/com.apple.loginwindow.plist':
