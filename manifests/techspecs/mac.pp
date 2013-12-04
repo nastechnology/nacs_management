@@ -57,7 +57,7 @@ class nacs_management::techspecs::mac {
   if ($computername != ''){
     exec { 'ComputerName':
       command => "/bin/echo 'ComputerName=${hostname}' >> /etc/facter/facts.d/facts.txt",
-      requier => File['/etc/facter/facts.d/facts.txt'],
+      require => File['/etc/facter/facts.d/facts.txt'],
     }
   }
 
