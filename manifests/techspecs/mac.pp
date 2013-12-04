@@ -34,8 +34,8 @@ class nacs_management::techspecs::mac {
 
   file { '/etc/facter/facts.d/facts.txt':
     ensure  => file,
-    owner   => 'technology',
-    group   => 'staff',
+    owner   => 'root',
+    group   => 'wheel',
     mode    => 0777,
     require => File['/etc/facter/facts.d'],    
   }
