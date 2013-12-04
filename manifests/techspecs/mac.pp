@@ -49,8 +49,8 @@ class nacs_management::techspecs::mac {
 
   file { '/opt/NACSManage/setfileicon':
     ensure => file,
-    owner  => 'technology',
-    group  => 'staff',
+    owner  => 'root',
+    group  => 'wheel',
     mode   => 0777,
     source => "puppet:///modules/nacs_management/setfileicon",
   }
@@ -77,8 +77,8 @@ class nacs_management::techspecs::mac {
 
   file { '/opt/NACSManage/SystemSpecs.txt':
     ensure => file,
-    owner  => 'technology',
-    group  => 'staff',
+    owner  => 'root',
+    group  => 'wheel',
     mode   => 0777,
   }
 

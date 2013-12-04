@@ -20,15 +20,15 @@ class nacs_management {
   if ($operatingsystem == 'Darwin') or ($operatingsystem == 'Ubuntu'){
     file { '/opt':
       ensure => directory,
-      owner  => 'technology',
-      group  => 'staff',
+      owner  => 'root',
+      group  => 'wheel',
       mode   => 0755,
     }
     
     file { '/opt/NACSManage':
       ensure  => directory,
-      owner   => "technology",
-      group   => "staff",
+      owner   => 'root',
+      group   => 'wheel',
       mode    => 0755,
       require => File['/opt'],
     }
@@ -37,8 +37,8 @@ class nacs_management {
 
       file { '/etc/facter':
         ensure  => directory,
-        owner   => 'technology',
-        group   => 'staff',
+        owner   => 'root',
+        group   => 'wheel',
         mode    => 0755,
       }
 
