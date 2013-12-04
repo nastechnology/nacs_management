@@ -32,19 +32,9 @@
 #
 class nacs_management::techspecs::mac {
 
-  file { '/etc/facter/facts.d/facts.txt':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'wheel',
-    mode    => 0777,
-    require => File['/etc/facter/facts.d'],    
-  }
-
-  if ($computername != ''){
-    exec { 'ComputerName':
-      command => "/bin/echo 'ComputerName=${hostname}' >> /etc/facter/facts.d/facts.txt",
-      require => File['/etc/facter/facts.d/facts.txt'],
-    }
+  exec { 'ComputerName':
+    command => "/bin/echo 'ComputerName=${hostname}' >> /opt/NACSManage/facts.txt",
+    unless  => "/usr/bin/grep -qFx 'ComputerName=${hostname}' '/opt/NACSManage/facts.txt'",
   }
 
   file { '/opt/NACSManage/setfileicon':
@@ -55,24 +45,9 @@ class nacs_management::techspecs::mac {
     source => "puppet:///modules/nacs_management/setfileicon",
   }
 
-  exec { 'SerialNumber':
-    command => "/bin/echo 'SerialNumber=${sp_serial_number}' >> /opt/NACSManage/facts.txt",
-  }
-
-  exec { 'InventoryTag':
-    command => "/bin/echo 'InventoryTag=${inventory_tag}' >> /opt/NACSManage/facts.txt",
-  }
-
-  exec { 'RoomNumber':
-    command => "/bin/echo 'RoomNumber=${room}' >> /opt/NACSManage/facts.txt",
-  }
-
-  exec { 'Building':
-    command => "/bin/echo 'Building=${Building}' >> /opt/NACSManage/facts.txt",
-  }
-
   exec { 'DeviceType':
-    command => "/bin/echo 'DeviceType=${mac_laptop}' >> /opt/NACSManage/facts.txt",  
+    command => "/bin/echo 'DeviceType=${mac_laptop}' >> /opt/NACSManage/facts.txt",
+    unless  => "/usr/bin/grep -qFx 'DeviceType=${mac_laptop}' '/opt/NACSManage/facts.txt'",
   }
 
   file { '/opt/NACSManage/SystemSpecs.txt':
@@ -84,21 +59,26 @@ class nacs_management::techspecs::mac {
 
   exec { 'MACAddress':
     command => "/bin/echo 'MACAddress=${macaddress}' >> /opt/NACSManage/SystemSpecs.txt",
+    unless  => "/usr/bin/grep -qFx 'MACAddress=${macaddress}' '/opt/NACSManage/SystemSpecs.txt'",
   }
 
   exec { 'OperatingSystem':
     command => "/bin/echo 'OperatingSystem=${macosx_productname} ${macosx_productversion}' >> /opt/NACSManage/SystemSpecs.txt",
+    unless  => "/usr/bin/grep -qFx 'OperatingSystem=${macosx_productname} ${macosx_productversion}' '/opt/NACSManage/SystemSpecs.txt'",
   }
 
   exec { 'Model':
     command => "/bin/echo 'Model=${sp_machine_model}' >> /opt/NACSManage/SystemSpecs.txt",
+    unless  => "/usr/bin/grep -qFx 'Model=${sp_machine_model}' '/opt/NACSManage/SystemSpecs.txt'",
   }
   
   exec { 'Processor':
     command => "/bin/echo 'Processor=${sp_cpu_type} ${sp_current_processor_speed}' >> /opt/NACSManage/SystemSpecs.txt",
+    unless  => "/usr/bin/grep -qFx 'Processor=${sp_cpu_type} ${sp_current_processor_speed}' '/opt/NACSManage/SystemSpecs.txt'",
   }
 
   exec { 'Memory':
     command => "/bin/echo 'Memory=${sp_physical_memory}' >> /opt/NACSManage/SystemSpecs.txt",
+    unless  => "/usr/bin/grep -qFx 'Memory=${sp_physical_memory}' '/opt/NACSManage/SystemSpecs.txt'",
   }
 }
