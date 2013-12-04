@@ -32,16 +32,32 @@
 #
 class nacs_management::techspecs::mac {
 
-  file { '/etc/facter/facts.d/facts.txt':
-    ensure => file,
+  file { '/etc/facter/facts.d':
+    ensure => directory,
+    owner  => 'root',
+    group  => 'wheel',
+    mode   => 0777,
+  }
+
+  file { '/opt/NACSManage':
+    ensure => directory,
     owner  => 'technology',
     group  => 'staff',
     mode   => 0777,
   }
 
+  file { '/etc/facter/facts.d/facts.txt':
+    ensure  => file,
+    owner   => 'technology',
+    group   => 'staff',
+    mode    => 0777,
+    require => File['/etc/facter/facts.d'],    
+  }
+
   if ($computername != ''){
     exec { 'ComputerName':
-      command => "/bin/echo 'ComputerName=${hostname}' >> /etc/facter/facts.d/facts.txt",    
+      command => "/bin/echo 'ComputerName=${hostname}' >> /etc/facter/facts.d/facts.txt",
+      requier => File['/etc/facter/facts.d'],
     }
   }
 
