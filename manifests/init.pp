@@ -16,7 +16,7 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management {
-
+  $logintext = "Property of Napoleon Area City Schools, if found call 419-599-7015"
   if ($operatingsystem == 'Darwin') or ($operatingsystem == 'Ubuntu'){
     file { '/opt':
       ensure => directory,
@@ -64,7 +64,8 @@ class nacs_management {
       }
 
       exec { 'LoginwindowText':
-        command  => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText 'Property of Napoleon Area City Schools, if found call 419-599-7015'",
+        command  => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
+        unless   => "/usr/bin/defaults write /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then echo 1; fi",        
       }
 
 	    # Disable Gatekeeper in 10.8
