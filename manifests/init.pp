@@ -62,7 +62,7 @@ class nacs_management {
 
       exec {'Hide sub-500 users':
         command => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
-        unless  => " /usr/bin/defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep -c '1'` == 1]; then echo 1; fi",
+        unless  => " /usr/bin/defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep -c 1` == 1]; then echo 1; fi",
       }
 
       exec { 'LoginwindowText':
