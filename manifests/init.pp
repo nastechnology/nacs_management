@@ -57,23 +57,23 @@ class nacs_management {
 
       exec { 'HideTechUser':
         command => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
-        unless  => "/usr/bin/defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` == 1 ]; then echo 1; fi",
+        #unless  => "/usr/bin/defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` == 1 ]; then echo 1; fi",
       }	
 
       exec {'Hide sub-500 users':
         command => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
-        unless  => "/usr/bin/defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep -c 1` == 1 ]; then echo 1; fi",
+        #unless  => "/usr/bin/defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep -c 1` == 1 ]; then echo 1; fi",
       }
 
       exec { 'LoginwindowText':
         command  => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
-        unless   => "/usr/bin/defaults write /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then echo 1; fi",        
+        #unless   => "/usr/bin/defaults write /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then echo 1; fi",        
       }
 
       # Disable Gatekeeper in 10.8
       exec { 'Disable Gatekeeper':
         command => '/usr/sbin/spctl --master-disable',
-        unless  => "/usr/sbin/spctl --status | if [ `grep -c 'disabled'` == 1 ]; then echo 1; fi",
+        #unless  => "/usr/sbin/spctl --status | if [ `grep -c 'disabled'` == 1 ]; then echo 1; fi",
       }
 
     }
