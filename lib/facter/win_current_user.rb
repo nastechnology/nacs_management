@@ -4,6 +4,6 @@
 Facter.add("win_current_user") do
   confine :kernel => "windows"
   setcode do
-    Facter::Util::Resolution.exec('cmd /c echo %USERNAME%')
+    Facter::Util::Resolution.exec('wmic.exe /node:127.0.0.1 ComputerSystem Get UserName')
   end
 end
