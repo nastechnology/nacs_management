@@ -21,8 +21,8 @@ class nacs_management::checkin {
     'Darwin', 'Ubuntu': {
       $checkinfile = '/opt/NACSManage/checkin.sh'
       $command = '/bin/bash /opt/NACSManage/checkin.sh'
-      $owner = 'technology'
-      $group = 'staff'
+      $owner = 'root'
+      $group = 'wheel'
       $template = 'nonwindows_checkin.erb'
     }
     default: {
