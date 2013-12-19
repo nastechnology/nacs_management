@@ -4,6 +4,6 @@
 Facter.add("win_current_user") do
   confine :kernel => "windows"
   setcode do
-    Facter::Util::Resolution.exec("cmd /c %username%")
+    Facter::Util::Resolution.exec('cmd /c echo %USERNAME%')
   end
 end
