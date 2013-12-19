@@ -14,10 +14,10 @@ class nacs_management::elementaryfonts {
         source  => 'puppet:///modules/nacs_management/fonts.reg',
     }
 
-    exec { 'ChangeFontREGPerms':
-        command => 'C:\SetACL.exe -on "C:\NACSManage\fonts.reg" -ot file -actn ace -ace "n:Everyone;p:full"',
-        require => File['C:\NACSManage\fonts.reg'],
-    }
+    #exec { 'ChangeFontREGPerms':
+    #    command => 'C:\SetACL.exe -on "C:\NACSManage\fonts.reg" -ot file -actn ace -ace "n:Everyone;p:full"',
+    #    require => File['C:\NACSManage\fonts.reg'],
+    #}
 
     exec { 'SetFontDirPerms':
         command => 'C:\SetACL.exe -on "C:\WINDOWS\Fonts" -ot file -actn ace -ace "n:Everyone;p:full"',
