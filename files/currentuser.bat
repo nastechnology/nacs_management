@@ -1,2 +1,2 @@
-echo @off
+@echo OFF
 echo %username%
