@@ -7,7 +7,7 @@ require 'rspec/core/rake_task'
 #end
 
 
-RSpec::Core::RakeTask.new(:default) do |t|
+RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = 'spec/*/*_spec.rb'
 end
 
@@ -21,7 +21,7 @@ end
 #    end
 #  end
 #end
-#task :default => :test
+#task :default => :spec
 
 #begin
 #  if Gem::Specification::find_by_name('puppet-lint')
