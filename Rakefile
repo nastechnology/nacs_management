@@ -7,7 +7,7 @@ require 'rspec/core/rake_task'
 #end
 
 
-RSpec::Core::RakeTask.new(:spec) do |t|
+RSpec::Core::RakeTask.new(:default) do |t|
   t.pattern = 'spec/*/*_spec.rb'
 end
 
