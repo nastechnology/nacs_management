@@ -21,7 +21,7 @@ end
 #    end
 #  end
 #end
-#task :default => :spec
+task :default => :spec
 
 #begin
 #  if Gem::Specification::find_by_name('puppet-lint')
