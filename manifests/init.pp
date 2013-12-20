@@ -86,9 +86,9 @@ class nacs_management {
       mode   => 0777,
     }
 
-    file { "C:/NACSManage/currentuser.bat":
+    file { "C:/NACSManage/whoami.exe":
       ensure => file,
-      source => 'puppet:///modules/nacs_management/currentuser.bat',      
+      source => 'puppet:///modules/nacs_management/whoami.exe',
     }
 
     file { "C:/NACSManage/set-shortcut.ps1":
