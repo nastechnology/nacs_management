@@ -42,10 +42,11 @@ define nacs_management::tmutil ($user = $name) {
     require => Exec["Remove${userbackup}Desktop"],
   }
 
-  #exec { "Remove${userbackup}Dropbox":
-  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/Dropbox",
-  #  require => Exec["Remove${userbackup}Downloads"],
-  #}
+  if $dropbox {
+    exec { "Remove${userbackup}Dropbox":
+     command => "/usr/bin/tmutil addexclusion /Users/${user}/Dropbox",
+    }
+  }
 
   #exec { "Remove${userbackup}GoogleDrive":
   #  command => "/usr/bin/tmutil addexclusion /Users/${user}/Google\ Drive",
