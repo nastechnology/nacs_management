@@ -55,6 +55,14 @@ class nacs_management {
 	      group  => admin,
 	    }
 
+      file {'/opt/NACSManage/isinstalled.sh':
+        ensure => present,
+        ownder => 'root',
+        group  => 'wheel'
+        mode   => 0755,
+        source => 'puppet:///modules/nacs_management/isinstalled.sh'
+      }
+
       exec { 'HideTechUser':
         command => "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
         #unless  => "/usr/bin/defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` == 1 ]; then echo 1; fi",
