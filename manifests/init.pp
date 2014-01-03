@@ -58,9 +58,9 @@ class nacs_management {
       file {'/opt/NACSManage/isinstalled.sh':
         ensure => present,
         ownder => 'root',
-        group  => 'wheel'
+        group  => 'wheel',
         mode   => 0755,
-        source => 'puppet:///modules/nacs_management/isinstalled.sh'
+        source => 'puppet:///modules/nacs_management/isinstalled.sh',
       }
 
       exec { 'HideTechUser':
