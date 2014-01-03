@@ -80,10 +80,11 @@ define nacs_management::tmutil ($user = $name) {
     require => Exec["Remove${userbackup}Music"],
   }
 
-  #exec { "Remove${userbackup}VirtualBoxVMs":
-  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/VirtualBox\ VMs",
-  #  require => Exec["Remove${userbackup}Pictures"],
-  #}
+  if $virtualbox {
+    exec { "Remove${userbackup}VirtualBoxVMs":
+      command => "/usr/bin/tmutil addexclusion /Users/${user}/VirtualBox\ VMs",
+    }
+  }
 
   #exec { "Remove${userbackup}Applications":
   #  command => "/usr/bin/tmutil addexclusion /Users/${user}/Applications",
