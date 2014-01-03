@@ -48,19 +48,21 @@ define nacs_management::tmutil ($user = $name) {
     }
   }
 
-  #exec { "Remove${userbackup}GoogleDrive":
-  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/Google\ Drive",
-  #  require => Exec["Remove${userbackup}Dropbox"],
-  #}
+  if $googledrive {
+    exec { "Remove${userbackup}GoogleDrive":
+      command => "/usr/bin/tmutil addexclusion /Users/${user}/Google\ Drive",
+    }
+  }
 
-  #exec { "Remove${userbackup}SkyDrive":
-  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/SkyDrive",
-  #  require => Exec["Remove${userbackup}GoogleDrive"],
-  #}
+  if $skydrive {
+    exec { "Remove${userbackup}SkyDrive":
+      command => "/usr/bin/tmutil addexclusion /Users/${user}/SkyDrive",
+    }
+  }
 
   exec { "Remove${userbackup}Library":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Library",
-  #  require => Exec["Remove${userbackup}SkyDrive"],
+    require => Exec["Remove${userbackup}Downloads"],
   }
 
   exec { "Remove${userbackup}Movies":
