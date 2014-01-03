@@ -42,24 +42,24 @@ define nacs_management::tmutil ($user = $name) {
     require => Exec["Remove${userbackup}Desktop"],
   }
 
-  exec { "Remove${userbackup}Dropbox":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Dropbox",
-    require => Exec["Remove${userbackup}Downloads"],
-  }
+  #exec { "Remove${userbackup}Dropbox":
+  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/Dropbox",
+  #  require => Exec["Remove${userbackup}Downloads"],
+  #}
 
-  exec { "Remove${userbackup}GoogleDrive":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Google\ Drive",
-    require => Exec["Remove${userbackup}Dropbox"],
-  }
+  #exec { "Remove${userbackup}GoogleDrive":
+  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/Google\ Drive",
+  #  require => Exec["Remove${userbackup}Dropbox"],
+  #}
 
-  exec { "Remove${userbackup}SkyDrive":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/SkyDrive",
-    require => Exec["Remove${userbackup}GoogleDrive"],
-  }
+  #exec { "Remove${userbackup}SkyDrive":
+  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/SkyDrive",
+  #  require => Exec["Remove${userbackup}GoogleDrive"],
+  #}
 
   exec { "Remove${userbackup}Library":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Library",
-    require => Exec["Remove${userbackup}SkyDrive"],
+  #  require => Exec["Remove${userbackup}SkyDrive"],
   }
 
   exec { "Remove${userbackup}Movies":
@@ -77,14 +77,14 @@ define nacs_management::tmutil ($user = $name) {
     require => Exec["Remove${userbackup}Music"],
   }
 
-  exec { "Remove${userbackup}VirtualBoxVMs":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/VirtualBox\ VMs",
-    require => Exec["Remove${userbackup}Pictures"],
-  }
+  #exec { "Remove${userbackup}VirtualBoxVMs":
+  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/VirtualBox\ VMs",
+  #  require => Exec["Remove${userbackup}Pictures"],
+  #}
 
   exec { "Remove${userbackup}Applications":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Applications",
-    require => Exec["Remove${userbackup}VirtualBoxVMs"],
+  #  require => Exec["Remove${userbackup}VirtualBoxVMs"],
   }
 
   exec { "RemoveApplications":
