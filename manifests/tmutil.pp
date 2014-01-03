@@ -89,6 +89,6 @@ define nacs_management::tmutil ($user = $name) {
 
   exec { "RemoveApplications":
     command => "/usr/bin/tmutil addexclusion /Applications",
-    require => Exec["Remove${userbackup}Applications"],
+  #  require => Exec["Remove${userbackup}Applications"],
   }
 }
