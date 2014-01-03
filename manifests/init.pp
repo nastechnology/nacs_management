@@ -57,7 +57,7 @@ class nacs_management {
 
       file {'/opt/NACSManage/isinstalled.sh':
         ensure => present,
-        ownder => 'root',
+        owner  => 'root',
         group  => 'wheel',
         mode   => 0755,
         source => 'puppet:///modules/nacs_management/isinstalled.sh',
