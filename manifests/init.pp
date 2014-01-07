@@ -95,13 +95,15 @@ class nacs_management {
     }
 
     file { "C:/NACSManage/whoami.exe":
-      ensure => file,
-      source => 'puppet:///modules/nacs_management/whoami.exe',
+      ensure  => file,
+      source  => 'puppet:///modules/nacs_management/whoami.exe',
+      require => File['C:/NACSManage'],
     }
 
     file { "C:/NACSManage/set-shortcut.ps1":
       ensure => file,
       source => 'puppet:///modules/nacs_management/set-shortcut.ps1',
+      require => File['C:/NACSManage'],
     }
   }
 }

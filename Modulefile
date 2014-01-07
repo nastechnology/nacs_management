@@ -1,5 +1,5 @@
 name 'nastechnology-nacs_management'
-version '0.2.1'
+version '0.2.2'
 source 'https://github.com/nastechnology/nacs_management'
 author 'Mark Myers / Napoleon Area Schools'
 license 'Apache License 2.0'
