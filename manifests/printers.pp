@@ -283,11 +283,11 @@ define nacs_management::printers ($printer = $name) {
     'cdb_mod': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.55.10',
+        uri         => "lpd://10.20.53.10",
         description => "C.D. Brillhart modular printer",
-        localtion   => "CDB Modular",
+        location   => "CDB Modular",
         shared      => false,
-        ppd         => "/Library/Pritners/PPDs/Contents/Resources/en.lproj/Kyocera FS-3900DN.PPD",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/Kyocera FS-3920DN.PPD",
       }
     }
 
