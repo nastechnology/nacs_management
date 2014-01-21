@@ -11,5 +11,7 @@ notifications:
   email:
     - marcusmyers@gmail.com
 env:
+   - PUPPET_VERSION=2.7.3
+   - PUPPET_VERSION=3.2.1
    - PUPPET_VERSION=3.3.2
    - PUPPET_VERSION=3.4.2
