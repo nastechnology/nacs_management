@@ -23,8 +23,8 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::map::kdrive ($user) {
-  
+define nacs_management::map::kdrive {
+  $user = $name
   file { "/Users/${user}/Desktop/KDrive.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
