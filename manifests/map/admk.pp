@@ -25,7 +25,8 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::map::admk ($user) {
+define nacs_management::map::admk {
+  $user = $name
   $server = "adm-fs.nasadm.local"
   $share = "district"
   

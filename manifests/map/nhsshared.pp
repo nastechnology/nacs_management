@@ -23,7 +23,8 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::map::nhsshared ($user) {
+define nacs_management::map::nhsshared {
+  $user = $name
   $server = "nas-fs.nas.local"
   $share = "nhs_shared"
   

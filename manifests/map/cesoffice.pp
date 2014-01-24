@@ -24,7 +24,8 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::map::cesoffice ($user) {
+define nacs_management::map::cesoffice {
+  $user = $name
   $server = "adm-fs.nasadm.local"
   $share = "district"
   
