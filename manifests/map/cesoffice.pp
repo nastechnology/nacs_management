@@ -27,7 +27,7 @@
 define nacs_management::map::cesoffice {
   $user = $name
   $server = "adm-fs.nasadm.local"
-  $share = "district"
+  $share = "central_office"
   
   file { "/Users/${user}/Desktop/CESOfficeDrive.afploc":
     ensure  => file,

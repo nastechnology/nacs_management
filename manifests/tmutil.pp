@@ -1,4 +1,4 @@
-# == Defintion: nacs_management::tmutil
+# == Definition: nacs_management::tmutil
 #
 # A type that takes a users name
 #
