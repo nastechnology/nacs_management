@@ -34,11 +34,13 @@ define nacs_management::tmutil ($user = $name) {
 
   exec { "Remove${userbackup}Desktop":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Desktop",
+    unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Desktop | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Set${userbackup}Destination"],
   }
 
   exec { "Remove${userbackup}Downloads":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Downloads",
+    unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Downloads | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Desktop"],
   }
 
@@ -62,21 +64,25 @@ define nacs_management::tmutil ($user = $name) {
 
   exec { "Remove${userbackup}Library":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Library",
+    unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Library | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Downloads"],
   }
 
   exec { "Remove${userbackup}Movies":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Movies",
+    unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Movies | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Library"],
   }
 
   exec { "Remove${userbackup}Music":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Music",
+    unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Music | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Movies"],
   }
 
   exec { "Remove${userbackup}Pictures":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Pictures",
+    unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Pictures | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Music"],
   }
 
@@ -93,6 +99,7 @@ define nacs_management::tmutil ($user = $name) {
 
   exec { "RemoveApplications":
     command => "/usr/bin/tmutil addexclusion /Applications",
+    unless  => "/usr/bin/tmutil isexcluded /Applications | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
   #  require => Exec["Remove${userbackup}Applications"],
   }
 }
