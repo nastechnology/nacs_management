@@ -1,5 +1,5 @@
 name 'nastechnology-nacs_management'
-version '0.2.2'
+version '0.2.3'
 source 'https://github.com/nastechnology/nacs_management'
 author 'Mark Myers / Napoleon Area Schools'
 license 'Apache License 2.0'
@@ -12,4 +12,4 @@ project_page 'https://github.com/nastechnology/nacs_management'
 # The dependency should be written as above but librarian-puppet
 # does not support the expression as the PMT does.
 #dependency 'glarizza/property_list_key', '>= 0.1.0'
-dependency 'puppetlabs/registry', '>= 0.1.1'
+#dependency 'puppetlabs/registry', '>= 0.1.1'
