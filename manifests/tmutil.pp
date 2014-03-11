@@ -44,19 +44,19 @@ define nacs_management::tmutil ($user = $name) {
     require => Exec["Remove${userbackup}Desktop"],
   }
 
-  if $dropbox {
+  if $::dropbox {
     exec { "Remove${userbackup}Dropbox":
      command => "/usr/bin/tmutil addexclusion /Users/${user}/Dropbox",
     }
   }
 
-  if $googledrive {
+  if $::googledrive {
     exec { "Remove${userbackup}GoogleDrive":
       command => "/usr/bin/tmutil addexclusion /Users/${user}/Google\ Drive",
     }
   }
 
-  if $skydrive {
+  if $::skydrive {
     exec { "Remove${userbackup}SkyDrive":
       command => "/usr/bin/tmutil addexclusion /Users/${user}/SkyDrive",
     }
@@ -86,7 +86,7 @@ define nacs_management::tmutil ($user = $name) {
     require => Exec["Remove${userbackup}Music"],
   }
 
-  if $virtualbox {
+  if $::virtualbox {
     exec { "Remove${userbackup}VirtualBoxVMs":
       command => "/usr/bin/tmutil addexclusion /Users/${user}/VirtualBox\ VMs",
     }
