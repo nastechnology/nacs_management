@@ -20,8 +20,8 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::printers ($printer = $name) {   
-  
+define nacs_management::printers ($printer = $name) {
+
   case $printer {
 
 	# Highly dependent on http://onyxftp.mykonicaminolta.com/DownloadFile/Download.ashx?fileid=33830&productid=1138
@@ -116,11 +116,10 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => "lpd://10.20.15.233",
+        uri         => "ipp://10.20.2.9/printers/NHS_WKRM_COPIER1",
         description => "Ricoh 7500 Copier",
         location    => "NHS 231",
-        shared      => false,
-        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
+        #ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
       }
     }
 
