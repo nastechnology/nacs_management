@@ -116,10 +116,10 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => "ipp://10.20.2.9/printers/NHS_WKRM_COPIER1",
+        uri         => "lpd://10.20.15.233",
         description => "Ricoh 7500 Copier",
         location    => "NHS 231",
-        #ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
+        ppd         => "/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz",
       }
     }
 
