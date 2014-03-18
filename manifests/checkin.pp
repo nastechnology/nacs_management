@@ -1,6 +1,6 @@
 # == Class: nacs_management::checkin
 #
-# Uses the districts checkin API to checkin with the server 
+# Uses the districts checkin API to checkin with the server
 # and is scheduled to run with every puppet run
 #
 # === Examples
@@ -17,7 +17,7 @@
 #
 class nacs_management::checkin {
 
-  case $operatingsystem {
+  case $::operatingsystem {
     'Darwin', 'Ubuntu': {
       $checkinfile = '/opt/NACSManage/checkin.sh'
       $command = '/bin/bash /opt/NACSManage/checkin.sh'
