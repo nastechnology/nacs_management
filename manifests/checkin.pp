@@ -34,15 +34,15 @@ class nacs_management::checkin {
     }
   }
 
-  if(!$::ipaddress =~ /^10.20/){
-    file { $checkinfile:
-      ensure  => file,
-      owner   => $owner,
-   	  group   => $group,
-   	  mode    => 0755,
-   	  content => template("nacs_management/$template"),
-    }
+  file { $checkinfile:
+    ensure  => file,
+    owner   => $owner,
+     group   => $group,
+     mode    => 0755,
+     content => template("nacs_management/$template"),
+  }
 
+  if(!$::ipaddress =~ /^10\.20/){
     exec { "Checkin":
    	  command => $command,
    	  require => File[$checkinfile],
