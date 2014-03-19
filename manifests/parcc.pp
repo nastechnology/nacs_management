@@ -68,6 +68,14 @@ class nacs_management::parcc {
         require => File['C:/windows/sun/java/deployment']
       }
 
+      file { "C:/Documents and Settings/All Users/Desktop/PARCC Pilot Test.lnk":
+        ensure => 'file',
+        mode   => '0660',
+        owner  => 'Administrator',
+        group  => 'Administrators',
+        source => 'puppet:///modules/nacs_management/PARCC Pilot Test.lnk',
+      }
+
       #execute { 'SetShortcut-Parcc':
       #  command => 'powershell -executionpolicy unrestricted C:/NACSManage/Set-Shortcut "C:/Program Files/Google/Chrome/Application/chrome.exe -disable-popup-blocking -kiosk https://parcc.testnav.com" "C:/Documents and Settings/All Users/Desktop/PARCC.lnk"',
       #}
