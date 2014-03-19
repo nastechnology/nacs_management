@@ -40,7 +40,7 @@ class nacs_management::checkin {
      group   => $group,
      mode    => 0755,
      content => template("nacs_management/$template"),
-  }/
+  }
 
   if($::ipaddress !~ /^10\.20\.\d+\.\d+/){
     exec { "Checkin":
