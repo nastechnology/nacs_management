@@ -68,9 +68,9 @@ class nacs_management::parcc {
         require => File['C:/windows/sun/java/deployment']
       }
 
-      execute { 'SetShortcut-Parcc':
-        command => 'powershell -executionpolicy unrestricted C:/NACSManage/Set-Shortcut "C:/Program Files/Google/Chrome/Application/chrome.exe -disable-popup-blocking -kiosk https://parcc.testnav.com" "C:/Documents and Settings/All Users/Desktop/PARCC.lnk"',
-      }
+      #execute { 'SetShortcut-Parcc':
+      #  command => 'powershell -executionpolicy unrestricted C:/NACSManage/Set-Shortcut "C:/Program Files/Google/Chrome/Application/chrome.exe -disable-popup-blocking -kiosk https://parcc.testnav.com" "C:/Documents and Settings/All Users/Desktop/PARCC.lnk"',
+      #}
     }
     'Darwin': {
 
