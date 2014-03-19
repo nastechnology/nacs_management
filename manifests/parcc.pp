@@ -67,6 +67,10 @@ class nacs_management::parcc {
         source  => 'puppet:///modules/nacs_management/trusted.certs',
         require => File['C:/windows/sun/java/deployment']
       }
+
+      execute { 'SetShortcut-Parcc':
+        command => 'C:/NACSManage/Set-Shortcut "C:/Program Files/Google/Chrome/Application/chrome.exe -disable-popup-blocking -kiosk https://parcc.testnav.com" "C:/Documents and Settings/All Users/Desktop/PARCC.lnk"'
+      }
     }
     'Darwin': {
 
