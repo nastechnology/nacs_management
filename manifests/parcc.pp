@@ -81,7 +81,13 @@ class nacs_management::parcc {
       #}
     }
     'Darwin': {
-
+      file { "/Users/nmsstudent/Library/Application Support/Oracle/Java/Deployment/security/trusted.certs":
+        ensure  => 'file',
+        mode    => '0660',
+        owner   => 'nmsstudent',
+        group   => 'nmsstudent',
+        source  => 'puppet:///modules/nacs_management/trusted.certs',
+      }
     }
   }
 }
