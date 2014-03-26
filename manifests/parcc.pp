@@ -85,7 +85,7 @@ class nacs_management::parcc {
         ensure  => 'file',
         mode    => '0660',
         owner   => 'nmsstudent',
-        group   => 'nmsstudent',
+        group   => 'staff',
         source  => 'puppet:///modules/nacs_management/trusted.certs',
       }
     }
