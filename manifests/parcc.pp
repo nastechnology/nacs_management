@@ -81,6 +81,34 @@ class nacs_management::parcc {
       #}
     }
     'Darwin': {
+      file { "/Users/nmsstudent/Library/Application Support/Oracle":
+        ensure  => 'directory',
+        mode    => '0660',
+        owner   => 'nmsstudent',
+        group   => 'staff',
+      }
+
+      file { "/Users/nmsstudent/Library/Application Support/Oracle/Java":
+        ensure  => 'directory',
+        mode    => '0660',
+        owner   => 'nmsstudent',
+        group   => 'staff',
+      }
+
+      file { "/Users/nmsstudent/Library/Application Support/Oracle/Java/Deployment":
+        ensure  => 'directory',
+        mode    => '0660',
+        owner   => 'nmsstudent',
+        group   => 'staff',
+      }
+
+      file { "/Users/nmsstudent/Library/Application Support/Oracle/Java/Deployment/security":
+        ensure  => 'directory',
+        mode    => '0660',
+        owner   => 'nmsstudent',
+        group   => 'staff',
+      }
+
       file { "/Users/nmsstudent/Library/Application Support/Oracle/Java/Deployment/security/trusted.certs":
         ensure  => 'file',
         mode    => '0660',
