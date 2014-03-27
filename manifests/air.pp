@@ -24,9 +24,18 @@ class nacs_management::air {
       }
     }
     'Darwin': {
-      package { '':
+
+      exec { 'DisableSpaces':
+        command => "defaults write /Library/Preferences/com.apple.dock mcx-expose-disabled -bool TRUE",
+      }
+
+      #exec { 'RestartDock':
+      #  command => "defaults write /Library/Preferences/com.apple.dock mcx-expose-disabled -bool TRUE",
+      #}
+
+      package { 'OHSecureBrowser6.3':
         provider => pkgdmg,
-        source   => 'http://oh.portal.airast.org/oh_fieldtest/wp-content/uploads/secure_browsers/OHSecureBrowser6.3-OSX.dmg',
+        source   => 'http://tech.napoleonareaschools.org/wp-content/uploads/2014/03/OHSecureBrowser-6.3.dmg',
         ensure   => 'installed',
       }
     }
