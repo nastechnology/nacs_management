@@ -26,7 +26,7 @@ class nacs_management::air {
     'Darwin': {
 
       exec { 'DisableSpaces':
-        command => "defaults write /Library/Preferences/com.apple.dock mcx-expose-disabled -bool TRUE",
+        command => "defaults write /Users/nmsstudent/Library/Preferences/com.apple.dock mcx-expose-disabled -bool TRUE",
       }
 
       #exec { 'RestartDock':
