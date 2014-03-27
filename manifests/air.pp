@@ -16,20 +16,19 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management::air {
-  package { 'OHSecureBrowser':
-    ensure => installed,
-  }
 
-  file { 'C:/Documents and Settings/All Users/Desktop/OHSecureBrowser6.3.lnk':
-    ensure  => 'absent',
+  case $::operatingsystem {
+    'windows': {
+      package { 'OHSecureBrowser':
+        ensure => installed,
+      }
+    }
+    'Darwin': {
+      package { '':
+        provider => pkgdmg,
+        source   => 'http://oh.portal.airast.org/oh_fieldtest/wp-content/uploads/secure_browsers/OHSecureBrowser6.3-OSX.dmg',
+        ensure   => 'installed',
+      }
+    }
   }
-
-  file { "C:/Documents and Settings/All Users/Desktop/OHSecureBrowser.lnk":
-    ensure => 'file',
-    mode   => '0660',
-    owner  => 'Administrator',
-    group  => 'Administrators',
-    source => 'puppet:///modules/nacs_management/OHSecureBrowser.lnk',
-  }
-
 }
