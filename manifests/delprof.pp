@@ -23,7 +23,7 @@ class nacs_management::delprof {
       group => 'Administrators',
       mode => 0777,
       source => "puppet:///modules/nacs_management/DelProf2.exe",
-    }	
+    }
 
     scheduled_task { 'DeleteOldProfiles':
       ensure    => present,
@@ -34,7 +34,7 @@ class nacs_management::delprof {
       trigger   => {
         schedule   => daily,
         start_time => '09:00',
-      }
-    }    
+      },
+    }
   }
 }
