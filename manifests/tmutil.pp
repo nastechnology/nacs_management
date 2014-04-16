@@ -123,9 +123,9 @@ define nacs_management::tmutil ($user = $name) {
     command => "/usr/bin/tmutil addexclusion /bin",
   }
 
-  exec { "RemoveCores":
-    command => "/usr/bin/tmutil addexclusion /cores",
-  }
+  #exec { "RemoveCores":
+  #  command => "/usr/bin/tmutil addexclusion /cores",
+  #}
 
   exec { "RemoveUsr":
     command => "/usr/bin/tmutil addexclusion /usr",
@@ -135,25 +135,25 @@ define nacs_management::tmutil ($user = $name) {
     command => "/usr/bin/tmutil addexclusion /tmp",
   }
 
-  exec { "RemoveDev":
-    command => "/usr/bin/tmutil addexclusion /dev",
-  }
+  #exec { "RemoveDev":
+  #  command => "/usr/bin/tmutil addexclusion /dev",
+  #}
 
-  exec { "RemoveTemp":
-    command => "/usr/bin/tmutil addexclusion /temp",
-  }
+  #exec { "RemoveTemp":
+  #  command => "/usr/bin/tmutil addexclusion /temp",
+  #}
 
-  exec { "RemoveHome":
-    command => "/usr/bin/tmutil addexclusion /home",
-  }
+  #exec { "RemoveHome":
+  #  command => "/usr/bin/tmutil addexclusion /home",
+  #}
 
   exec { "RemoveOpt":
     command => "/usr/bin/tmutil addexclusion /opt",
   }
 
-  exec { "RemoveNet":
-    command => "/usr/bin/tmutil addexclusion /net",
-  }
+  #exec { "RemoveNet":
+  #  command => "/usr/bin/tmutil addexclusion /net",
+  #}
 
   exec { "RemovePrivate":
     command => "/usr/bin/tmutil addexclusion /private",
