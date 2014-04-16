@@ -20,7 +20,7 @@
 #
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
-define nacs_management::tmutil ($user = $name) {  
+define nacs_management::tmutil ($user = $name) {
   $userbackup = "${user}B"
 
   exec { "EnableTmutil":
@@ -101,5 +101,73 @@ define nacs_management::tmutil ($user = $name) {
     command => "/usr/bin/tmutil addexclusion /Applications",
   #  unless  => "/usr/bin/tmutil isexcluded /Applications | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
   #  require => Exec["Remove${userbackup}Applications"],
+  }
+
+  exec { "RemoveSystem":
+    command => "/usr/bin/tmutil addexclusion /System",
+  }
+
+  exec { "RemoveLibrary":
+    command => "/usr/bin/tmutil addexclusion /Library",
+  }
+
+  exec { "RemoveVar":
+    command => "/usr/bin/tmutil addexclusion /var",
+  }
+
+  exec { "RemoveEtc":
+    command => "/usr/bin/tmutil addexclusion /etc",
+  }
+
+  exec { "RemoveBin":
+    command => "/usr/bin/tmutil addexclusion /bin",
+  }
+
+  exec { "RemoveCores":
+    command => "/usr/bin/tmutil addexclusion /cores",
+  }
+
+  exec { "RemoveUsr":
+    command => "/usr/bin/tmutil addexclusion /usr",
+  }
+
+  exec { "RemoveTmp":
+    command => "/usr/bin/tmutil addexclusion /tmp",
+  }
+
+  exec { "RemoveDev":
+    command => "/usr/bin/tmutil addexclusion /dev",
+  }
+
+  exec { "RemoveTemp":
+    command => "/usr/bin/tmutil addexclusion /temp",
+  }
+
+  exec { "RemoveHome":
+    command => "/usr/bin/tmutil addexclusion /home",
+  }
+
+  exec { "RemoveOpt":
+    command => "/usr/bin/tmutil addexclusion /opt",
+  }
+
+  exec { "RemoveNet":
+    command => "/usr/bin/tmutil addexclusion /net",
+  }
+
+  exec { "RemovePrivate":
+    command => "/usr/bin/tmutil addexclusion /private",
+  }
+
+  exec { "RemoveSbin":
+    command => "/usr/bin/tmutil addexclusion /sbin",
+  }
+
+  exec { "RemoveVolumes":
+    command => "/usr/bin/tmutil addexclusion /Volumes",
+  }
+
+  exec { "RemoveNetwork":
+    command => "/usr/bin/tmutil addexclusion /Network",
   }
 }
