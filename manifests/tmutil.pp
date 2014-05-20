@@ -23,11 +23,11 @@
 define nacs_management::tmutil ($user = $name) {
   $userbackup = "${user}B"
   
- class {'tmutil':
-   'user'     => "${userbackup}",
-   'password' => 'backup',
-   'server'   => 'xserve.nacswildcats.org',
- }
+  class { "tmutil":
+    user     => $userbackup,
+    password => 'backup',
+    server   => 'xserve.nacswildcats.org',
+  }
  
 
   tmutil::exclude { "/Users/${user}/Desktop": }
@@ -35,7 +35,7 @@ define nacs_management::tmutil ($user = $name) {
   exec { "Remove${userbackup}Downloads":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Downloads",
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Downloads | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
-    require => Exec["Remove${userbackup}Desktop"],
+    #require => Exec["Remove${userbackup}Desktop"],
   }
 
   if $::dropbox {
