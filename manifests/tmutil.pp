@@ -22,13 +22,13 @@
 #
 define nacs_management::tmutil ($user = $name) {
   $userbackup = "${user}B"
-  
+
   class { "tmutil":
     user     => $userbackup,
     password => 'backup',
     server   => 'xserve.nacswildcats.org',
   }
- 
+
 
   tmutil::exclude { "/Users/${user}/Desktop": }
 
@@ -72,7 +72,7 @@ define nacs_management::tmutil ($user = $name) {
     tmutil::exclude {"/Users/${user}/VirtualBox\ VMs": }
   }
 
-  tmutil::exclude {"/Applications",
+  tmutil::exclude {"/Applications":
   #  unless  => "/usr/bin/tmutil isexcluded /Applications | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
   #  require => Exec["Remove${userbackup}Applications"],
   }
