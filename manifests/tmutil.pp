@@ -22,21 +22,15 @@
 #
 define nacs_management::tmutil ($user = $name) {
   $userbackup = "${user}B"
+  
+ class { 'tmutil':
+   'user'     => "${userbackup}",
+   'password' => 'backup',
+   'server'   => 'xserve.nacswildcats.org',
+ }
+ 
 
-  exec { "EnableTmutil":
-    command => "/usr/bin/tmutil enable",
-  }
-
-  exec { "Set${userbackup}Destination":
-    command => "/usr/bin/tmutil setdestination afp://${userbackup}:backup@xserve.nacswildcats.org/TimeMachines",
-    require => Exec['EnableTmutil'],
-  }
-
-  exec { "Remove${userbackup}Desktop":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Desktop",
-    #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Desktop | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
-    require => Exec["Set${userbackup}Destination"],
-  }
+  tmutil::exclude { "/Users/${user}/Desktop": }
 
   exec { "Remove${userbackup}Downloads":
     command => "/usr/bin/tmutil addexclusion /Users/${user}/Downloads",
