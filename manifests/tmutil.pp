@@ -32,102 +32,68 @@ define nacs_management::tmutil ($user = $name) {
 
   tmutil::exclude { "/Users/${user}/Desktop": }
 
-  exec { "Remove${userbackup}Downloads":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Downloads",
-    #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Downloads | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
-    #require => Exec["Remove${userbackup}Desktop"],
+  tmutil::exclude {"/Users/${user}/Downloads":
+    require => Exec["Remove${userbackup}Desktop"],
   }
 
   if $::dropbox {
-    exec { "Remove${userbackup}Dropbox":
-     command => "/usr/bin/tmutil addexclusion /Users/${user}/Dropbox",
-    }
+    tmutil::exclude {"/Users/${user}/Dropbox": }
   }
 
   if $::googledrive {
-    exec { "Remove${userbackup}GoogleDrive":
-      command => "/usr/bin/tmutil addexclusion /Users/${user}/Google\ Drive",
-    }
+    tmutil::exclude {"/Users/${user}/Google\ Drive": }
   }
 
   if $::skydrive {
-    exec { "Remove${userbackup}SkyDrive":
-      command => "/usr/bin/tmutil addexclusion /Users/${user}/SkyDrive",
-    }
+    tmutil::exclude {"/Users/${user}/SkyDrive": }
   }
 
-  exec { "Remove${userbackup}Library":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Library",
+  tmutil::exclude {"/Users/${user}/Library":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Library | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Downloads"],
   }
 
-  exec { "Remove${userbackup}Movies":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Movies",
+  tmutil::exclude {"/Users/${user}/Movies":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Movies | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Library"],
   }
 
-  exec { "Remove${userbackup}Music":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Music",
+  tmutil::exclude {"/Users/${user}/Music":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Music | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Movies"],
   }
 
-  exec { "Remove${userbackup}Pictures":
-    command => "/usr/bin/tmutil addexclusion /Users/${user}/Pictures",
+  tmutil::exclude {"/Users/${user}/Pictures":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Pictures | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
     require => Exec["Remove${userbackup}Music"],
   }
 
   if $::virtualbox {
-    exec { "Remove${userbackup}VirtualBoxVMs":
-      command => "/usr/bin/tmutil addexclusion /Users/${user}/VirtualBox\ VMs",
-    }
+    tmutil::exclude {"/Users/${user}/VirtualBox\ VMs": }
   }
 
-  #exec { "Remove${userbackup}Applications":
-  #  command => "/usr/bin/tmutil addexclusion /Users/${user}/Applications",
-  #  require => Exec["Remove${userbackup}VirtualBoxVMs"],
-  #}
-
-  exec { "RemoveApplications":
-    command => "/usr/bin/tmutil addexclusion /Applications",
+  tmutil::exclude {"/Applications",
   #  unless  => "/usr/bin/tmutil isexcluded /Applications | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
   #  require => Exec["Remove${userbackup}Applications"],
   }
 
-  exec { "RemoveSystem":
-    command => "/usr/bin/tmutil addexclusion /System",
-  }
+  tmutil::exclude {" /System": }
 
-  exec { "RemoveLibrary":
-    command => "/usr/bin/tmutil addexclusion /Library",
-  }
+  tmutil::exclude {"/Library": }
 
-  exec { "RemoveVar":
-    command => "/usr/bin/tmutil addexclusion /var",
-  }
+  tmutil::exclude {"/var": }
 
-  exec { "RemoveEtc":
-    command => "/usr/bin/tmutil addexclusion /etc",
-  }
+  tmutil::exclude {"/etc": }
 
-  exec { "RemoveBin":
-    command => "/usr/bin/tmutil addexclusion /bin",
-  }
+  tmutil::exclude {"/bin": }
 
   #exec { "RemoveCores":
   #  command => "/usr/bin/tmutil addexclusion /cores",
   #}
 
-  exec { "RemoveUsr":
-    command => "/usr/bin/tmutil addexclusion /usr",
-  }
+  tmutil::exclude {"/usr": }
 
-  exec { "RemoveTmp":
-    command => "/usr/bin/tmutil addexclusion /tmp",
-  }
+  tmutil::exclude {"/tmp": }
 
   #exec { "RemoveDev":
   #  command => "/usr/bin/tmutil addexclusion /dev",
@@ -141,27 +107,17 @@ define nacs_management::tmutil ($user = $name) {
   #  command => "/usr/bin/tmutil addexclusion /home",
   #}
 
-  exec { "RemoveOpt":
-    command => "/usr/bin/tmutil addexclusion /opt",
-  }
+  tmutil::exclude {"/opt": }
 
   #exec { "RemoveNet":
   #  command => "/usr/bin/tmutil addexclusion /net",
   #}
 
-  exec { "RemovePrivate":
-    command => "/usr/bin/tmutil addexclusion /private",
-  }
+  tmutil::exclude {"/private": }
 
-  exec { "RemoveSbin":
-    command => "/usr/bin/tmutil addexclusion /sbin",
-  }
+  tmutil::exclude {"/sbin": }
 
-  exec { "RemoveVolumes":
-    command => "/usr/bin/tmutil addexclusion /Volumes",
-  }
+  tmutil::exclude {"/Volumes": }
 
-  exec { "RemoveNetwork":
-    command => "/usr/bin/tmutil addexclusion /Network",
-  }
+  tmutil::exclude {"/Network": }
 }
