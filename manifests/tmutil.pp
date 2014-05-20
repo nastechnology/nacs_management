@@ -32,9 +32,7 @@ define nacs_management::tmutil ($user = $name) {
 
   tmutil::exclude { "/Users/${user}/Desktop": }
 
-  tmutil::exclude {"/Users/${user}/Downloads":
-    require => Exec["Remove${userbackup}Desktop"],
-  }
+  tmutil::exclude {"/Users/${user}/Downloads": }
 
   if $::dropbox {
     tmutil::exclude {"/Users/${user}/Dropbox": }
@@ -50,22 +48,22 @@ define nacs_management::tmutil ($user = $name) {
 
   tmutil::exclude {"/Users/${user}/Library":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Library | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
-    require => Exec["Remove${userbackup}Downloads"],
+    #require => Exec["Remove${userbackup}Downloads"],
   }
 
   tmutil::exclude {"/Users/${user}/Movies":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Movies | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
-    require => Exec["Remove${userbackup}Library"],
+    #require => Exec["Remove${userbackup}Library"],
   }
 
   tmutil::exclude {"/Users/${user}/Music":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Music | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
-    require => Exec["Remove${userbackup}Movies"],
+    #require => Exec["Remove${userbackup}Movies"],
   }
 
   tmutil::exclude {"/Users/${user}/Pictures":
     #unless  => "/usr/bin/tmutil isexcluded /Users/${user}/Pictures | if [ `grep -c 'Excluded'` == 1 ]; then echo 1; fi",
-    require => Exec["Remove${userbackup}Music"],
+    #require => Exec["Remove${userbackup}Music"],
   }
 
   if $::virtualbox {
