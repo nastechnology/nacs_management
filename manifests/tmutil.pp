@@ -23,7 +23,7 @@
 define nacs_management::tmutil ($user = $name) {
   $userbackup = "${user}B"
   
- class { 'tmutil':
+ class {'tmutil':
    'user'     => "${userbackup}",
    'password' => 'backup',
    'server'   => 'xserve.nacswildcats.org',
