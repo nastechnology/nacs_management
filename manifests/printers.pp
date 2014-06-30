@@ -50,7 +50,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_color': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.237/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NHS Color Printer',
         location    => 'Secretary Office',
         shared      => false,
@@ -72,7 +72,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_deca': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.235/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'DECA Printer',
         location    => 'DECA',
         shared      => false,
@@ -83,7 +83,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_art': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.228/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Art Printer',
         location    => 'Art',
         shared      => false,
@@ -116,7 +116,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.233',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Ricoh 7500 Copier',
         location    => 'NHS 231',
         ppd         => '/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz',
@@ -126,7 +126,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier_2': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.232',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Ricoh 7500 Copier 2',
         location    => 'NHS 231',
         shared      => false,
@@ -137,7 +137,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_231': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.234/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NHS Workroom 231',
         location    => 'NHS 231',
         shared      => false,
@@ -148,7 +148,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_207': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.247',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NHS Workroom 207',
         location    => 'NHS 207',
         shared      => false,
@@ -159,7 +159,7 @@ define nacs_management::printers ($printer = $name) {
     'hs_stafflounge': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.15.254',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NHS Staff Lounge',
         location    => 'NHS Staff Lounge',
         shared      => false,
@@ -181,7 +181,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_218': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.11.229',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Lori Drewes',
         location    => 'NHS 218',
         shared      => false,
@@ -192,7 +192,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_library_aide': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.11.230/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Library Aide printer',
         location    => 'NHS Library',
         shared      => false,
@@ -204,7 +204,7 @@ define nacs_management::printers ($printer = $name) {
     'ces_office_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.35.10/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Central Office Copier',
         location    => 'CES Office',
         shared      => false,
@@ -215,7 +215,7 @@ define nacs_management::printers ($printer = $name) {
     'ces_wkrm': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.35.11/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Central Workroom Copier',
         location    => 'CES Workroom',
         shared      => false,
@@ -226,7 +226,7 @@ define nacs_management::printers ($printer = $name) {
     'ces_upstairs_wkrm': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.35.12/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'Central Upstairs Workroom Copier',
         location    => 'CES Workroom Upstairs',
         shared      => false,
@@ -238,7 +238,7 @@ define nacs_management::printers ($printer = $name) {
     'ces_kg_colorlaser': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.33.11/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'CES Kindergarten Colorlaser',
         location    => 'CES Kindergarten',
         shared      => false,
@@ -249,7 +249,7 @@ define nacs_management::printers ($printer = $name) {
     'cdb_wkrm_colorlaser': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.55.12/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'C.D. Brillhart Workroom Colorlaser',
         location    => 'CDB Workroom',
         shared      => false,
@@ -260,7 +260,7 @@ define nacs_management::printers ($printer = $name) {
     'cdb_wkrm_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.55.11/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'C.D. Brillhart Workroom Copier',
         location    => 'CDB Workroom',
         shared      => false,
@@ -282,7 +282,7 @@ define nacs_management::printers ($printer = $name) {
     'cdb_mod': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.53.10',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'C.D. Brillhart modular printer',
         location    => 'CDB Modular',
         shared      => false,
@@ -293,7 +293,7 @@ define nacs_management::printers ($printer = $name) {
     'cdb_108_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.55.13',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'C.D. Brillhart 108 Copier',
         location    => 'CDB 108',
         shared      => false,
@@ -304,7 +304,7 @@ define nacs_management::printers ($printer = $name) {
     'cdb_108': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.55.14',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'C.D. Brillhart 108 Printer',
         location    => 'CDB 108',
         shared      => false,
@@ -316,7 +316,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_office_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.25.120',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NMS Office Copier',
         location    => 'NMS Office',
         shared      => false,
@@ -327,7 +327,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_ces_ricoh_7500': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.33.10',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'CES/NMS Basement Copier',
         location    => 'CES/NMS Basement work room',
         shared      => false,
@@ -338,7 +338,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_8lab': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.23.246',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NMS 8 Lab HP 4050 Printer',
         location    => 'NMS 8 Lab',
         shared      => false,
@@ -349,7 +349,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_band': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.23.245',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NMS Band HP LaserJet 6P',
         location    => 'NMS Band',
         shared      => false,
@@ -360,7 +360,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_colorlaser': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.25.121',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NMS Kyocera C5030DN Colorlaser',
         location    => 'NMS Office',
         shared      => false,
@@ -371,7 +371,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_library': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.35.15',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NMS Library HP LaserJet 2100',
         location    => 'NMS Library',
         shared      => false,
@@ -382,7 +382,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_office': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.25.122',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NMS Office Printer HP LaserJet',
         location    => 'NMS Office',
         shared      => false,
@@ -393,7 +393,7 @@ define nacs_management::printers ($printer = $name) {
     'nms_upstairs_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.25.124',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'NMS Upstairs Bizhub 601',
         location    => 'NMS Upstairs Workroom',
         shared      => false,
@@ -405,7 +405,7 @@ define nacs_management::printers ($printer = $name) {
     'wes_wkrm_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.45.124/',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'West Workroom Copier',
         location    => 'WES Workroom',
         shared      => false,
@@ -416,7 +416,7 @@ define nacs_management::printers ($printer = $name) {
     'wes_112': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.45.121',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'West Kyocera 3920DN',
         location    => 'WES 112',
         shared      => false,
@@ -427,7 +427,7 @@ define nacs_management::printers ($printer = $name) {
     'wes_library': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.43.10',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'West Library Kyocera 3920DN',
         location    => 'WES Library',
         shared      => false,
@@ -438,7 +438,7 @@ define nacs_management::printers ($printer = $name) {
     'wes_office': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.45.122',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'West Office Bizhub 601 copoier',
         location    => 'WES Office',
         shared      => false,
@@ -449,7 +449,7 @@ define nacs_management::printers ($printer = $name) {
     'wes_wkrm_color': {
       printer { $printer:
         ensure      => present,
-        uri         => 'lpd://10.20.45.123',
+        uri         => "lpd://10.20.15.23/${printer}",
         description => 'West Workroom Colorlaser 5350',
         location    => 'WES Workroom',
         shared      => false,
