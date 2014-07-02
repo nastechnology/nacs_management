@@ -65,7 +65,7 @@ class nacs_management {
 
       exec { 'HideTechUser':
         command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
-        #unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 1; fi",
+        unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 1; fi",
       }
 
       exec {'Hide sub-500 users':
