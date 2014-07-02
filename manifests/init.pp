@@ -24,7 +24,7 @@ class nacs_management {
       group  => 'wheel',
       mode   => 0755,
     }
-    
+
     file { '/opt/NACSManage':
       ensure  => directory,
       owner   => 'root',
@@ -51,9 +51,9 @@ class nacs_management {
 
       file {'/Library/Preferences/com.apple.loginwindow.plist':
         ensure => present,
-	      owner  => 'root',
-	      group  => 'wheel',
-	    }
+        owner  => 'root',
+        group  => 'wheel',
+      }
 
       file {'/opt/NACSManage/isinstalled.sh':
         ensure => present,
@@ -65,8 +65,8 @@ class nacs_management {
 
       exec { 'HideTechUser':
         command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
-        #unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` == 1 ]; then echo 1; fi",
-      }	
+        #unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 1; fi",
+      }
 
       exec {'Hide sub-500 users':
         command => "defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
@@ -75,7 +75,7 @@ class nacs_management {
 
       exec { 'LoginwindowText':
         command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
-        #unless   => "defaults write /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then echo 1; fi",        
+        #unless   => "defaults write /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then echo 1; fi",
       }
 
       # Disable Gatekeeper in 10.8
