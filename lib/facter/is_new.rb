@@ -4,9 +4,9 @@ Facter.add("is_new") do
   confine :operatingsystem => "Darwin"
   setcode do
     if File.exists?("/opt/NACSManage/new.txt")
-      return true
+      true
     else
-      return false
+      false
     end
    end
 end
