@@ -63,7 +63,7 @@ class nacs_management {
         source => 'puppet:///modules/nacs_management/isinstalled.sh',
       }
 
-      if($::is_new) {
+      if($is_new) {
         exec { 'HideTechUser':
           command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
           #unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 0; fi",
