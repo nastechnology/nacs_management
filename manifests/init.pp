@@ -99,11 +99,16 @@ class nacs_management {
 
 
       # Disable Gatekeeper in 10.8
-      exec { 'Disable Gatekeeper':
+      exec { 'DisableGatekeeper':
         command => '/usr/sbin/spctl --master-disable',
         unless  => "/usr/sbin/spctl --status | if [ `grep -c 'disabled'` == 1 ]; then exit 0; fi",
-        notify  => "Ran this Gatekeeper command",
       }
+
+      notify {'after':
+        message => 'Gatekeeper ran.',
+      }
+
+      Exec['DisableGatekeeper'] -> Notify['after']
 
     }
   } else {
