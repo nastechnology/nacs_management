@@ -64,6 +64,22 @@ class nacs_management {
       }
 
       if($is_new) {
+        exec { 'HideTechUserNew':
+          command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
+        }
+
+        exec {'Hide sub-500 users New':
+          command => "defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
+        }
+
+        exec { 'LoginwindowTextNew':
+          command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
+        }
+
+        file { '/opt/NACSManage/new.txt':
+          ensure => absent,
+        }
+      } else {
         exec { 'HideTechUser':
           command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
           unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 0; fi",
@@ -77,10 +93,6 @@ class nacs_management {
         exec { 'LoginwindowText':
           command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
           unless   => "defaults read /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then exit 0; fi",
-        }
-
-        file { '/opt/NACSManage/new.txt':
-          ensure => absent,
         }
       }
 
