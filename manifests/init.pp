@@ -106,9 +106,8 @@ class nacs_management {
 
       notify {'after':
         message => 'Gatekeeper ran.',
+        require => Exec['DisableGatekeeper'],
       }
-
-      Exec['DisableGatekeeper'] -> Notify['after']
 
     }
   } else {
