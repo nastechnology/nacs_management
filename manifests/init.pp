@@ -102,14 +102,12 @@ class nacs_management {
         unless   => "defaults read /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then exit 0; fi",
       }
 
-
-      # Disable Gatekeeper in 10.8
-      exec { 'DisableGatekeeper':
-        command => '/usr/sbin/spctl --master-disable',
-        #unless  => '/usr/sbin/spctl --status | if [ `grep -c disabled$` == 1 ]; then echo 0; fi',
-        unless  => "if [ $::gatekeeper == 0 ]; then echo 0; fi",
+      unless $::gatekeeper == 0 {
+        # Disable Gatekeeper in 10.8
+        exec { 'DisableGatekeeper':
+          command => '/usr/sbin/spctl --master-disable',
+        }
       }
-
     }
   } else {
     # Assumes Windows - for now
