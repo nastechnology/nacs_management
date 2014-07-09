@@ -66,17 +66,17 @@ class nacs_management {
       if($is_new) {
         exec { 'HideTechUser':
           command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
-          #unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 0; fi",
+          unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 0; fi",
         }
 
         exec {'Hide sub-500 users':
           command => "defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
-          #unless  => "defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep 1` == 1 ]; then exit 0; fi",
+          unless  => "defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep 1` == 1 ]; then exit 0; fi",
         }
 
         exec { 'LoginwindowText':
           command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
-          #unless   => "defaults read /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then exit 0; fi",
+          unless   => "defaults read /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then exit 0; fi",
         }
 
         file { '/opt/NACSManage/new.txt':
