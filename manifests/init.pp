@@ -17,7 +17,7 @@
 #
 class nacs_management {
   $logintext = "Property of Napoleon Area City Schools, if found call 419-599-7015"
-  if ($operatingsystem == 'Darwin') or ($operatingsystem == 'Ubuntu'){
+  if ($::operatingsystem == 'Darwin') or ($::operatingsystem == 'Ubuntu'){
     file { '/opt':
       ensure => directory,
       owner  => 'root',
@@ -33,7 +33,7 @@ class nacs_management {
       require => File['/opt'],
     }
 
-    if($operatingsystem == 'Darwin'){
+    if($::operatingsystem == 'Darwin'){
 
       file { '/etc/facter':
         ensure  => directory,
