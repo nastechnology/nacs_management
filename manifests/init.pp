@@ -63,7 +63,7 @@ class nacs_management {
         source => 'puppet:///modules/nacs_management/isinstalled.sh',
       }
 
-      if($is_new) {
+      if($::is_new) {
         exec { 'HideTechUserNew':
           command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
         }
@@ -80,22 +80,23 @@ class nacs_management {
           ensure => absent,
         }
 
-      } else {
-        exec { 'HideTechUser':
-          command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
-          unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 0; fi",
-        }
-
-        exec {'Hide sub-500 users':
-          command => "defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
-          unless  => "defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep 1` == 1 ]; then exit 0; fi",
-        }
-
-        exec { 'LoginwindowText':
-          command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
-          unless   => "defaults read /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then exit 0; fi",
-        }
       }
+
+      exec { 'HideTechUser':
+        command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
+        unless  => "defaults read /Library/Preferences/com.apple.loginwindow HiddenUsersList | if [ `grep -c 'technology'` > 0 ]; then exit 0; fi",
+      }
+
+      exec {'Hide sub-500 users':
+        command => "defaults write /Library/Preferences/com.apple.loginwindow Hide500Users -bool TRUE",
+        unless  => "defaults read /Library/Preferences/com.apple.loginwindow Hide500Users | if [ `grep 1` == 1 ]; then exit 0; fi",
+      }
+
+      exec { 'LoginwindowText':
+        command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
+        unless   => "defaults read /Library/Preferneces/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then exit 0; fi",
+      }
+
 
       # Disable Gatekeeper in 10.8
       exec { 'Disable Gatekeeper':
