@@ -76,6 +76,11 @@ class nacs_management {
           command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
         }
 
+        # Disable Gatekeeper in 10.8
+        exec { 'DisableGatekeeperNew':
+          command => '/usr/sbin/spctl --master-disable',
+        }
+
         file { '/opt/NACSManage/new.txt':
           ensure => absent,
         }
