@@ -98,8 +98,8 @@ class nacs_management {
       }
 
       exec { 'LoginwindowText':
-        command  => "/opt/NACSManage/logintext",
-        unless   => "if [ -f /opt/NACSManage/logintext.txt ]; then exit 0; fi",
+        command  => '/opt/NACSManage/logintext',
+        unless   => 'if [ -f /opt/NACSManage/logintext.txt ]; then exit 0; fi',
       }
 
       unless $::gatekeeper == 0 {
