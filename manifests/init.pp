@@ -33,6 +33,7 @@ class nacs_management {
     }
 
     if($::operatingsystem == 'Darwin'){
+      $logintext = 'Property of Napoleon Area City Schools, if found call 419-599-7015'
 
       file { '/etc/facter':
         ensure  => directory,
