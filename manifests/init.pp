@@ -73,7 +73,7 @@ class nacs_management {
         }
 
         exec { 'LoginwindowTextNew':
-          command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
+          command  => '/opt/NACSManage/logintext',
         }
 
         # Disable Gatekeeper in 10.8
@@ -98,8 +98,8 @@ class nacs_management {
       }
 
       exec { 'LoginwindowText':
-        command  => "defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText '${logintext}'",
-        unless   => "defaults read /Library/Preferences/com.apple.loginwindow LoginwindowText | if [ `grep -c '${logintext}'` == 1 ]; then exit 0; fi",
+        command  => "/opt/NACSManage/logintext",
+        unless   => "if [ -f /opt/NACSManage/logintext.txt ]; then exit 0; fi",
       }
 
       unless $::gatekeeper == 0 {
