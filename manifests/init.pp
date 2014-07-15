@@ -98,7 +98,8 @@ class nacs_management {
       }
 
       exec { 'LoginwindowText':
-        command  => '/opt/NACSManage/logintext',
+        command => '/opt/NACSManage/logintext',
+        creates => '/opt/NACSManage/logintext.txt',
       }
 
       unless $::gatekeeper == 0 {
