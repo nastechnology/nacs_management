@@ -215,7 +215,7 @@ define nacs_management::printers ($printer = $name) {
     'ces_wkrm': {
       printer { $printer:
         ensure      => present,
-        uri         => "lpd://10.20.15.23/${printer}",
+        uri         => "lpd://10.20.15.23/CES_WRKM",
         description => 'Central Workroom Copier',
         location    => 'CES Workroom',
         shared      => false,
