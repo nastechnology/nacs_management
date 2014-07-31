@@ -63,6 +63,14 @@ class nacs_management {
         source => 'puppet:///modules/nacs_management/isinstalled.sh',
       }
 
+      file { '/opt/NACSManage/logintext':
+        ensure => present,
+        owner  => 'root',
+        group  => 'wheel',
+        mode   => 0755,
+        source => 'puppet:///modules/nacs_management/logintext',
+      }
+
       if($::is_new == 'true') {
         exec { 'HideTechUserNew':
           command => "defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-add technology technologydepartment",
