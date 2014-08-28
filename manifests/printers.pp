@@ -149,8 +149,8 @@ define nacs_management::printers ($printer = $name) {
       printer { $printer:
         ensure      => present,
         uri         => "lpd://10.20.15.23/${printer}",
-        description => 'NHS Workroom 207',
-        location    => 'NHS 207',
+        description => 'NHS Swing Space',
+        location    => 'NHS Swing Space',
         shared      => false,
         ppd         => '/Library/Printers/PPDs/Contents/Resources/Kyocera FS-3920DN.PPD',
       }
