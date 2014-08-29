@@ -116,7 +116,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier': {
       printer { $printer:
         ensure      => present,
-        uri         => "lpd://10.20.15.23/${printer}",
+        uri         => "lpd://10.20.15.232",
         description => 'Ricoh 6001 Copier',
         location    => 'NHS D - 113',
         ppd         => '/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz',
@@ -126,7 +126,7 @@ define nacs_management::printers ($printer = $name) {
     'nhs_wkrm_copier_2': {
       printer { $printer:
         ensure      => present,
-        uri         => "lpd://10.20.15.23/${printer}",
+        uri         => "lpd://10.20.15.233",
         description => 'Ricoh 6001 Copier - 2',
         location    => 'Jr High Staff Only',
         shared      => false,
