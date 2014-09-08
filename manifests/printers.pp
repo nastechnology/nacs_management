@@ -27,12 +27,13 @@ define nacs_management::printers ($printer = $name) {
   # Highly dependent on http://onyxftp.mykonicaminolta.com/DownloadFile/Download.ashx?fileid=33830&productid=1138
   'nhs_copier': {
     printer { $printer:
-      ensure      => present,
-      uri         => "lpd://10.20.15.23/${printer}",
-      description => 'NHS Copier in Teacher Workroom in Office',
-      location    => 'NHS Office',
-      shared      => false,
-      ppd         => '/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz',
+      ensure       => present,
+      uri          => "lpd://10.20.15.23/${printer}",
+      description  => 'NHS Copier in Teacher Workroom in Office',
+      location     => 'NHS Office',
+      shared       => false,
+      ppd          => '/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz',
+      ppd_opotions => { 'Finisher' => 'FS504' },
     }
   }
 
