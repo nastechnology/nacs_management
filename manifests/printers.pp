@@ -33,7 +33,7 @@ define nacs_management::printers ($printer = $name) {
       location     => 'NHS Office',
       shared       => false,
       ppd          => '/Library/Printers/PPDs/Contents/Resources/KONICAMINOLTA601.gz',
-      ppd_opotions => { 'Finisher' => 'FS504' },
+      ppd_options => { 'Finisher' => 'FS504' },
     }
   }
 
