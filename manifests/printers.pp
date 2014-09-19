@@ -28,7 +28,8 @@ define nacs_management::printers ($printer = $name) {
   'nhs_copier': {
     printer { $printer:
       ensure       => present,
-      uri          => "lpd://10.20.15.23/${printer}",
+#      uri          => "lpd://10.20.15.23/${printer}",
+      uri          => "lpd://10.20.15.220",
       description  => 'NHS Copier in Teacher Workroom in Office',
       location     => 'NHS Office',
       shared       => false,
