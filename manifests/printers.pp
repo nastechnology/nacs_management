@@ -111,7 +111,7 @@ define nacs_management::printers ($printer = $name) {
         description => 'Guidance Ciopier',
         location    => 'NHS Guidance',
         shared      => false,
-        ppd         => '/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_5001-pxlmono-Ricoh.ppd.gz',
+        ppd         => '/Library/Printers/PPDs/Contents/Resources/RICOH Aficio MP 5001.gz',
       }
     }
 
