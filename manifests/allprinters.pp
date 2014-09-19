@@ -25,7 +25,7 @@ class nacs_management::allprinters {
     provider => pkgdmg,
     source   => 'http://tech.napoleonareaschools.org/Kyocera_OS_X_10.5_Web_build_2012.11.30.dmg',
     ensure   => installed,
-  } 
+  }
 
   package { 'foomatic-rip-5.0.dmg':
     provider => pkgdmg,
@@ -47,15 +47,15 @@ class nacs_management::allprinters {
     require  => Package['gplgs-8.72.dmg']
   }
 
-  package { 'bizhub_C554_108.dmg':
+  package { 'bizhub_C554_C364_109.dmg':
     provider => pkgdmg,
-    source   => 'http://tech.napoleonareaschools.org/bizhub_C554_108.dmg',
+    source   => 'http://tech.napoleonareaschools.org/wp-content/uploads/2014/09/bizhub_C554_C364_109.dmg',
     ensure   => installed,
   }
 
-  package { 'bizhub_751_108.dmg':
+  package { 'bizhub_751_109.dmg':
     provider => pkgdmg,
-    source   => 'http://tech.napoleonareaschools.org/bizhub_751_108.dmg',
+    source   => 'http://tech.napoleonareaschools.org/wp-content/uploads/2014/09/bizhub_751_109.dmg',
     ensure   => installed,
   }
 
