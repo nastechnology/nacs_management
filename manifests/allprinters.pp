@@ -21,9 +21,9 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management::allprinters {
-  package { 'Kyocera_OS_X_10.5_Web_build_2012.11.30.dmg':
+  package { 'Kyocera-OS-X-10.5-Web-build-2014.07.22.dmg':
     provider => pkgdmg,
-    source   => 'http://tech.napoleonareaschools.org/Kyocera_OS_X_10.5_Web_build_2012.11.30.dmg',
+    source   => 'http://tech.napoleonareaschools.org/wp-content/uploads/2014/09/Kyocera-OS-X-10.5-Web-build-2014.07.22.dmg',
     ensure   => installed,
   }
 
