@@ -20,14 +20,14 @@ class nacs_management {
     file { '/opt':
       ensure => directory,
       owner  => 'root',
-      group  => 'wheel',
+      group  => 'root',
       mode   => 0755,
     }
 
     file { '/opt/NACSManage':
       ensure  => directory,
       owner   => 'root',
-      group   => 'wheel',
+      group   => 'root',
       mode    => 0755,
       require => File['/opt'],
     }
