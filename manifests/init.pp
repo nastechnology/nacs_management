@@ -16,18 +16,22 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management {
+  $group = 'wheel'
   if ($::operatingsystem == 'Darwin') or ($::operatingsystem == 'Ubuntu'){
+    if($::operatingsystem == 'Ubuntu'){
+      $group = 'root'
+    }
     file { '/opt':
       ensure => directory,
       owner  => 'root',
-      group  => 'root',
+      group  => $group,
       mode   => 0755,
     }
 
     file { '/opt/NACSManage':
       ensure  => directory,
       owner   => 'root',
-      group   => 'root',
+      group   => $group,
       mode    => 0755,
       require => File['/opt'],
     }
