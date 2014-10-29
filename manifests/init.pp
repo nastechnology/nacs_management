@@ -16,10 +16,12 @@
 # Copyright 2013 Mark Myers, unless otherwise noted.
 #
 class nacs_management {
-  $group = 'wheel'
+
   if ($::operatingsystem == 'Darwin') or ($::operatingsystem == 'Ubuntu'){
     if($::operatingsystem == 'Ubuntu'){
       $group = 'root'
+    } else {
+      $group = 'wheel'
     }
     file { '/opt':
       ensure => directory,
