@@ -27,14 +27,14 @@ class nacs_management {
       ensure => directory,
       owner  => 'root',
       group  => $group,
-      mode   => 0755,
+      mode   => '0755',
     }
 
     file { '/opt/NACSManage':
       ensure  => directory,
       owner   => 'root',
       group   => $group,
-      mode    => 0755,
+      mode    => '0755',
       require => File['/opt'],
     }
 
@@ -45,14 +45,14 @@ class nacs_management {
         ensure  => directory,
         owner   => 'root',
         group   => 'wheel',
-        mode    => 0755,
+        mode    => '0755',
       }
 
       file { '/etc/facter/facts.d':
         ensure  => directory,
         owner   => 'root',
         group   => 'wheel',
-        mode    => 0777,
+        mode    => '0777',
       }
 
       file {'/Library/Preferences/com.apple.loginwindow.plist':
@@ -65,7 +65,7 @@ class nacs_management {
         ensure => present,
         owner  => 'root',
         group  => 'wheel',
-        mode   => 0755,
+        mode   => '0755',
         source => 'puppet:///modules/nacs_management/isinstalled.sh',
       }
 
@@ -73,8 +73,30 @@ class nacs_management {
         ensure => present,
         owner  => 'root',
         group  => 'wheel',
-        mode   => 0755,
+        mode   => '0755',
         source => 'puppet:///modules/nacs_management/logintext',
+      }
+
+      file { '/opt/NACSManage/ipcheck':
+        ensure => present,
+        owner  => 'root',
+        group  => 'wheel',
+        mode   => '0755',
+        source => 'puppet:///modules/nacs_management/ipcheck',
+      }
+
+      file { '/Library/LaunchDaemons/org.nacswildcats.nacsmanage.ipcheck.plist':
+        ensure  => present,
+        owner   => 'root',
+        group   => 'wheel',
+        mode    => '0755',
+        source  => 'puppet:///modules/nacs_management/org.nacswildcats.nacsmanage.ipcheck.plist',
+        require => File['/opt/NACSManage/ipcheck'],
+      }
+
+      exec { 'LaunchDaemonIPCheck':
+        command => 'launchctl load -w /Library/LaunchDaemons/org.nacswildcats.nacsmanage.ipcheck.plist',
+        unless  => 'launchctl list | grep -c org.nacswildcats.nacsmanage.ipcheck',
       }
 
       if($::is_new == 'true') {
@@ -129,7 +151,7 @@ class nacs_management {
       ensure => directory,
       owner  => 'Administrator',
       group  => 'Administrators',
-      mode   => 0777,
+      mode   => '0777',
     }
 
     file { "C:/NACSManage/whoami.exe":

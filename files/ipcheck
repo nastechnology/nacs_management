@@ -1,0 +1,16 @@
+#!/bin/bash
+
+IP=`ipconfig getifaddr en0`
+
+if [ ! -f /opt/NACSManage/address.txt ]; then
+  touch /opt/NACSManage/address.txt
+fi
+
+FILEIP=$(cat /opt/NACSManage/address.txt)
+
+if [ $IP != $FILEIP ]; then
+  /opt/NACSManage/checkin.sh
+
+  sed -i '' "s/${FILEIP}/${IP}/" /opt/NACSManage/address.txt
+
+fi
