@@ -95,8 +95,8 @@ class nacs_management {
       }
 
       exec { 'LaunchDaemonIPCheck':
-        command => 'launchctl load -w /Library/LaunchDaemons/org.nacswildcats.nacsmanage.ipcheck.plist',
-        unless  => 'launchctl list | grep -c org.nacswildcats.nacsmanage.ipcheck',
+        command => '/bin/launchctl load -w /Library/LaunchDaemons/org.nacswildcats.nacsmanage.ipcheck.plist',
+        unless  => '/bin/launchctl list | grep -c org.nacswildcats.nacsmanage.ipcheck',
       }
 
       if($::is_new == 'true') {
