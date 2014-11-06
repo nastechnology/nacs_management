@@ -28,6 +28,7 @@ define nacs_management::map::kdrive {
   file { "/Users/${user}/Desktop/KDrive.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
+    unless  => "/bin/test -e /Users/${user}/Desktop/KDrive.afploc",
   }
 
   nacs_management::chdesktopicon { 'KDrive.afploc':

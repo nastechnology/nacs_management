@@ -27,10 +27,11 @@ define nacs_management::map::cdbshared {
   $user = $name
   $server = "nas-fs.nas.local"
   $share = "cdb_shared"
-  
+
   file { "/Users/${user}/Desktop/CDBShared.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
+    unless  => "/bin/test -e /Users/${user}/Desktop/CDBShared.afploc",
   }
 
   nacs_management::chdesktopicon { 'CDBShared.afploc':

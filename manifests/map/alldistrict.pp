@@ -27,10 +27,11 @@ define nacs_management::map::alldistrict {
   $user = $name
   $server = "adm-fs.nasadm.local"
   $share = "alldistrict"
-  
+
   file { "/Users/${user}/Desktop/AllDistrict.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
+    unless  => "/bin/test -e /Users/${user}/Desktop/AllDistrict.afploc",
   }
 
   nacs_management::chdesktopicon { 'AllDistrict.afploc':

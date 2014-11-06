@@ -27,10 +27,11 @@ define nacs_management::map::shared {
   $user = $name
   $server = "adm-fs.nasadm.local"
   $share = "shared"
-  
+
   file { "/Users/${user}/Desktop/Shared.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
+    unless  => "/bin/test -e /Users/${user}/Desktop/Shared.afploc",
   }
 
   exec { 'ChangeIcon':

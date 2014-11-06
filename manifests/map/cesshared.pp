@@ -27,10 +27,11 @@ define nacs_management::map::cesshared {
   $user = $name
   $server = "nas-fs.nas.local"
   $share = "ces_shared"
-  
+
   file { "/Users/${user}/Desktop/CESShared.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
+    unless  => "/bin/test -e /Users/${user}/Desktop/CESShared.afploc",
   }
 
   nacs_management::chdesktopicon { 'CESShared.afploc':
