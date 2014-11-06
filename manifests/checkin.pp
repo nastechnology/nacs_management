@@ -37,15 +37,15 @@ class nacs_management::checkin {
   file { $checkinfile:
     ensure  => file,
     owner   => $owner,
-     group   => $group,
-     mode    => 0755,
-     content => template("nacs_management/$template"),
+    group   => $group,
+    mode    => 0755,
+    content => template("nacs_management/$template"),
   }
 
-  if($::ipaddress !~ /^10\.20\.\d+\.\d+/){
-    exec { "Checkin":
-   	  command => $command,
-   	  require => File[$checkinfile],
-    }
-  }
+  #if $::ipaddress !~ /^10\.20\.\d+\.\d+/ {
+  #  exec { "Checkin":
+  # 	  command => $command,
+  # 	  require => File[$checkinfile],
+  #  }
+  #}
 }
