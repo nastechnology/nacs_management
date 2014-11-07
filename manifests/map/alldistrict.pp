@@ -31,7 +31,6 @@ define nacs_management::map::alldistrict {
   file { "/Users/${user}/Desktop/AllDistrict.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
-    unless  => "/bin/test -e /Users/${user}/Desktop/AllDistrict.afploc",
   }
 
   nacs_management::chdesktopicon { 'AllDistrict.afploc':

@@ -31,7 +31,6 @@ define nacs_management::map::idrive ($server = 'nas-fs.nas.local') {
   file { "/Users/${user}/Desktop/IDrive.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
-    unless  => "/bin/test -e /Users/${user}/Desktop/IDrive.afploc",
   }
 
   nacs_management::chdesktopicon { 'IDrive.afploc':

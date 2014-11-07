@@ -31,7 +31,6 @@ define nacs_management::map::nmsshared {
   file { "/Users/${user}/Desktop/NMSShared.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
-    unless  => "/bin/test -e /Users/${user}/Desktop/NMSShared.afploc",
   }
 
   nacs_management::chdesktopicon { 'NMSShared.afploc':

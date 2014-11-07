@@ -32,7 +32,6 @@ define nacs_management::map::cesoffice {
   file { "/Users/${user}/Desktop/CESOfficeDrive.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
-    unless  => "/bin/test -e /Users/${user}/Desktop/CESOfficeDrive.afploc",
   }
 
   nacs_management::chdesktopicon { 'CESOfficeDrive.afploc':

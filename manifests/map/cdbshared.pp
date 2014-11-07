@@ -31,7 +31,6 @@ define nacs_management::map::cdbshared {
   file { "/Users/${user}/Desktop/CDBShared.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
-    unless  => "/bin/test -e /Users/${user}/Desktop/CDBShared.afploc",
   }
 
   nacs_management::chdesktopicon { 'CDBShared.afploc':

@@ -31,7 +31,6 @@ define nacs_management::map::wesshared {
   file { "/Users/${user}/Desktop/WESShared.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
-    unless  => "/bin/test -e /Users/${user}/Desktop/WESShared.afploc",
   }
 
   nacs_management::chdesktopicon { 'WESShared.afploc':

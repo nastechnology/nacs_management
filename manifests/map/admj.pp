@@ -33,7 +33,6 @@ define nacs_management::map::admj {
   file { "/Users/${user}/Desktop/JDrive.afploc":
     ensure  => file,
     content => template("nacs_management/afploc.erb"),
-    unless  => "/bin/test -e /Users/${user}/Desktop/JDrive.afploc",
   }
 
   nacs_management::chdesktopicon { 'JDrive.afploc':
