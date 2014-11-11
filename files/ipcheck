@@ -2,7 +2,7 @@
 
 IPTEST=`ipconfig getifaddr en0`
 
-if [ -z "$IP"]; then
+if [ -z "$IPTEST"]; then
 
   IP=`ipconfig getifaddr en1`
 else
