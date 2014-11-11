@@ -1,9 +1,22 @@
 #!/bin/bash
 
-IP=`ipconfig getifaddr en0`
+IPTEST=`ipconfig getifaddr en0`
+
+if [ -z "$IP"]; then
+
+  IP=`ipconfig getifaddr en1`
+else
+
+  IP="$IPTEST"
+
+fi
 
 if [ ! -f /opt/NACSManage/address.txt ]; then
+
   touch /opt/NACSManage/address.txt
+
+  echo $IP > /opt/NACSManage/address.txt
+
 fi
 
 FILEIP=$(cat /opt/NACSManage/address.txt)
