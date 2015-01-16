@@ -118,8 +118,8 @@ define nacs_management::printers ($printer = $name) {
       printer { $printer:
         ensure      => present,
         uri         => "lpd://10.20.15.232",
-        description => 'Ricoh 6001 Copier',
-        location    => 'NHS D - 113',
+        description => 'NHS 2nd Floor North Wkrm',
+        location    => 'NHS 2nd Floor North Wkrm',
         ppd         => '/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz',
       }
     }
@@ -128,8 +128,8 @@ define nacs_management::printers ($printer = $name) {
       printer { $printer:
         ensure      => present,
         uri         => "lpd://10.20.15.233",
-        description => 'Ricoh 6001 Copier - 2',
-        location    => 'Jr High Staff Only',
+        description => 'NHS 2nd Floor South Wkrm',
+        location    => 'NHS 2nd Floor South Wkrm',
         shared      => false,
         ppd         => '/Library/Printers/PPDs/Contents/Resources/en.lproj/Ricoh-Aficio_MP_7500-pxlmono-Ricoh.ppd.gz',
       }
