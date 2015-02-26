@@ -32,7 +32,7 @@
 #
 class nacs_management::techspecs::win {
 
-  registry_key {'HKLM\Software\NACSTech':
+  registry_key {'32:HKLM\Software\NACSTech':
     ensure => present,
   }
 
