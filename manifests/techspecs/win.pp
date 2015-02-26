@@ -36,93 +36,93 @@ class nacs_management::techspecs::win {
     ensure => present,
   }
 
-  registry_value {'hklm\Software\NACSTech\RoomNumber':
+  registry_value {'32:hklm\Software\NACSTech\RoomNumber':
     ensure => present,
     type   => string,
     data   => $::room,
   }
 
-  registry_key { 'hklm\Software\NACSTech\RoomInv':
+  registry_key { '32:hklm\Software\NACSTech\RoomInv':
     ensure => present,
   }
 
-  registry_value { 'hklm\Software\NACSTech\SerialNumber':
+  registry_value { '32:hklm\Software\NACSTech\SerialNumber':
     ensure => present,
     type   => string,
     data   => $::serialnumber,
   }
 
-  registry_key { 'hklm\Software\NACSTech\SystemSpecs':
+  registry_key { '32:hklm\Software\NACSTech\SystemSpecs':
     ensure => present,
   }
 
-  registry_key { 'hklm\Software\NACSTech\Accessories\Monitors':
+  registry_key { '32:hklm\Software\NACSTech\Accessories\Monitors':
     ensure => present,
   }
 
-  registry_key { 'hklm\Software\NACSTech\Accessories\Projectors':
+  registry_key { '32:hklm\Software\NACSTech\Accessories\Projectors':
     ensure => present,
   }
 
-  registry_key { 'hklm\Software\NACSTech\Accessories\SMART':
+  registry_key { '32:hklm\Software\NACSTech\Accessories\SMART':
     ensure => present,
   }
 
-  registry_value { 'hklm\Software\NACSTech\SystemSpecs\MACAddress':
+  registry_value { '32:hklm\Software\NACSTech\SystemSpecs\MACAddress':
     ensure => present,
     type   => string,
     data   => $::macaddress,
   }
 
-  registry_value { 'hklm\Software\NACSTech\SystemSpecs\OperatingSystem':
+  registry_value { '32:hklm\Software\NACSTech\SystemSpecs\OperatingSystem':
     ensure => present,
     type   => string,
     data   => $::operatingsystem,
   }
 
-  registry_value { 'hklm\Software\NACSTech\SystemSpecs\Model':
+  registry_value { '32:hklm\Software\NACSTech\SystemSpecs\Model':
     ensure => present,
     type   => string,
     data   => $::productname,
   }
 
-  registry_value { 'hklm\Software\NACSTech\SystemSpecs\Processor':
+  registry_value { '32:hklm\Software\NACSTech\SystemSpecs\Processor':
     ensure => present,
     type   => string,
     data   => $::processor0,
   }
 
-  registry_value { 'hklm\Software\NACSTech\SystemSpecs\Memory':
+  registry_value { '32:hklm\Software\NACSTech\SystemSpecs\Memory':
     ensure => present,
     type   => string,
     data   => $::memorytotal,
   }
 
-  registry_value { 'hklm\Software\NACSTech\ComputerName':
+  registry_value { '32:hklm\Software\NACSTech\ComputerName':
     ensure => present,
     type   => string,
     data   => $::hostname,
   }
 
-  registry_value {'hklm\Software\NACSTech\InventoryTag':
+  registry_value {'32:hklm\Software\NACSTech\InventoryTag':
     ensure => present,
     type   => string,
     data   => $::inventory_tag,
   }
 
-  registry_value { 'hklm\Software\NACSTech\Building':
+  registry_value { '32:hklm\Software\NACSTech\Building':
     ensure => present,
     type   => string,
     data   => $::building,
   }
 
-  registry_value { 'hklm\Software\NACSTech\Domain':
+  registry_value { '32:hklm\Software\NACSTech\Domain':
     ensure => present,
     type   => string,
     data   => $::domain,
   }
 
-  registry_key { 'hklm\Software\NACSTech\Accessories':
+  registry_key { '32:hklm\Software\NACSTech\Accessories':
     ensure => present,
   }
 
